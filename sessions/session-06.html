@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۶ · منطق زمانی، معماری استدلال عملی و فرمول‌بندی رسمی اکشن‌ها — سیستم‌های چندعامله</title>
+<meta name="description" content="فرض جهان بسته و چهارگانهٔ توصیف رسمی اکشن با جدول Stack/UnStack/PickUp/PutDown و گذار حالت تو در تو، عملگرهای منطق زمانی ○ ● ◇ □ ◇₋ □₋ و U/S/W با کنترل‌کنندهٔ منابع مشترک، و معماری استدلال عملی با دلیبریشن، استدلال ابزار-هدف و شرط صحت برنامه Bₙ ⊨ I.">
+<meta name="theme-color" content="#0a1e15">
+<script>(function(){try{var t=localStorage.getItem("nlp-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/mas-logo-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/mas-theme.css">
+</head>
+<body>
+<a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+<div class="read-progress" data-read-progress aria-hidden="true"><span></span></div>
+
+<header class="session-topbar">
+  <div class="container inner">
+    <span class="brand-logo brand-logo--sm" aria-hidden="true"><img src="../assets/img/mas-logo.svg" alt=""></span>
+    <a class="back" href="../notes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg><span>یادداشت‌ها</span></a>
+    <div class="bar-title"><span class="mono">S۰۶</span>منطق زمانی، معماری استدلال عملی و فرمول‌بندی رسمی اکشن‌ها</div>
+    <div class="actions">
+      <button class="icon-btn" type="button" data-print aria-label="چاپ صفحه" title="چاپ صفحه"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg></button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="تغییر پوسته" title="تغییر پوسته"><svg data-icon-moon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg><svg data-icon-sun viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    </div>
+  </div>
+  <div class="container"><nav class="topbar-nav" aria-label="ناوبری اصلی"><a href="../index.html">خانه</a><a href="../notes.html" aria-current="page">یادداشت جلسات</a><a href="../index.html#grading">ارزشیابی و پروژه</a></nav></div>
+</header>
+
+<main id="main" class="container">
+  <div class="session-layout">
+    <article class="session-main">
+      <header class="session-hero">
+        <nav class="breadcrumb" aria-label="مسیر">
+          <a href="../index.html">خانه</a><span class="sep">/</span>
+          <a href="../notes.html">یادداشت جلسات</a><span class="sep">/</span>
+          <span>جلسه ۶</span>
+        </nav>
+        <div class="session-kicker">
+          <span class="badge badge--live">جلسه ۰۶</span>
+          <span class="tag tag--brand">سیستم‌های چندعامله</span>
+        </div>
+        <h1>منطق زمانی، معماری استدلال عملی و فرمول‌بندی رسمی اکشن‌ها</h1>
+        <div class="h1-en" dir="ltr">Temporal Logic, Practical Reasoning &amp; Formal Action Representation</div>
+
+        <figure class="diagram" role="img" aria-label="دنیای بلاک‌ها با بازوی مکانیکی در حال اجرای Stack، صفحهٔ ساعت، و خط زمانی با عملگرهای ○ ● ◇ □">
+          <svg viewBox="0 0 760 340" style="font-family:'JetBrains Mono',ui-monospace,monospace" aria-hidden="true">
+            <defs>
+              <marker id="arr06" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10z" fill="var(--brand-2)"/>
+              </marker>
+            </defs>
+
+            <!-- ===== blocks world + robotic arm executing Stack(A, B) ===== -->
+            <text x="193" y="38" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">Pre: Clear(B) ∧ Holding(A)</text>
+            <text x="193" y="55" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--warn)">Stack(A, B)</text>
+
+            <!-- arm: boom, mast, joint, base, cables, gripper -->
+            <rect x="118" y="64" width="150" height="8" rx="3" fill="var(--warn)"/>
+            <rect x="264" y="72" width="8" height="172" rx="3" fill="var(--warn)"/>
+            <circle cx="268" cy="68" r="5" fill="var(--warn)"/>
+            <rect x="250" y="244" width="44" height="12" rx="4" fill="var(--surface-3)" stroke="var(--warn)" stroke-width="1.6"/>
+            <line x1="122" y1="72" x2="122" y2="92" stroke="var(--brand-2)" stroke-width="2"/>
+            <line x1="156" y1="72" x2="156" y2="92" stroke="var(--brand-2)" stroke-width="2"/>
+            <rect x="106" y="92" width="66" height="10" rx="4" fill="var(--brand-2)"/>
+            <rect x="106" y="102" width="6" height="18" rx="2" fill="var(--brand-2)"/>
+            <rect x="166" y="102" width="6" height="18" rx="2" fill="var(--brand-2)"/>
+            <text x="286" y="134" font-size="12.5" fill="var(--ink-2)">arm</text>
+
+            <!-- block A held by gripper, about to be placed on B -->
+            <rect x="110" y="100" width="58" height="44" rx="7" fill="var(--surface-3)" stroke="var(--line-2)" stroke-width="2"/>
+            <text x="139" y="129" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">A</text>
+            <rect x="110" y="156" width="58" height="44" rx="7" fill="var(--surface-3)" stroke="var(--line-2)" stroke-width="2"/>
+            <text x="139" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">B</text>
+            <rect x="96" y="200" width="58" height="44" rx="7" fill="var(--surface-3)" stroke="var(--line-2)" stroke-width="2"/>
+            <text x="125" y="229" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">C</text>
+            <rect x="30" y="244" width="200" height="10" rx="4" fill="var(--surface-3)" stroke="var(--line-2)" stroke-width="1.6"/>
+            <text x="174" y="180" font-size="12.5" fill="var(--ink-2)">On(B, C)</text>
+            <text x="174" y="232" font-size="12.5" fill="var(--ink-2)">OnTable(C)</text>
+            <text x="30" y="266" font-size="12.5" fill="var(--ink-2)">Add: ArmEmpty, On(A, B)</text>
+            <text x="30" y="284" font-size="12.5" fill="var(--ink-2)">Del: Clear(B), Holding(A)</text>
+
+            <!-- ===== clock face ===== -->
+            <circle cx="470" cy="108" r="44" fill="var(--surface-3)" stroke="var(--line-2)" stroke-width="2"/>
+            <line x1="470" y1="66" x2="470" y2="74" stroke="var(--ink-2)" stroke-width="2"/>
+            <line x1="512" y1="108" x2="504" y2="108" stroke="var(--ink-2)" stroke-width="2"/>
+            <line x1="470" y1="150" x2="470" y2="142" stroke="var(--ink-2)" stroke-width="2"/>
+            <line x1="428" y1="108" x2="436" y2="108" stroke="var(--ink-2)" stroke-width="2"/>
+            <line x1="470" y1="108" x2="448" y2="92" stroke="var(--brand)" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="470" y1="108" x2="492" y2="90" stroke="var(--brand-2)" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="470" cy="108" r="3" fill="var(--warn)"/>
+            <text x="470" y="180" text-anchor="middle" font-size="13" font-weight="700" fill="var(--warn)">t</text>
+
+            <!-- ===== temporal timeline with operator glyphs ===== -->
+            <line x1="320" y1="230" x2="736" y2="230" stroke="var(--brand-2)" stroke-width="2" marker-end="url(#arr06)"/>
+            <line x1="380" y1="222" x2="380" y2="238" stroke="var(--ink-2)" stroke-width="1.6"/>
+            <line x1="470" y1="222" x2="470" y2="238" stroke="var(--ink-2)" stroke-width="1.6"/>
+            <line x1="560" y1="222" x2="560" y2="238" stroke="var(--ink-2)" stroke-width="1.6"/>
+            <line x1="650" y1="222" x2="650" y2="238" stroke="var(--ink-2)" stroke-width="1.6"/>
+            <line x1="715" y1="222" x2="715" y2="238" stroke="var(--ink-2)" stroke-width="1.6"/>
+
+            <!-- ● yesterday -->
+            <text x="380" y="168" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--brand-2)">● دیروز</text>
+            <circle cx="380" cy="196" r="8" fill="var(--brand-2)"/>
+            <text x="380" y="200" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bg)">φ</text>
+            <!-- now -->
+            <text x="470" y="168" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink)">اکنون</text>
+            <circle cx="470" cy="230" r="4" fill="var(--ink)"/>
+            <!-- ○ tomorrow -->
+            <text x="560" y="168" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--brand)">○ فردا</text>
+            <circle cx="560" cy="196" r="8" fill="none" stroke="var(--brand)" stroke-width="2"/>
+            <text x="560" y="200" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--brand)">φ</text>
+            <!-- ◇ sometime -->
+            <text x="650" y="168" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--warn)">◇ روزی</text>
+            <rect x="642" y="188" width="16" height="16" rx="2" transform="rotate(45 650 196)" fill="none" stroke="var(--warn)" stroke-width="2"/>
+            <!-- □ always -->
+            <text x="715" y="168" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--warn)">□ همیشه</text>
+            <rect x="706" y="188" width="16" height="16" rx="2" fill="none" stroke="var(--warn)" stroke-width="2"/>
+
+            <text x="380" y="256" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">t<tspan baseline-shift="sub" font-size="9">i-1</tspan></text>
+            <text x="470" y="256" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">t<tspan baseline-shift="sub" font-size="9">i</tspan></text>
+            <text x="560" y="256" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">t<tspan baseline-shift="sub" font-size="9">i+1</tspan></text>
+            <text x="650" y="256" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">t<tspan baseline-shift="sub" font-size="9">j</tspan></text>
+            <text x="715" y="256" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">∀ j ≥ i</text>
+
+            <text x="545" y="288" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">Sₖ₊₁ = Result(Sₖ, Aₖ) ⟹ S₂ = Result(Result(S₀, A₀), A₁)</text>
+            <text x="545" y="306" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">◇₋φ روزی در گذشته · □₋φ همیشه در گذشته</text>
+
+            <text x="170" y="326" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--brand)">دنیای بلاک‌ها · بازوی مکانیکی</text>
+            <text x="470" y="326" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--warn)">ساعت</text>
+            <text x="560" y="326" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--brand)">خط زمانی · ○ ● ◇ □</text>
+          </svg>
+          <figcaption style="font-size:.78rem;color:var(--muted);margin-top:10px">بازوی مکانیکی در حال اجرای <span class="mono" dir="ltr">Stack(A, B)</span> روی دنیای بلاک‌ها، صفحهٔ ساعت <span class="mono" dir="ltr">t</span>، و خط زمانی با عملگرهای <span class="mono" dir="ltr">○ ● ◇ □</span> و زنجیرهٔ گذار حالت <span class="mono" dir="ltr">Sₖ₊₁ = Result(Sₖ, Aₖ)</span></figcaption>
+        </figure>
+
+        <div class="session-summary"><strong>خلاصه: </strong>فرض جهان بسته (<span dir="ltr">Closed World Assumption</span>) و چهارگانهٔ توصیف رسمی اکشن با جدول <span class="mono" dir="ltr">Stack/UnStack/PickUp/PutDown</span> و گذار حالت تو در تو، عملگرهای منطق زمانی <span class="mono" dir="ltr">○ ● ◇ □ ◇₋ □₋</span> و دوگزاره‌ای‌های <span class="mono" dir="ltr">U/S/W</span> با کنترل‌کنندهٔ منابع مشترک <span class="mono" dir="ltr">RC₁/RC₂/RP</span>، و معماری استدلال عملی با دو فاز دلیبریشن و استدلال ابزار-هدف به همراه شرط صحت برنامه <span class="mono" dir="ltr">Bₙ ⊨ I</span>.</div>
+        <div class="session-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>دکتر منیره عبدوس</span></span>
+          <span class="mono" dir="ltr">Dr. Monireh Abdoos</span>
+        </div>
+      </header>
+
+      <details class="toc-mobile"><summary>فهرست مطالب</summary><ol><li><a href="#۱-بازبینی-و-فرمول-بندی-رسمی-اکشن-ها-در-دنیای-بلاک-ها-blocks-world-action-representation">۱. بازبینی و فرمول‌بندی رسمی اکشن‌ها در دنیای بلاک‌ها</a></li>
+<li class="toc-sub"><a href="#۱-۱-فرض-جهان-بسته-closed-world-assumption">۱.۱. فرض جهان بسته</a></li>
+<li class="toc-sub"><a href="#۱-۲-مؤلفه-های-چهارگانه-توصیف-رسمی-اکشن-action-four-tuple">۱.۲. مؤلفه‌های چهارگانه توصیف رسمی اکشن</a></li>
+<li class="toc-sub"><a href="#۱-۳-فرمول-بندی-اکشن-های-پایه-در-دنیای-بلاک-ها">۱.۳. فرمول‌بندی اکشن‌های پایه در دنیای بلاک‌ها</a></li>
+<li><a href="#۲-منطق-زمانی-در-سیستم-های-چندعامله-temporal-logic-for-multi-agent-systems">۲. منطق زمانی در سیستم‌های چندعامله</a></li>
+<li class="toc-sub"><a href="#۲-۱-انگیزه-و-ضرورت-استفاده-از-منطق-زمانی">۲.۱. انگیزه و ضرورت استفاده از منطق زمانی</a></li>
+<li class="toc-sub"><a href="#۲-۲-عملگرهای-منطق-زمانی-temporal-operators">۲.۲. عملگرهای منطق زمانی</a></li>
+<li class="toc-sub"><a href="#۲-۳-مطالعه-موردی-کنترل-کننده-منابع-مشترک-shared-resource-controller">۲.۳. مطالعه موردی: کنترل‌کننده منابع مشترک</a></li>
+<li><a href="#۳-معماری-استدلال-عملی-و-تفکیک-دلیبریشن-از-استدلال-ابزار-هدف-practical-reasoning-architecture">۳. معماری استدلال عملی و تفکیک دلیبریشن از استدلال ابزار-هدف</a></li>
+<li class="toc-sub"><a href="#۳-۱-تفکیک-استدلال-نظری-از-استدلال-عملی">۳.۱. تفکیک استدلال نظری از استدلال عملی</a></li>
+<li class="toc-sub"><a href="#۳-۲-دو-فاز-اصلی-استدلال-عملی-two-phases-of-practical-reasoning">۳.۲. دو فاز اصلی استدلال عملی</a></li>
+<li class="toc-sub"><a href="#۳-۳-فرمول-بندی-ریاضی-به-روزرسانی-باورها-و-اثبات-صحت-برنامه">۳.۳. فرمول‌بندی ریاضی به‌روزرسانی باورها و اثبات صحت برنامه</a></li>
+<li class="toc-sub"><a href="#۳-۴-شرایط-صحت-و-پذیرش-برنامه-plan-acceptability-correctness">۳.۴. شرایط صحت و پذیرش برنامه</a></li>
+<li><a href="#۴-پرسش-و-پاسخ-های-مطرح-شده-در-کلاس-درس-classroom-qa">۴. پرسش و پاسخ‌های مطرح‌شده در کلاس درس</a></li>
+<li><a href="#۵-واژه-نامه-تخصصی-glossary">۵. واژه‌نامه تخصصی</a></li></ol></details>
+
+      <div class="prose">
+<p dir="rtl" lang="fa">این سند شامل جزوه کامل، دقیق و ساختاریافته جلسه ششم درس سیستم‌های چندعامله (<span dir="ltr">Multi-Agent Systems</span>) است. در این جلسه، ابتدا بخش پایانی توصیف محیط و اکشن‌ها در دنیای بلاک‌ها به صورت کامل فرمول‌بندی شده، سپس منطق زمانی (<span dir="ltr">Temporal Logic</span>) به عنوان ابزاری پرقدرت برای مدل‌سازی تعاملات زمان‌مند عامل‌ها معرفی می‌گردد. در نهایت، معماری استدلال عملی (<span dir="ltr">Practical Reasoning Architecture</span>)، تفکیک دلیبریشن از استدلال ابزار-هدف، و استلزام ریاضی صحت برنامه‌ها تشریح شده و پرسش و پاسخ‌های واقعی مطرح‌شده در کلاس درس ارائه می‌گردد.</p>
+
+<h2 id="۱-بازبینی-و-فرمول-بندی-رسمی-اکشن-ها-در-دنیای-بلاک-ها-blocks-world-action-representation" dir="rtl" lang="fa">۱. بازبینی و فرمول‌بندی رسمی اکشن‌ها در دنیای بلاک‌ها<span class="h-en" dir="ltr">Blocks World &amp; Action Representation</span></h2>
+<p dir="rtl" lang="fa">در مباحث قبلی، مسئله دنیای بلاک‌ها (<span dir="ltr">Blocks World</span>) به عنوان یک سناریوی استاندارد برای سنجش الگوریتم‌های برنامه‌ریزی (<span dir="ltr">Planning</span>) مطرح شد. هدف در این مسئله، تغییر چیدمان بلاک‌ها از یک حالت اولیه (<span dir="ltr">Initial State</span>) به یک حالت هدف (<span dir="ltr">Goal State</span>) با استفاده از یک بازوی مکانیکی است.</p>
+
+<h3 id="۱-۱-فرض-جهان-بسته-closed-world-assumption" dir="rtl" lang="fa">۱.۱. فرض جهان بسته<span class="h-en" dir="ltr">Closed World Assumption</span></h3>
+<p dir="rtl" lang="fa">در توصیف منطقی محیط‌های چندعامله، پایبندی به فرض جهان بسته (<span dir="ltr">Closed World Assumption</span>) ضروری است:</p>
+<ol dir="auto">
+<li dir="rtl" lang="fa">هر گزاره‌ای که صراحتاً در پایگاه دانش (<span dir="ltr">Knowledge Base</span>) یا توصیف حالت به عنوان درست (<span dir="ltr">True</span>) بیان نشده باشد، نادرست (<span dir="ltr">False</span>) تلقی می‌شود.</li>
+<li dir="rtl" lang="fa">ارزش گزاره‌های محیط تنها و تنها بر اثر اجرای اکشن‌های مجاز توسط عامل تغییر می‌کند و عوامل خارجی غیرپیش‌بینی‌شده ارزش گزاره‌ها را تغییر نمی‌دهند.</li>
+</ol>
+
+<h3 id="۱-۲-مؤلفه-های-چهارگانه-توصیف-رسمی-اکشن-action-four-tuple" dir="rtl" lang="fa">۱.۲. مؤلفه‌های چهارگانه توصیف رسمی اکشن<span class="h-en" dir="ltr">Action Four-Tuple</span></h3>
+<p dir="rtl" lang="fa">برای ارائه یک چارچوب برنامه‌ریزی خودکار، هر اکشن <span class="mono" dir="ltr">a</span> در محیط باید به وسیله ۴ مؤلفه اصلی توصیف شود:</p>
+<div class="formula" dir="ltr" lang="en">Action(a) = ⟨Name, Pre-condition List, Delete List, Add List⟩</div>
+<ol dir="auto">
+<li dir="rtl" lang="fa"><strong>نام اکشن و آرگومان‌ها (<span dir="ltr">Action Name &amp; Arguments</span>):</strong> عنوان اکشن و متغیرهایی که روی آنها اعمال می‌شود.</li>
+<li dir="rtl" lang="fa"><strong>لیست پیش‌شرط‌ها (<span dir="ltr">Pre-condition List</span>):</strong> مجموعه گزاره‌هایی که باید در حالت فعلی محیط درست (<span dir="ltr">True</span>) باشند تا اکشن قابل اجرا باشد.</li>
+<li dir="rtl" lang="fa"><strong>لیست حذف (<span dir="ltr">Delete List</span>):</strong> مجموعه گزاره‌هایی که قبل از اجرای اکشن درست بوده‌اند، اما پس از اجرای اکشن ارزش آنها به نادرست (<span dir="ltr">False</span>) تغییر می‌یابد.</li>
+<li dir="rtl" lang="fa"><strong>لیست اضافه (<span dir="ltr">Add List</span>):</strong> مجموعه گزاره‌های جدیدی که پس از اجرای موفقیت‌آمیز اکشن، درست (<span dir="ltr">True</span>) شده و به پایگاه دانش اضافه می‌گردند.</li>
+</ol>
+
+<h3 id="۱-۳-فرمول-بندی-اکشن-های-پایه-در-دنیای-بلاک-ها" dir="rtl" lang="fa">۱.۳. فرمول‌بندی اکشن‌های پایه در دنیای بلاک‌ها</h3>
+<p dir="rtl" lang="fa">جدول زیر چارچوب رسمی اکشن‌های اصلی دنیای بلاک‌ها را با استفاده از متغیرهای تعمیم‌یافته <span class="mono" dir="ltr">x</span> و <span class="mono" dir="ltr">y</span> نشان می‌دهد:</p>
+<div class="table-scroll"><table dir="rtl" lang="fa"><thead><tr><th dir="rtl" lang="fa">نام اکشن (<span dir="ltr">Action Name</span>)</th><th dir="rtl" lang="fa">پیش‌شرط‌ها (<span dir="ltr">Pre-condition List</span>)</th><th dir="rtl" lang="fa">لیست حذف (<span dir="ltr">Delete List</span>)</th><th dir="rtl" lang="fa">لیست اضافه (<span dir="ltr">Add List</span>)</th></tr></thead><tbody>
+<tr><td dir="ltr" lang="en"><span class="mono">Stack(x, y)</span></td><td dir="ltr" lang="en"><span class="mono">Clear(y) ∧ Holding(x)</span></td><td dir="ltr" lang="en"><span class="mono">Clear(y), Holding(x)</span></td><td dir="ltr" lang="en"><span class="mono">ArmEmpty, On(x, y)</span></td></tr>
+<tr><td dir="ltr" lang="en"><span class="mono">UnStack(x, y)</span></td><td dir="ltr" lang="en"><span class="mono">On(x, y) ∧ Clear(x) ∧ ArmEmpty</span></td><td dir="ltr" lang="en"><span class="mono">On(x, y), ArmEmpty</span></td><td dir="ltr" lang="en"><span class="mono">Holding(x), Clear(y)</span></td></tr>
+<tr><td dir="ltr" lang="en"><span class="mono">PickUp(x)</span></td><td dir="ltr" lang="en"><span class="mono">OnTable(x) ∧ Clear(x) ∧ ArmEmpty</span></td><td dir="ltr" lang="en"><span class="mono">OnTable(x), ArmEmpty</span></td><td dir="ltr" lang="en"><span class="mono">Holding(x)</span></td></tr>
+<tr><td dir="ltr" lang="en"><span class="mono">PutDown(x)</span></td><td dir="ltr" lang="en"><span class="mono">Holding(x)</span></td><td dir="ltr" lang="en"><span class="mono">Holding(x)</span></td><td dir="ltr" lang="en"><span class="mono">ArmEmpty, OnTable(x)</span></td></tr>
+</tbody></table></div>
+<p dir="rtl" lang="fa"><strong>توصیف تو در توی گذار حالت (<span dir="ltr">Nested State Transition</span>):</strong> اجرای یک اکشن <span class="mono" dir="ltr">A₀</span> در حالت <span class="mono" dir="ltr">S₀</span> منجر به ایجاد حالت جدید <span class="mono" dir="ltr">S₁</span> می‌شود. این زنجیره گذار را می‌توان به صورت نگاشت تو در تو نمایش داد:</p>
+<div class="formula" dir="ltr" lang="en">S<sub>k+1</sub> = Result(S<sub>k</sub>, A<sub>k</sub>)&nbsp;&nbsp;⟹&nbsp;&nbsp;S<sub>2</sub> = Result(Result(S<sub>0</sub>, A<sub>0</sub>), A<sub>1</sub>)</div>
+
+<h2 id="۲-منطق-زمانی-در-سیستم-های-چندعامله-temporal-logic-for-multi-agent-systems" dir="rtl" lang="fa">۲. منطق زمانی در سیستم‌های چندعامله<span class="h-en" dir="ltr">Temporal Logic for Multi-Agent Systems</span></h2>
+
+<h3 id="۲-۱-انگیزه-و-ضرورت-استفاده-از-منطق-زمانی" dir="rtl" lang="fa">۲.۱. انگیزه و ضرورت استفاده از منطق زمانی</h3>
+<p dir="rtl" lang="fa">در منطق گزاره‌ای (<span dir="ltr">Propositional Logic</span>) و منطق مرتبه اول (<span dir="ltr">First-Order Logic - FOL</span>)، زمان به صورت صریح وجود ندارد. ارزش یک گزاره فقط درست یا نادرست است و قابلیت تمایز بین «الان درست است»، «در گذشته درست بود» یا «در آینده درست خواهد شد» را ندارد.</p>
+<p dir="rtl" lang="fa">در سیستم‌های چندعامله، رفتارهای عامل‌ها شدیداً به بعد زمان و وابستگی‌های زمانی گره خورده است (مثلاً: "عامل A با عامل B آشتی نمی‌کند مگر اینکه B ابتدا عذرخواهی کند" یا "تا زمانی که آلودگی هوا از حد مجاز بگذرد، فعالیت عادی ادامه می‌یابد"). برای مدل‌سازی این روابط، از منطق زمانی (<span dir="ltr">Temporal Logic</span>) (با ارجاع به مرجع پژوهشی <span dir="ltr">Concurrent MetateM</span>) استفاده می‌شود.</p>
+
+<h3 id="۲-۲-عملگرهای-منطق-زمانی-temporal-operators" dir="rtl" lang="fa">۲.۲. عملگرهای منطق زمانی<span class="h-en" dir="ltr">Temporal Operators</span></h3>
+<p dir="rtl" lang="fa">عملگرهای منطق زمانی به دو دسته کلی عملگرهای تک‌گزاره‌ای (ارزیابی زمان) و عملگرهای دوگزاره‌ای (وابستگی گزاره‌ها) تقسیم می‌شوند.</p>
+<p dir="rtl" lang="fa"><strong>۱. عملگرهای تک‌گزاره‌ای زمان (<span dir="ltr">Unary Temporal Operators</span>)</strong></p>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><strong><span class="mono" dir="ltr">○φ</span></strong> (فردا / حالت بعدی - <span dir="ltr">Next / Tomorrow</span>): گزاره <span class="mono" dir="ltr">φ</span> در استپ زمانی بعدی (<span class="mono" dir="ltr">t<sub>i+1</sub></span>) درست خواهد بود.</li>
+<li dir="rtl" lang="fa"><strong><span class="mono" dir="ltr">●φ</span></strong> (دیروز / حالت قبلی - <span dir="ltr">Yesterday / Was True</span>): گزاره <span class="mono" dir="ltr">φ</span> در استپ زمانی قبلی (<span class="mono" dir="ltr">t<sub>i-1</sub></span>) درست بوده است (با شرط <span class="mono" dir="ltr">i &gt; 0</span>).</li>
+<li dir="rtl" lang="fa"><strong><span class="mono" dir="ltr">◇φ</span></strong> (زمانی در آینده - <span dir="ltr">Sometime in Future</span>): وجود دارد <span class="mono" dir="ltr">j ≥ i</span> که در آن گزاره <span class="mono" dir="ltr">φ</span> در زمان <span class="mono" dir="ltr">t<sub>j</sub></span> درست خواهد بود.</li>
+<li dir="rtl" lang="fa"><strong><span class="mono" dir="ltr">□φ</span></strong> (همیشه در آینده - <span dir="ltr">Always in Future</span>): برای تمامی <span class="mono" dir="ltr">j ≥ i</span>، گزاره <span class="mono" dir="ltr">φ</span> در زمان <span class="mono" dir="ltr">t<sub>j</sub></span> درست باقی می‌ماند.</li>
+<li dir="rtl" lang="fa"><strong><span class="mono" dir="ltr">◇₋φ</span></strong> (زمانی در گذشته - <span dir="ltr">Sometime in Past</span>): وجود دارد <span class="mono" dir="ltr">j &lt; i</span> که در آن گزاره <span class="mono" dir="ltr">φ</span> در زمان <span class="mono" dir="ltr">t<sub>j</sub></span> درست بوده است.</li>
+<li dir="rtl" lang="fa"><strong><span class="mono" dir="ltr">□₋φ</span></strong> (همیشه در گذشته - <span dir="ltr">Always in Past</span>): گزاره <span class="mono" dir="ltr">φ</span> در تمامی استپ‌های زمانی گذشته درست بوده است.</li>
+</ul>
+<p dir="rtl" lang="fa"><strong>۲. عملگرهای دوگزاره‌ای وابستگی (<span dir="ltr">Binary Temporal Operators</span>)</strong></p>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">φ U ψ</span> (تا زمانی که - <span dir="ltr">Until</span>): گزاره <span class="mono" dir="ltr">φ</span> درست باقی می‌ماند تا زمانی که گزاره <span class="mono" dir="ltr">ψ</span> درست شود.</li>
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">φ S ψ</span> (از زمانی که - <span dir="ltr">Since</span>): گزاره <span class="mono" dir="ltr">φ</span> درست است از زمانی که گزاره <span class="mono" dir="ltr">ψ</span> در گذشته درست شده است.</li>
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">φ W ψ</span> (تا زمانی که تضعیف‌شده - <span dir="ltr">Weak Until</span>): گزاره <span class="mono" dir="ltr">φ</span> درست باقی می‌ماند تا زمانی که <span class="mono" dir="ltr">ψ</span> درست شود؛ یا اگر <span class="mono" dir="ltr">ψ</span> هیچ‌گاه درست نشود، <span class="mono" dir="ltr">φ</span> برای همیشه درست می‌ماند.</li>
+</ul>
+
+<h3 id="۲-۳-مطالعه-موردی-کنترل-کننده-منابع-مشترک-shared-resource-controller" dir="rtl" lang="fa">۲.۳. مطالعه موردی: کنترل‌کننده منابع مشترک<span class="h-en" dir="ltr">Shared Resource Controller</span></h3>
+<p dir="rtl" lang="fa">برای درک عملی منطق زمانی، مسئله مدیریت یک منبع مشترک (مانند پرینتر، پردازنده یا آسانسور) بین دو عامل <span class="mono" dir="ltr">RC₁</span> و <span class="mono" dir="ltr">RC₂</span> توسط یک عامل کنترل‌کننده منبع (<span dir="ltr">RP - Resource Provider</span>) بررسی می‌شود.</p>
+<p dir="rtl" lang="fa"><strong>سیگنال‌های ارتباطی</strong></p>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">ask₁, ask₂</span>: پیام درخواست منبع توسط عامل ۱ یا ۲.</li>
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">give₁, give₂</span>: پیام تخصیص منبع به عامل ۱ یا ۲.</li>
+</ul>
+<p dir="rtl" lang="fa"><strong>قوانین و پروتکل زمانی کنترل‌کننده</strong></p>
+<ol dir="auto">
+<li dir="rtl" lang="fa"><strong>شرط پاسخ‌دهی به درخواست‌های گذشته (<span dir="ltr">Liveness Requirement</span>):</strong> اگر در گذشته درخواستی از سوی عامل <span class="mono" dir="ltr">x</span> دریافت شده باشد، کنترل‌کننده باید در زمانی در آینده منبع را به <span class="mono" dir="ltr">x</span> تخصیص دهد:
+<div class="formula" dir="ltr" lang="en">◇₋ask(x)&nbsp;&nbsp;⟹&nbsp;&nbsp;◇give(x)</div></li>
+<li dir="rtl" lang="fa"><strong>شرط عدم تداخل / مانعةالجمع (<span dir="ltr">Mutual Exclusion Constraint</span>):</strong> منبع مشترک در هر لحظه تنها می‌تواند به یک عامل واگذار شود:
+<div class="formula" dir="ltr" lang="en">give(x) ∧ give(y)&nbsp;&nbsp;⟹&nbsp;&nbsp;x = y</div></li>
+<li dir="rtl" lang="fa"><strong>تحلیل الگوی فرستادن درخواست توسط عامل‌ها:</strong>
+<ul dir="auto">
+<li dir="rtl" lang="fa">عامل <span class="mono" dir="ltr">RC₁</span>: در هر سایکل به طور پیوسته درخواست ارسال می‌کند (<span class="mono" dir="ltr">ask₁</span>).</li>
+<li dir="rtl" lang="fa">عامل <span class="mono" dir="ltr">RC₂</span>: رفتار تناوبی دارد؛ ارسال درخواست جدید مستلزم دریافت بازخورد از سایکل قبلی است. پیامی که در سایکل <span class="mono" dir="ltr">t</span> ارسال می‌شود، در سایکل <span class="mono" dir="ltr">t+1</span> دریافت و پردازش می‌گردد.</li>
+</ul></li>
+</ol>
+
+<h2 id="۳-معماری-استدلال-عملی-و-تفکیک-دلیبریشن-از-استدلال-ابزار-هدف-practical-reasoning-architecture" dir="rtl" lang="fa">۳. معماری استدلال عملی و تفکیک دلیبریشن از استدلال ابزار-هدف<span class="h-en" dir="ltr">Practical Reasoning Architecture</span></h2>
+
+<h3 id="۳-۱-تفکیک-استدلال-نظری-از-استدلال-عملی" dir="rtl" lang="fa">۳.۱. تفکیک استدلال نظری از استدلال عملی</h3>
+<p dir="rtl" lang="fa">در طراحی عامل‌های هوشمند، تمایز بین دو نوع استدلال ضروری است:</p>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><strong>استدلال نظری (<span dir="ltr">Theoretical Reasoning</span>):</strong> استدلالی که باورها (<span dir="ltr">Beliefs</span>) و دیدگاه‌های عامل را تغییر می‌دهد، اما لزوماً منجر به اقدام یا اکشن فیزیکی مستقیم در محیط نمی‌شود.</li>
+<li dir="rtl" lang="fa"><strong>استدلال عملی (<span dir="ltr">Practical Reasoning</span>):</strong> استدلالی که مستقیماً وارد حوزه عمل شده و اکشن‌های اجرایی عامل را تعیین می‌کند.</li>
+</ul>
+
+<h3 id="۳-۲-دو-فاز-اصلی-استدلال-عملی-two-phases-of-practical-reasoning" dir="rtl" lang="fa">۳.۲. دو فاز اصلی استدلال عملی<span class="h-en" dir="ltr">Two Phases of Practical Reasoning</span></h3>
+<p dir="rtl" lang="fa">استدلال عملی از دو فاز پیوسته و متمایز تشکیل شده است:</p>
+<pre dir="ltr" lang="en">[ورودی‌های محیط و باورها]
+       │
+       ▼
+┌────────────────────────┐
+│  فاز ۱: دلیبریشن        │ ──► خروجی: قصد / هدف (Intention / Goal)
+│  (Deliberation)         │
+└────────────────────────┘
+       │
+       ▼
+┌────────────────────────┐
+│  فاز ۲: استدلال         │ ──► خروجی: برنامه اجرایی / پالیسی (Plan / Policy π)
+│  ابزار-هدف (Means-Ends) │
+└────────────────────────┘</pre>
+<ol dir="auto">
+<li dir="rtl" lang="fa"><strong>دلیبریشن / تصمیم‌گیری درباره هدف (<span dir="ltr">Deliberation</span>):</strong> در این فاز، عامل از میان مجموعه اهداف مطلوب و ممکن، تصمیم می‌گیرد که چه چیزی را می‌خواهد تحقق بخشد. خروجی این فاز قصد یا هدف (<span dir="ltr">Intention / Goal</span>) نامیده می‌شود.</li>
+<li dir="rtl" lang="fa"><strong>استدلال ابزار-هدف / برنامه‌ریزی (<span dir="ltr">Means-Ends Reasoning</span>):</strong> در این فاز، عامل تصمیم می‌گیرد که چگونه به هدف تعیین‌شده در فاز دلیبریشن دست یابد. برنامه‌ریز (<span dir="ltr">Planner</span>) با دریافت حالت اولیه، اهداف و اکشن‌های مجاز، یک دنباله از اکشن‌ها را استخراج می‌کند که برنامه (<span dir="ltr">Plan / Policy π</span>) نام دارد.</li>
+</ol>
+
+<h3 id="۳-۳-فرمول-بندی-ریاضی-به-روزرسانی-باورها-و-اثبات-صحت-برنامه" dir="rtl" lang="fa">۳.۳. فرمول‌بندی ریاضی به‌روزرسانی باورها و اثبات صحت برنامه</h3>
+<p dir="rtl" lang="fa">فرض کنید عامل دارای مجموعه اکشن‌های مجاز <span class="mono" dir="ltr">A</span> و حالت باور اولیه <span class="mono" dir="ltr">B₀</span> باشد. یک برنامه <span class="mono" dir="ltr">π</span> به صورت یک دنباله مرتب از اکشن‌ها تعریف می‌شود:</p>
+<div class="formula" dir="ltr" lang="en">π = [a₁, a₂, …, aₙ]&nbsp;&nbsp;where&nbsp;&nbsp;aₖ ∈ A</div>
+<p dir="rtl" lang="fa">با اجرای هر اکشن <span class="mono" dir="ltr">aₖ</span> در برنامه، حالت باور عامل طبق لیست‌های حذف و اضافه اکشن به‌روزرسانی می‌شود:</p>
+<div class="formula" dir="ltr" lang="en">B₀ →<sup>a₁</sup> B₁ →<sup>a₂</sup> B₂ … →<sup>aₙ</sup> Bₙ</div>
+
+<h3 id="۳-۴-شرایط-صحت-و-پذیرش-برنامه-plan-acceptability-correctness" dir="rtl" lang="fa">۳.۴. شرایط صحت و پذیرش برنامه<span class="h-en" dir="ltr">Plan Acceptability &amp; Correctness</span></h3>
+<p dir="rtl" lang="fa">یک برنامه <span class="mono" dir="ltr">π</span> زمانی معتبر و پذیرفته‌شده (<span dir="ltr">Acceptable Plan</span>) است که دو شرط زیر برقرار باشد:</p>
+<ol dir="auto">
+<li dir="rtl" lang="fa"><strong>قابلیت اجرای تک‌تک اکشن‌ها (<span dir="ltr">Action Executability</span>):</strong> پیش‌شرط‌های هر اکشن <span class="mono" dir="ltr">aₖ</span> باید در حالت باور قبلی (<span class="mono" dir="ltr">B<sub>k-1</sub></span>) به طور کامل ارضا شده باشند:
+<div class="formula" dir="ltr" lang="en">∀k ∈ {1, …, n}:&nbsp;&nbsp;Pre-condition(a<sub>k</sub>) ⊆ B<sub>k-1</sub></div></li>
+<li dir="rtl" lang="fa"><strong>شرط استلزام هدف (<span dir="ltr">Goal Entailment Condition</span>):</strong> حالت باور پایانی <span class="mono" dir="ltr">Bₙ</span> باید بتواند هدف یا قصد <span class="mono" dir="ltr">I</span> (<span dir="ltr">Intention</span>) را مستلزم شود (نتیجه بدهد):
+<div class="formula" dir="ltr" lang="en">B<sub>n</sub> ⊨ I</div></li>
+</ol>
+<div class="callout callout--important"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span><span>نکته کلیدی درباره استلزام هدف</span><span class="co-label">Key Note</span></div><div class="callout-body">
+<p dir="rtl" lang="fa">برای موفقیت برنامه، نیازی نیست که <span class="mono" dir="ltr">Bₙ</span> دقیقاً و فقط برابر با گزاره‌های هدف <span class="mono" dir="ltr">I</span> باشد. اگر در <span class="mono" dir="ltr">Bₙ</span> علاوه بر گزاره‌های هدف، گزاره‌های دیگری نیز درست شده باشند، مادامی که <span class="mono" dir="ltr">Bₙ ⊨ I</span> برقرار باشد، برنامه کاملاً صحیح و موفقیت‌آمیز است.</p>
+</div></div>
+
+<h2 id="۴-پرسش-و-پاسخ-های-مطرح-شده-در-کلاس-درس-classroom-qa" dir="rtl" lang="fa">۴. پرسش و پاسخ‌های مطرح‌شده در کلاس درس<span class="h-en" dir="ltr">Classroom Questions &amp; Answers</span></h2>
+<p dir="rtl" lang="fa">در این بخش، تمامی پرسش‌های واقعی که توسط دانشجویان در طول کلاس درس مطرح شده و پاسخ‌های تشریحی استاد استخراج و دسته‌بندی شده است:</p>
+<div class="qa-list">
+<details class="qa"><summary><span><strong>پرسش ۱:</strong> علت عدم کفایت منطق‌های کلاسیک و نیاز به منطق زمانی چیست؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>سوال دانشجو:</strong> چرا منطق گزاره‌ای (<span dir="ltr">Propositional Logic</span>) و منطق مرتبه اول (<span dir="ltr">FOL</span>) برای سیستم‌های چندعامله کافی نیستند و استاد تاکید دارند که از منطق زمانی (<span dir="ltr">Temporal Logic</span>) استفاده کنیم؟</p>
+<p><strong>پاسخ استاد:</strong> منطق‌های کلاسیک فاقد عنصر «زمان» هستند؛ یعنی گزاره‌ها در منطق گزاره‌ای تنها ارزش درستی یا نادرستی ثابت دارند و نمی‌توان وابستگی زمانی ارزش گزاره‌ها (مانند «در آینده درست می‌شود» یا «تا زمانی که شرطی برقرار باشد درست می‌ماند») را بیان کرد. در سیستم‌های چندعامله، رفتار عامل‌ها، توافقات، و تعاملات اجتماعی شدیداً وابسته به زمان و ترتیب رویدادها هستند، لذا استفاده از ابزار قدرتمندتر منطق زمانی الزام‌آور است.</p></div></details>
+<details class="qa"><summary><span><strong>پرسش ۲:</strong> تفاوت قیدهای استپ زمانی در اپراتورهای گذشته منطق زمانی چیست؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>سوال دانشجو:</strong> در تعریف اپراتورهای مربوط به گذشته (<span class="mono" dir="ltr">●</span> و <span class="mono" dir="ltr">◇₋</span>)، شرط <span class="mono" dir="ltr">i ≠ 0</span> یا عدم وجود گذشته به چه معناست؟</p>
+<p><strong>پاسخ استاد:</strong> در حالت اولیه سیستم (<span class="mono" dir="ltr">t₀</span>)، هیچ زمان گذشته‌ای وجود ندارد (<span class="mono" dir="ltr">t₋₁</span> تعریف نشده است). تفاوت در نمادها به این خاطر است که برخی عملگرها مؤکداً تاکید دارند که سیستم باید از <span class="mono" dir="ltr">t₀</span> عبور کرده باشد و یک استپ زمانی قبل‌تر وجود داشته باشد، در حالی که برخی دیگر حالت <span class="mono" dir="ltr">t₀</span> را نیز شامل می‌شوند.</p></div></details>
+<details class="qa"><summary><span><strong>پرسش ۳:</strong> چرا در تعامل عامل <span class="mono" dir="ltr">RC₂</span> با کنترل‌کننده منبع، تأخیر سایکلی وجود دارد؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>سوال دانشجو:</strong> علت اینکه عامل <span class="mono" dir="ltr">RC₂</span> برخلاف <span class="mono" dir="ltr">RC₁</span> در هر سایکل پیام نمی‌فرستد و پردازش آن با یک سایکل تأخیر همراه است چیست؟</p>
+<p><strong>پاسخ استاد:</strong> در سیستم‌های چندعامله واقعی و پروتکل‌های ارتباطی، پیام ارسال‌شده توسط یک عامل در سایکل <span class="mono" dir="ltr">t</span>، در سایکل بعدی (<span class="mono" dir="ltr">t+1</span>) به دست عامل مقصد رسیده و دریافت می‌شود. عامل <span class="mono" dir="ltr">RC₂</span> طوری طراحی شده که بر اساس بازخورد دریافتی از سایکل قبلی تصمیم می‌گیرد، بنابراین یک سایکل در میان یا با تأخیر ارتباطی عمل می‌کند.</p></div></details>
+<details class="qa"><summary><span><strong>پرسش ۴:</strong> آیا وجود گزاره‌های اضافی در حالت باور پایانی (<span class="mono" dir="ltr">Bₙ</span>) مانع از موفقیت برنامه می‌شود؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>سوال دانشجو:</strong> اگر پس از اجرای برنامه در حالت <span class="mono" dir="ltr">Bₙ</span>، علاوه بر گزاره‌های مورد نیاز هدف (<span class="mono" dir="ltr">I</span>)، گزاره‌های دیگری هم درست شده باشند، آیا برنامه شکست خورده است؟</p>
+<p><strong>پاسخ استاد:</strong> خیر، به هیچ وجه. شرط اثبات صحت برنامه این است که <span class="mono" dir="ltr">Bₙ</span> بتواند <span class="mono" dir="ltr">I</span> را استنتاج کند (<span class="mono" dir="ltr">Bₙ ⊨ I</span>). اگر علاوه بر ۴ گزاره هدف، ۶ گزاره دیگر هم در <span class="mono" dir="ltr">Bₙ</span> درست شده باشند، مادامی که تمام ۴ گزاره هدف درست باشند، استلزام ریاضی برقرار است و برنامه کاملاً موفق است.</p></div></details>
+<details class="qa"><summary><span><strong>پرسش ۵:</strong> آیا برای ارزیابی استلزام پایانی (<span class="mono" dir="ltr">Bₙ ⊨ I</span>) از الگوریتم‌های اثبات منطقی مانند رزولوشن استفاده می‌شود؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>سوال دانشجو:</strong> استاد، آیا در انتهای سرچ و الگوریتم‌های پلنینگ، برای اینکه بفهمیم به هدف رسیده‌ایم یا نه، از روش‌هایی مثل رزولوشن (<span dir="ltr">Resolution</span>) استفاده می‌کنیم؟</p>
+<p><strong>پاسخ استاد:</strong> بله، دقیقاً. پس از تولید دنباله اکشن‌ها توسط موتور سرچ، با استفاده از قواعد استنتاج منطقی (مانند الگوریتم رزولوشن یا روش‌های مشابه در هوش مصنوعی نمادین)، بررسی می‌شود که آیا مجموعه باور پایانی <span class="mono" dir="ltr">Bₙ</span> مستلزم اهداف <span class="mono" dir="ltr">I</span> هست یا خیر.</p></div></details>
+</div>
+
+<h2 id="۵-واژه-نامه-تخصصی-glossary" dir="rtl" lang="fa">۵. واژه‌نامه تخصصی جلسه ششم<span class="h-en" dir="ltr">Session Glossary</span></h2>
+<div class="table-scroll"><table class="glossary-table" dir="rtl" lang="fa"><thead><tr><th dir="rtl" lang="fa">اصطلاح فارسی</th><th dir="ltr" lang="en">معادل دقیق انگلیسی</th><th dir="rtl" lang="fa">تعریف و کاربرد در درس</th></tr></thead><tbody>
+<tr><td dir="rtl" lang="fa">فرض جهان بسته</td><td dir="ltr" lang="en"><span class="mono">Closed World Assumption</span></td><td dir="rtl" lang="fa">فرضی که هر گزاره ناگفته را نادرست دانسته و تغییرات را فقط ناشی از اکشن‌ها می‌داند.</td></tr>
+<tr><td dir="rtl" lang="fa">لیست پیش‌شرط‌ها</td><td dir="ltr" lang="en"><span class="mono">Pre-condition List</span></td><td dir="rtl" lang="fa">مجموعه شرایطی که باید برای قابلیت اجرای یک اکشن برقرار باشند.</td></tr>
+<tr><td dir="rtl" lang="fa">لیست حذف</td><td dir="ltr" lang="en"><span class="mono">Delete List</span></td><td dir="rtl" lang="fa">مجموعه گزاره‌هایی که پس از اجرای اکشن از حالت درست خارج می‌شوند.</td></tr>
+<tr><td dir="rtl" lang="fa">لیست اضافه</td><td dir="ltr" lang="en"><span class="mono">Add List</span></td><td dir="rtl" lang="fa">مجموعه گزاره‌های جدیدی که پس از اجرای اکشن درست می‌شوند.</td></tr>
+<tr><td dir="rtl" lang="fa">منطق زمانی</td><td dir="ltr" lang="en"><span class="mono">Temporal Logic</span></td><td dir="rtl" lang="fa">منطق توسعه‌یافته برای مدل‌سازی وابستگی زمانی گزاره‌ها و رفتارهای عامل.</td></tr>
+<tr><td dir="rtl" lang="fa">عملگر فردا / بعدی</td><td dir="ltr" lang="en"><span class="mono">Next Operator (○)</span></td><td dir="rtl" lang="fa">عملگر منطق زمانی که اشاره به درست بودن گزاره در استپ بعدی دارد.</td></tr>
+<tr><td dir="rtl" lang="fa">عملگر تا زمانی که</td><td dir="ltr" lang="en"><span class="mono">Until Operator (U)</span></td><td dir="rtl" lang="fa">عملگر دوگزاره‌ای که تداوم درستی یک گزاره را تا زمان رخ دادن گزاره دیگر بیان می‌کند.</td></tr>
+<tr><td dir="rtl" lang="fa">استدلال عملی</td><td dir="ltr" lang="en"><span class="mono">Practical Reasoning</span></td><td dir="rtl" lang="fa">استدلال معطوف به عمل که شامل دو فاز دلیبریشن و استدلال ابزار-هدف است.</td></tr>
+<tr><td dir="rtl" lang="fa">دلیبریشن</td><td dir="ltr" lang="en"><span class="mono">Deliberation</span></td><td dir="rtl" lang="fa">فاز انتخابی استدلال عملی برای تعیین اهداف و قصدهای اصلی عامل.</td></tr>
+<tr><td dir="rtl" lang="fa">استدلال ابزار-هدف</td><td dir="ltr" lang="en"><span class="mono">Means-Ends Reasoning</span></td><td dir="rtl" lang="fa">فاز برنامه‌ریزی استدلال عملی برای استخراج دنباله اکشن‌ها (برنامه).</td></tr>
+<tr><td dir="rtl" lang="fa">استلزام هدف</td><td dir="ltr" lang="en"><span class="mono">Goal Entailment (Bₙ ⊨ I)</span></td><td dir="rtl" lang="fa">شرط ریاضی که نشان می‌دهد حالت پایانی تمام اهداف عامل را برآورده می‌سازد.</td></tr>
+</tbody></table></div>
+      </div>
+
+      <div class="session-foot-note">
+        این صفحه یادداشت مطالعاتی دانشجویان بر اساس جلسهٔ کلاس درس سیستم‌های چندعامله (دکتر منیره عبدوس) است و جایگزین اعلام‌های رسمی استاد نیست.
+        <br>منبع: جزوهٔ اختصاصی جلسه ۶.
+      </div>
+
+      <nav class="session-nav" aria-label="ناوبری جلسات">
+        <a class="prev" href="session-05.html"><span class="sn-label">جلسهٔ قبل</span><span class="sn-title">جلسه ۰۵ — معماری‌های سابسانپشن، استیگمرژی و معماری‌های استنتاجی مبتنی بر دانش</span></a>
+      </nav>
+    </article>
+
+    <aside class="toc" data-toc aria-label="فهرست مطالب">
+      <div class="toc-title">در این صفحه</div>
+      <ol><li><a href="#۱-بازبینی-و-فرمول-بندی-رسمی-اکشن-ها-در-دنیای-بلاک-ها-blocks-world-action-representation">۱. بازبینی و فرمول‌بندی رسمی اکشن‌ها در دنیای بلاک‌ها</a></li>
+<li class="toc-sub"><a href="#۱-۱-فرض-جهان-بسته-closed-world-assumption">۱.۱. فرض جهان بسته</a></li>
+<li class="toc-sub"><a href="#۱-۲-مؤلفه-های-چهارگانه-توصیف-رسمی-اکشن-action-four-tuple">۱.۲. مؤلفه‌های چهارگانه توصیف رسمی اکشن</a></li>
+<li class="toc-sub"><a href="#۱-۳-فرمول-بندی-اکشن-های-پایه-در-دنیای-بلاک-ها">۱.۳. فرمول‌بندی اکشن‌های پایه در دنیای بلاک‌ها</a></li>
+<li><a href="#۲-منطق-زمانی-در-سیستم-های-چندعامله-temporal-logic-for-multi-agent-systems">۲. منطق زمانی در سیستم‌های چندعامله</a></li>
+<li class="toc-sub"><a href="#۲-۱-انگیزه-و-ضرورت-استفاده-از-منطق-زمانی">۲.۱. انگیزه و ضرورت استفاده از منطق زمانی</a></li>
+<li class="toc-sub"><a href="#۲-۲-عملگرهای-منطق-زمانی-temporal-operators">۲.۲. عملگرهای منطق زمانی</a></li>
+<li class="toc-sub"><a href="#۲-۳-مطالعه-موردی-کنترل-کننده-منابع-مشترک-shared-resource-controller">۲.۳. مطالعه موردی: کنترل‌کننده منابع مشترک</a></li>
+<li><a href="#۳-معماری-استدلال-عملی-و-تفکیک-دلیبریشن-از-استدلال-ابزار-هدف-practical-reasoning-architecture">۳. معماری استدلال عملی و تفکیک دلیبریشن از استدلال ابزار-هدف</a></li>
+<li class="toc-sub"><a href="#۳-۱-تفکیک-استدلال-نظری-از-استدلال-عملی">۳.۱. تفکیک استدلال نظری از استدلال عملی</a></li>
+<li class="toc-sub"><a href="#۳-۲-دو-فاز-اصلی-استدلال-عملی-two-phases-of-practical-reasoning">۳.۲. دو فاز اصلی استدلال عملی</a></li>
+<li class="toc-sub"><a href="#۳-۳-فرمول-بندی-ریاضی-به-روزرسانی-باورها-و-اثبات-صحت-برنامه">۳.۳. فرمول‌بندی ریاضی به‌روزرسانی باورها و اثبات صحت برنامه</a></li>
+<li class="toc-sub"><a href="#۳-۴-شرایط-صحت-و-پذیرش-برنامه-plan-acceptability-correctness">۳.۴. شرایط صحت و پذیرش برنامه</a></li>
+<li><a href="#۴-پرسش-و-پاسخ-های-مطرح-شده-در-کلاس-درس-classroom-qa">۴. پرسش و پاسخ‌های مطرح‌شده در کلاس درس</a></li>
+<li><a href="#۵-واژه-نامه-تخصصی-glossary">۵. واژه‌نامه تخصصی</a></li></ol>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-brand" style="margin-bottom:14px">
+      <span class="brand-logo" aria-hidden="true"><img src="../assets/img/mas-logo.svg" alt=""></span>
+      <span><strong>سیستم‌های چندعامله</strong><span>MAS · Multi-Agent Systems</span></span>
+    </div>
+    <div class="footer-bottom" style="margin-top:0;border-top:0;padding-top:0">
+      <span>© <span data-year>2026</span> — سیستم‌های چندعامله · یادداشت‌های درسی دانشجویان</span>
+      <span class="mono">MAS · Multi-Agent Systems</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/mas-fun.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

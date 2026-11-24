@@ -567,6 +567,18 @@ details.qa summary::before { background: rgba(52, 211, 153, 0.14); color: #34d39
 }
 
 /* ==========================================================================
+   15b. Readability — diagram & table legibility
+   ========================================================================== */
+svg text { font-size: 12.5px; font-weight: 500; }
+svg text[fill="#9fb8a9"] { fill: #cfe6da; }
+:root[data-theme="light"] svg text[fill="#9fb8a9"] { fill: #4d6357; }
+svg path, svg line, svg polyline { stroke-width: 1.8px; }
+figure figcaption { font-size: 0.85rem; }
+.prose table { font-size: 0.9rem; }
+.prose table th, .prose table td { padding: 9px 12px; }
+.formula, .prose .formula { font-size: 1.02rem; padding: 14px 18px; line-height: 1.9; }
+
+/* ==========================================================================
    15. Print — restore light, ink-friendly output
    ========================================================================== */
 @media print {
