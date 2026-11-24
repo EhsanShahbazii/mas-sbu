@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۴ · فرمول‌بندی رسمی، معماری مشاهده-حالت درونی و سودمندی انتظاری — سیستم‌های چندعامله</title>
+<meta name="description" content="فرمول‌بندی رسمی سیستم چندعامله (E، A، τ، Ag)، معماری تفکیک مشاهده از حالت درونی با چرخه کنترل عامل، ارزیابی سودمندی ران با فاکتور تنزیل γ، سودمندی انتظاری و عقلانیت محدود.">
+<meta name="theme-color" content="#0a1e15">
+<script>(function(){try{var t=localStorage.getItem("nlp-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/mas-logo-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/mas-theme.css">
+</head>
+<body>
+<a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+<div class="read-progress" data-read-progress aria-hidden="true"><span></span></div>
+
+<header class="session-topbar">
+  <div class="container inner">
+    <span class="brand-logo brand-logo--sm" aria-hidden="true"><img src="../assets/img/mas-logo.svg" alt=""></span>
+    <a class="back" href="../notes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg><span>یادداشت‌ها</span></a>
+    <div class="bar-title"><span class="mono">S۰۴</span>فرمول‌بندی رسمی، معماری مشاهده-حالت درونی و سودمندی انتظاری</div>
+    <div class="actions">
+      <button class="icon-btn" type="button" data-print aria-label="چاپ صفحه" title="چاپ صفحه"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg></button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="تغییر پوسته" title="تغییر پوسته"><svg data-icon-moon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg><svg data-icon-sun viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    </div>
+  </div>
+  <div class="container"><nav class="topbar-nav" aria-label="ناوبری اصلی"><a href="../index.html">خانه</a><a href="../notes.html" aria-current="page">یادداشت جلسات</a><a href="../index.html#grading">ارزشیابی و پروژه</a></nav></div>
+</header>
+
+<main id="main" class="container">
+  <div class="session-layout">
+    <article class="session-main">
+      <header class="session-hero">
+        <nav class="breadcrumb" aria-label="مسیر">
+          <a href="../index.html">خانه</a><span class="sep">/</span>
+          <a href="../notes.html">یادداشت جلسات</a><span class="sep">/</span>
+          <span>جلسه ۴</span>
+        </nav>
+        <div class="session-kicker">
+          <span class="badge badge--live">جلسه ۰۴</span>
+          <span class="tag tag--brand">سیستم‌های چندعامله</span>
+        </div>
+        <h1>فرمول‌بندی رسمی، معماری مشاهده-حالت درونی و سودمندی انتظاری</h1>
+
+        <figure class="diagram" role="img" aria-label="نمودار ران عامل با زنجیرهٔ فاکتور تنزیل گاما و ناظر رباتی">
+          <svg viewBox="0 0 760 290" style="font-family:'JetBrains Mono',ui-monospace,monospace" aria-hidden="true">
+            <defs>
+              <marker id="arr04" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10z" fill="#6ee7b7"/>
+              </marker>
+            </defs>
+
+            <!-- robot observer -->
+            <line x1="95" y1="66" x2="95" y2="40" stroke="#6ee7b7" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="95" cy="33" r="5.5" fill="#a3e635"/>
+            <circle cx="95" cy="33" r="10" fill="none" stroke="#a3e635" stroke-opacity=".3" stroke-width="1.5"/>
+            <rect x="62" y="66" width="66" height="52" rx="15" fill="#10291d" stroke="#34d399" stroke-width="2.5"/>
+            <circle cx="80" cy="90" r="6.5" fill="#6ee7b7"/>
+            <circle cx="110" cy="90" r="6.5" fill="#6ee7b7"/>
+            <circle cx="82" cy="88" r="2.2" fill="#0f2b1e"/>
+            <circle cx="112" cy="88" r="2.2" fill="#0f2b1e"/>
+            <path d="M86 104q4.5 5.5 9 0" fill="none" stroke="#34d399" stroke-width="2.2" stroke-linecap="round"/>
+            <rect x="57" y="126" width="76" height="50" rx="12" fill="#143325" stroke="#6ee7b7" stroke-width="2"/>
+            <circle cx="95" cy="151" r="6" fill="#34d399"/>
+            <line x1="95" y1="140" x2="95" y2="162" stroke="#0f2b1e" stroke-width="2"/>
+            <line x1="84" y1="151" x2="106" y2="151" stroke="#0f2b1e" stroke-width="2"/>
+            <rect x="63" y="182" width="26" height="12" rx="6" fill="#0f2b1e" stroke="#9fb8a9" stroke-width="1.6"/>
+            <rect x="101" y="182" width="26" height="12" rx="6" fill="#0f2b1e" stroke="#9fb8a9" stroke-width="1.6"/>
+            <!-- observation beam -->
+            <path d="M82 84 Q 120 60 182 98" fill="none" stroke="#60a5fa" stroke-width="1.8" stroke-dasharray="5 5"/>
+            <text x="120" y="56" text-anchor="middle" font-size="12" fill="#60a5fa">see(e)</text>
+
+            <!-- run chain: e0 -> e1 -> e2 -> e3 -->
+            <circle cx="210" cy="110" r="27" fill="#10291d" stroke="#34d399" stroke-width="2.2"/>
+            <circle cx="350" cy="110" r="27" fill="#10291d" stroke="#34d399" stroke-width="2.2"/>
+            <circle cx="490" cy="110" r="27" fill="#10291d" stroke="#34d399" stroke-width="2.2"/>
+            <circle cx="630" cy="110" r="27" fill="#10291d" stroke="#34d399" stroke-width="2.2"/>
+            <text x="210" y="116" text-anchor="middle" font-size="15" fill="#e6f3ea">e₀</text>
+            <text x="350" y="116" text-anchor="middle" font-size="15" fill="#e6f3ea">e₁</text>
+            <text x="490" y="116" text-anchor="middle" font-size="15" fill="#e6f3ea">e₂</text>
+            <text x="630" y="116" text-anchor="middle" font-size="15" fill="#e6f3ea">e₃</text>
+            <line x1="237" y1="110" x2="321" y2="110" stroke="#6ee7b7" stroke-width="2" marker-end="url(#arr04)"/>
+            <line x1="377" y1="110" x2="461" y2="110" stroke="#6ee7b7" stroke-width="2" marker-end="url(#arr04)"/>
+            <line x1="517" y1="110" x2="601" y2="110" stroke="#6ee7b7" stroke-width="2" marker-end="url(#arr04)"/>
+            <text x="279" y="94" text-anchor="middle" font-size="13" fill="#6ee7b7">α₀</text>
+            <text x="419" y="94" text-anchor="middle" font-size="13" fill="#6ee7b7">α₁</text>
+            <text x="559" y="94" text-anchor="middle" font-size="13" fill="#6ee7b7">α₂</text>
+            <text x="670" y="118" text-anchor="middle" font-size="19" fill="#9fb8a9">…</text>
+
+            <!-- utility row -->
+            <text x="210" y="162" text-anchor="middle" font-size="12.5" fill="#9fb8a9">u(e₀)</text>
+            <text x="350" y="162" text-anchor="middle" font-size="12.5" fill="#9fb8a9">u(e₁)</text>
+            <text x="490" y="162" text-anchor="middle" font-size="12.5" fill="#9fb8a9">u(e₂)</text>
+            <text x="630" y="162" text-anchor="middle" font-size="12.5" fill="#9fb8a9">u(e₃)</text>
+
+            <!-- discount chain -->
+            <text x="210" y="188" text-anchor="middle" font-size="13" fill="#fbbf24">γ⁰</text>
+            <text x="350" y="188" text-anchor="middle" font-size="13" fill="#fbbf24" opacity=".8">γ¹</text>
+            <text x="490" y="188" text-anchor="middle" font-size="13" fill="#fbbf24" opacity=".55">γ²</text>
+            <text x="630" y="188" text-anchor="middle" font-size="13" fill="#fbbf24" opacity=".35">γ³</text>
+
+            <!-- discounted sum panel -->
+            <rect x="140" y="214" width="480" height="52" rx="12" fill="#0e2318" stroke="rgba(110,231,183,.22)" stroke-width="1.4"/>
+            <text x="380" y="246" text-anchor="middle" font-size="15">
+              <tspan fill="#6ee7b7">U(r)</tspan><tspan fill="#9fb8a9"> = </tspan><tspan fill="#d6f0e2">u(e₀)</tspan><tspan fill="#9fb8a9"> + </tspan><tspan fill="#fbbf24">γ</tspan><tspan fill="#9fb8a9">·</tspan><tspan fill="#d6f0e2">u(e₁)</tspan><tspan fill="#9fb8a9"> + </tspan><tspan fill="#fbbf24">γ²</tspan><tspan fill="#9fb8a9">·</tspan><tspan fill="#d6f0e2">u(e₂)</tspan><tspan fill="#9fb8a9"> + </tspan><tspan fill="#d6f0e2">…</tspan>
+            </text>
+          </svg>
+          <figcaption style="font-size:.78rem;color:var(--muted);margin-top:10px">ران عامل با زنجیرهٔ فاکتور تنزیل <span class="mono" dir="ltr">γ</span> و ناظر رباتی — مجموع تنزیل‌شدهٔ سودمندی حالت‌ها</figcaption>
+        </figure>
+
+        <div class="session-summary"><strong>خلاصه: </strong>انتقال از توصیف کیفی به فرمول‌بندی رسمی سیستم چندعامله (مجموعه‌های <span class="mono" dir="ltr">E</span> و <span class="mono" dir="ltr">A</span>، تابع ترنزیشن <span class="mono" dir="ltr">τ</span> و تابع عامل <span class="mono" dir="ltr">Ag</span>)، معماری تفکیک مشاهده (<span class="mono" dir="ltr">C</span>) از حالت درونی (<span class="mono" dir="ltr">I</span>) با چرخه کنترل عامل، ارزیابی سودمندی ران با فاکتور تنزیل <span class="mono" dir="ltr">γ</span>، سودمندی انتظاری و عقلانیت محدود.</div>
+        <div class="session-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>دکتر منیره عبدوس</span></span>
+          <span class="mono" dir="ltr">Dr. Monireh Abdoos</span>
+        </div>
+      </header>
+
+      <details class="toc-mobile"><summary>فهرست مطالب</summary><ol><li><a href="#۱-مقدمه-و-قاب-بندی-مفهومی-جلسه-چهارم">۱. مقدمه و قاب‌بندی مفهومی جلسه چهارم</a></li>
+<li><a href="#۲-فرمول-بندی-ریاضی-و-تعاریف-رسمی-سیستم-چندعامله">۲. فرمول‌بندی ریاضی و تعاریف رسمی سیستم چندعامله</a></li>
+<li class="toc-sub"><a href="#۲-۱-مجموعه-های-پایه-و-تعریف-اجرای-سیستم">۲.۱. مجموعه‌های پایه و تعریف اجرای سیستم</a></li>
+<li class="toc-sub"><a href="#۲-۲-تابع-تغییر-حالت-محیط">۲.۲. تابع تغییر حالت محیط</a></li>
+<li class="toc-sub"><a href="#۲-۳-تابع-عامل">۲.۳. تابع عامل</a></li>
+<li><a href="#۳-معماری-تفکیک-مشاهدات-حالت-درونی-و-چرخه-کنترل-عامل">۳. معماری تفکیک مشاهدات، حالت درونی و چرخه کنترل عامل</a></li>
+<li class="toc-sub"><a href="#۳-۱-تفکیک-مشاهدات-از-حالت-درونی">۳.۱. تفکیک مشاهدات از حالت درونی</a></li>
+<li class="toc-sub"><a href="#۳-۲-چرخه-الگوریتمی-کنترل-عامل">۳.۲. چرخه الگوریتمی کنترل عامل</a></li>
+<li class="toc-sub"><a href="#۳-۳-عامل-های-واکنشی-ساده">۳.۳. عامل‌های واکنشی ساده</a></li>
+<li><a href="#۴-تئوری-سودمندی-محاسبه-سودمندی-ران-و-فاکتور-تنزیل">۴. تئوری سودمندی، محاسبه سودمندی ران و فاکتور تنزیل</a></li>
+<li class="toc-sub"><a href="#۴-۱-تابع-سودمندی-حالت">۴.۱. تابع سودمندی حالت</a></li>
+<li class="toc-sub"><a href="#۴-۲-ارزیابی-سودمندی-یک-ران">۴.۲. ارزیابی سودمندی یک ران</a></li>
+<li class="toc-sub"><a href="#۴-۳-فرمول-بندی-فاکتور-تنزیل">۴.۳. فرمول‌بندی فاکتور تنزیل</a></li>
+<li><a href="#۵-سودمندی-انتظاری-و-عقلانیت-محدود">۵. سودمندی انتظاری و عقلانیت محدود</a></li>
+<li class="toc-sub"><a href="#۵-۱-سودمندی-انتظاری-و-عامل-بهینه">۵.۱. سودمندی انتظاری و عامل بهینه</a></li>
+<li class="toc-sub"><a href="#۵-۲-مفهوم-عقلانیت-محدود">۵.۲. مفهوم عقلانیت محدود</a></li>
+<li><a href="#۶-پرسش-و-پاسخ-های-استخراج-شده-از-کلاس-درس">۶. پرسش و پاسخ‌های استخراج‌شده از کلاس درس</a></li>
+<li><a href="#۷-واژه-نامه-تخصصی-جلسه-چهارم">۷. واژه‌نامه تخصصی جلسه چهارم</a></li></ol></details>
+
+      <div class="prose">
+<h2 id="۱-مقدمه-و-قاب-بندی-مفهومی-جلسه-چهارم" dir="auto">۱. مقدمه و قاب‌بندی مفهومی جلسه چهارم</h2>
+<p dir="rtl" lang="fa">در جلسه چهارم درس سیستم‌های چندعامله (<span dir="ltr">Multi-Agent Systems</span>)، چارچوب‌های ریاضی و معماری‌های پایه برای توصیف دقیق عامل‌ها و محیط‌ها مورد بررسی قرار گرفت. هدف اصلی این جلسه، انتقال از توصیفات کیفی و مفهومی به فرمول‌بندی تعریفی دقیق (<span dir="ltr">Formal Framework</span>) است تا بتوان رفتار عامل‌ها، توابع ترنزیشن غیرقطعی، و نحوهٔ تصمیم‌گیری عقلانی را بر اساس تئوری سودمندی (<span dir="ltr">Utility Theory</span>) مدل‌سازی نمود.</p>
+<p dir="rtl" lang="fa">در این جلسه علاوه بر تفکیک مشاهدات سنسوری خام (<span dir="ltr">Percepts</span>) از حالت درونی عامل (<span dir="ltr">Internal State</span>)، چرخه الگوریتمی کنترل عامل (<span dir="ltr">Agent Control Loop</span>) تدوین شد. همچنین، نحوه ارزیابی یک دنباله از رفتارها (<span dir="ltr">Run</span>) با استفاده از فاکتور تنزیل (<span dir="ltr">Discount Factor</span> - <span class="mono" dir="ltr">γ</span>)، سودمندی انتظاری (<span dir="ltr">Expected Utility</span>)، و مفهوم کلیدی عقلانیت محدود (<span dir="ltr">Bounded Rationality</span>) تبیین گردید.</p>
+
+<h2 id="۲-فرمول-بندی-ریاضی-و-تعاریف-رسمی-سیستم-چندعامله" dir="rtl" lang="fa">۲. فرمول‌بندی ریاضی و تعاریف رسمی سیستم چندعامله</h2>
+<p dir="rtl" lang="fa">برای تعریف رسمی سیستم چندعامله، نیازمند ساختاری ریاضی هستیم که حالت‌های محیط، کنش‌های عامل و نحوه گذار بین حالت‌ها را توصیف کند.</p>
+
+<h3 id="۲-۱-مجموعه-های-پایه-و-تعریف-اجرای-سیستم" dir="rtl" lang="fa">۲.۱. مجموعه‌های پایه و تعریف اجرای سیستم<span class="h-en" dir="ltr">Basic Sets &amp; Run</span></h3>
+<p dir="rtl" lang="fa">سیستم چندعامله بر پایه مجموعه‌های زیر فرمول‌بندی می‌شود:</p>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><strong>مجموعه حالت‌های محیط (<span dir="ltr">Environment States</span>):</strong> مجموعه <span class="mono" dir="ltr">E = {e<sub>0</sub>, e<sub>1</sub>, e<sub>2</sub>, …}</span> نشان‌دهنده تمام وضعیت‌های ممکن محیط است که در آن <span class="mono" dir="ltr">e<sub>0</sub> ∈ E</span> حالت اولیه (<span dir="ltr">Initial State</span>) را مشخص می‌کند.</li>
+<li dir="rtl" lang="fa"><strong>مجموعه کنش‌های عامل (<span dir="ltr">Action Set</span>):</strong> مجموعه <span class="mono" dir="ltr">A = {α<sub>0</sub>, α<sub>1</sub>, α<sub>2</sub>, …}</span> شامل تمامی کنش‌های قابل اجرا توسط عامل است.</li>
+</ul>
+<p dir="rtl" lang="fa">یک ران (<span dir="ltr">Run</span>) یا اجرای سیستم، به صورت یک دنباله متناوب از حالت‌های محیط و کنش‌های عامل تعریف می‌شود که در نهایت به یک حالت نهایی (یا ادامه نامحدود) ختم می‌گردد:</p>
+<div class="formula" dir="ltr" lang="en">r: e<sub>0</sub> →<sup>α<sub>0</sub></sup> e<sub>1</sub> →<sup>α<sub>1</sub></sup> e<sub>2</sub> →<sup>α<sub>2</sub></sup> … →<sup>α<sub>k−1</sub></sup> e<sub>k</sub></div>
+<p dir="rtl" lang="fa">نماد <span class="mono" dir="ltr">R</span> نشان‌دهنده مجموعه تمامی ران‌های ممکن است و <span class="mono" dir="ltr">R<sup>E</sup></span> نشان‌دهنده ران‌هایی است که گام پایانی آن‌ها یک حالت محیطی (<span class="mono" dir="ltr">e</span>) است.</p>
+
+<h3 id="۲-۲-تابع-تغییر-حالت-محیط" dir="rtl" lang="fa">۲.۲. تابع تغییر حالت محیط<span class="h-en" dir="ltr">State Transformer Function</span></h3>
+<p dir="rtl" lang="fa">تابع تغییر حالت یا ترنزیشن (<span class="mono" dir="ltr">τ</span>) مسئول مشخص کردن حالت بعدی محیط پس از اجرای یک کنش است. در حالت عمومی، این تابع می‌تواند وابسته به تاریخچه (<span dir="ltr">History-dependent</span>) و غیرقطعی (<span dir="ltr">Non-deterministic</span>) باشد:</p>
+<div class="formula" dir="ltr" lang="en">τ: R<sup>E</sup> × A → P(E)</div>
+<p dir="rtl" lang="fa">در فرمول‌بندی بالا، <span class="mono" dir="ltr">P(E)</span> مجموعه توان (<span dir="ltr">Power Set</span>) حالت‌های محیط است. خروجی این تابع یک زیرمجموعه از حالت‌هاست، زیرا به دلیل غیرقطعی بودن محیط، انجام کنش <span class="mono" dir="ltr">α</span> در یک حالت ممکن است با احتمالات مختلف به حالت‌های متفاوتی منجر گردد. در صورتی که محیط قطعی (<span dir="ltr">Deterministic</span>) باشد، مقدار تابع تنها شامل یک حالت منفرد خواهد بود.</p>
+
+<h3 id="۲-۳-تابع-عامل" dir="rtl" lang="fa">۲.۳. تابع عامل<span class="h-en" dir="ltr">Agent Function / Policy</span></h3>
+<p dir="rtl" lang="fa">عامل (<span dir="ltr">Agent</span>) از دیدگاه رسمی، تابعی است که تاریخچه‌ای از حالت‌های طی شده محیط را دریافت کرده و کنش بعدی را انتخاب می‌کند:</p>
+<div class="formula" dir="ltr" lang="en">Ag: R<sup>E</sup> → A</div>
+<p dir="rtl" lang="fa">در ادبیات یادگیری تقویتی و سیستم‌های چندعامله، به این تابع مپینگ، خط‌مشی (<span dir="ltr">Policy</span> - <span class="mono" dir="ltr">π</span>) عامل نیز گفته می‌شود. سیستم کامل (<span class="mono" dir="ltr">Sys</span>) از ترکیب عامل و محیط تشکیل می‌شود:</p>
+<div class="formula" dir="ltr" lang="en">Sys = ⟨Ag, Env⟩&nbsp;&nbsp;where&nbsp;&nbsp;Env = ⟨E, e<sub>0</sub>, τ⟩</div>
+
+<h2 id="۳-معماری-تفکیک-مشاهدات-حالت-درونی-و-چرخه-کنترل-عامل" dir="rtl" lang="fa">۳. معماری تفکیک مشاهدات، حالت درونی و چرخه کنترل عامل</h2>
+<p dir="rtl" lang="fa">در کاربردهای واقعی، عامل‌ها دسترسی مستقیم و کامل به تمامی ابعاد حالت محیط (<span class="mono" dir="ltr">E</span>) ندارند، بلکه اطلاعات را از طریق سنسورها دریافت می‌کنند.</p>
+
+<h3 id="۳-۱-تفکیک-مشاهدات-از-حالت-درونی" dir="rtl" lang="fa">۳.۱. تفکیک مشاهدات از حالت درونی<span class="h-en" dir="ltr">Percepts vs. Internal State</span></h3>
+<p dir="rtl" lang="fa">در این معماری سه تابع اصلی تعریف می‌شوند:</p>
+<ol dir="auto">
+<li dir="rtl" lang="fa"><strong>تابع مشاهده (<span dir="ltr">Perception Function</span> - <span class="mono" dir="ltr">see</span>):</strong> حالت واقعی محیط را به یک مشاهده سنسوری (<span class="mono" dir="ltr">c ∈ C</span>) نگاشت می‌دهد: <span class="mono" dir="ltr">see: E → C</span></li>
+<li dir="rtl" lang="fa"><strong>تابع به‌روزرسانی حالت درونی (<span dir="ltr">State Update Function</span> - <span class="mono" dir="ltr">next</span>):</strong> حالت درونی فعلی عامل (<span class="mono" dir="ltr">i ∈ I</span>) و مشاهده جدید (<span class="mono" dir="ltr">c ∈ C</span>) را دریافت کرده و حالت درونی جدید را محاسبه می‌کند: <span class="mono" dir="ltr">next: I × C → I</span></li>
+<li dir="rtl" lang="fa"><strong>تابع انتخاب کنش (<span dir="ltr">Action Selection Function</span> - <span class="mono" dir="ltr">action</span>):</strong> بر اساس حالت درونی عامل، کنش مناسب را انتخاب می‌کند: <span class="mono" dir="ltr">action: I → A</span></li>
+</ol>
+<figure class="diagram" role="img" aria-label="خط لولهٔ سه تابعی معماری عامل: مشاهده، به‌روزرسانی حالت درونی و انتخاب کنش">
+  <svg viewBox="0 0 720 150" style="font-family:'JetBrains Mono',ui-monospace,monospace" aria-hidden="true">
+    <defs>
+      <marker id="arrp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#6ee7b7"/>
+      </marker>
+    </defs>
+    <rect x="30" y="52" width="110" height="46" rx="11" fill="#10291d" stroke="#34d399" stroke-width="2"/>
+    <text x="85" y="71" text-anchor="middle" font-size="15" fill="#e6f3ea">E</text>
+    <text x="85" y="88" text-anchor="middle" font-size="10.5" fill="#9fb8a9">Environment State</text>
+    <rect x="230" y="52" width="110" height="46" rx="11" fill="#10291d" stroke="#60a5fa" stroke-width="2"/>
+    <text x="285" y="71" text-anchor="middle" font-size="15" fill="#e6f3ea">C</text>
+    <text x="285" y="88" text-anchor="middle" font-size="10.5" fill="#9fb8a9">Percept</text>
+    <rect x="430" y="52" width="110" height="46" rx="11" fill="#10291d" stroke="#fbbf24" stroke-width="2"/>
+    <text x="485" y="71" text-anchor="middle" font-size="15" fill="#e6f3ea">I</text>
+    <text x="485" y="88" text-anchor="middle" font-size="10.5" fill="#9fb8a9">Internal State</text>
+    <rect x="630" y="52" width="70" height="46" rx="11" fill="#10291d" stroke="#a3e635" stroke-width="2"/>
+    <text x="665" y="71" text-anchor="middle" font-size="15" fill="#e6f3ea">A</text>
+    <text x="665" y="88" text-anchor="middle" font-size="10.5" fill="#9fb8a9">Action</text>
+    <line x1="140" y1="75" x2="228" y2="75" stroke="#6ee7b7" stroke-width="2" marker-end="url(#arrp)"/>
+    <text x="184" y="62" text-anchor="middle" font-size="12" fill="#6ee7b7">see(e)</text>
+    <line x1="340" y1="75" x2="428" y2="75" stroke="#6ee7b7" stroke-width="2" marker-end="url(#arrp)"/>
+    <text x="384" y="62" text-anchor="middle" font-size="12" fill="#6ee7b7">next(i, c)</text>
+    <line x1="540" y1="75" x2="628" y2="75" stroke="#6ee7b7" stroke-width="2" marker-end="url(#arrp)"/>
+    <text x="584" y="62" text-anchor="middle" font-size="12" fill="#6ee7b7">action(i)</text>
+    <text x="85" y="122" text-anchor="middle" font-size="11.5" fill="#9fb8a9">محیط — تنها از راه سنسورها</text>
+    <text x="485" y="122" text-anchor="middle" font-size="11.5" fill="#9fb8a9">درون عامل</text>
+  </svg>
+  <figcaption style="font-size:.78rem;color:var(--muted);margin-top:10px">خط لولهٔ سه‌تابعی معماری عامل: <span class="mono" dir="ltr">see</span>، <span class="mono" dir="ltr">next</span> و <span class="mono" dir="ltr">action</span></figcaption>
+</figure>
+<div class="callout callout--example"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 16 .7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16Z"/></svg></span><span>مثال کاربردی کلاس</span><span class="co-label">Example</span></div><div class="callout-body">
+<p dir="rtl" lang="fa"><strong>خودروی خودران (<span dir="ltr">Autonomous Vehicle</span>)</strong></p>
+<p dir="rtl" lang="fa">در کلاس درس سناریوی خودروی خودران برای تبیین تفاوت <span class="mono" dir="ltr">C</span> و <span class="mono" dir="ltr">I</span> مطرح شد. سنسورها و دوربین‌های خودرو مشاهدات وسیعی (<span class="mono" dir="ltr">C</span>) از جمله صدای پرندگان، جزییات فریم‌های تصویری و صدای محیط را دریافت می‌کنند. اما این مشاهدات حاوی داده‌های اضافی (<span dir="ltr">Nonsense/Irrelevant Data</span>) هستند. سیستم خودرو باید مشاهدات را فیلتر کرده و تنها داده‌های اثرگذار (مانند فاصله تا موانع یا صدای آژیر خودروی امدادی) را به حالت درونی (<span class="mono" dir="ltr">I</span>) نگاشت دهد.</p>
+</div></div>
+<div class="callout callout--note"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2Z"/><path d="M8 3v18"/></svg></span><span>ارجاع کلاس</span><span class="co-label">Reference</span></div><div class="callout-body"><p dir="rtl" lang="fa">همچنین استاد به مقاله شبیه‌سازی ترافیک در ایران اشاره کردند که چالش‌های محیطی واقع‌گرایانه نظیر پارک دوبل، حرکت دنده عقب و جوی‌های آب خیابان را مدل‌سازی کرده بود؛ این جزییات نشان‌دهنده اهمیت تعریف درست حالت درونی متناسب با پیچیدگی‌های محیط واقعی است.</p></div></div>
+
+<h3 id="۳-۲-چرخه-الگوریتمی-کنترل-عامل" dir="rtl" lang="fa">۳.۲. چرخه الگوریتمی کنترل عامل<span class="h-en" dir="ltr">Agent Control Loop</span></h3>
+<p dir="rtl" lang="fa">چرخه عملیاتی عامل را می‌توان به صورت شبه‌کد زیر فرمول‌بندی کرد:</p>
+<pre dir="ltr"><code>Algorithm: Agent Control Loop
+Input: Initial Internal State i_0 ∈ I
+State Variables: i (current internal state), e (environment state)
+
+i := i_0
+Loop forever:
+    c := see(e)          // دریافت مشاهده جدید از سنسورها
+    i := next(i, c)      // به‌روزرسانی حالت درونی عامل
+    α := action(i)       // انتخاب کنش بر اساس حالت درونی
+    execute(α)           // اجرای کنش در محیط</code></pre>
+
+<h3 id="۳-۳-عامل-های-واکنشی-ساده" dir="rtl" lang="fa">۳.۳. عامل‌های واکنشی ساده<span class="h-en" dir="ltr">Simple Reactive Agents</span></h3>
+<p dir="rtl" lang="fa">ساده‌ترین نوع عامل، عامل واکنشی بدون حافظه تاریخی است که بر اساس قواعد شرط-کنش (<span dir="ltr">If-Condition-Then-Action</span>) عمل می‌کند. نمونه بارز مطرح شده در کلاس، ترموستات (<span dir="ltr">Thermostat</span>) است که دارای ۲ قانون ساده است:</p>
+<ul dir="auto">
+<li dir="rtl" lang="fa">اگر دما بیشتر از حد مجاز باشد ← دستگاه را خاموش کن (<span class="mono" dir="ltr">Action = Off</span>).</li>
+<li dir="rtl" lang="fa">اگر دما کم‌تر از حد مجاز باشد ← دستگاه را روشن کن (<span class="mono" dir="ltr">Action = On</span>).</li>
+</ul>
+
+<h2 id="۴-تئوری-سودمندی-محاسبه-سودمندی-ران-و-فاکتور-تنزیل" dir="rtl" lang="fa">۴. تئوری سودمندی، محاسبه سودمندی ران و فاکتور تنزیل<span class="h-en" dir="ltr">Utility Theory, Run Utility &amp; Discount Factor</span></h2>
+<p dir="rtl" lang="fa">برای ارزیابی عقلانی بودن رفتار عامل، نیازمند کمی‌سازی میزان مطلوبیت حالت‌های مختلف هستیم.</p>
+
+<h3 id="۴-۱-تابع-سودمندی-حالت" dir="rtl" lang="fa">۴.۱. تابع سودمندی حالت<span class="h-en" dir="ltr">State Utility Function</span></h3>
+<p dir="rtl" lang="fa">تابع سودمندی (<span class="mono" dir="ltr">u</span>) به هر حالت از محیط یک عدد حقیقی نسبت می‌دهد:</p>
+<div class="formula" dir="ltr" lang="en">u: E → ℝ</div>
+
+<h3 id="۴-۲-ارزیابی-سودمندی-یک-ران" dir="rtl" lang="fa">۴.۲. ارزیابی سودمندی یک ران<span class="h-en" dir="ltr">Run Utility</span></h3>
+<p dir="rtl" lang="fa">سوال اصلی این است که با داشتن سودمندی حالت‌های منفرد، سودمندی کل یک دنباله رفتار یا ران (<span class="mono" dir="ltr">r = e<sub>0</sub>, e<sub>1</sub>, e<sub>2</sub>, …</span>) چگونه محاسبه می‌شود؟ معیارهای مختلفی در کلاس نقد و بررسی شدند:</p>
+<div class="table-scroll"><table dir="rtl" lang="fa"><thead><tr><th dir="rtl" lang="fa">معیار ارزیابی ران</th><th dir="ltr" lang="en">فرمول ریاضی</th><th dir="rtl" lang="fa">تحلیل مزایا و معایب در کلاس درس</th></tr></thead><tbody>
+<tr><td dir="rtl" lang="fa">کمینه (<span dir="ltr">Minimum</span>)</td><td class="mono" dir="ltr" lang="en">U(r) = min<sub>t</sub> u(e<sub>t</sub>)</td><td dir="rtl" lang="fa">دیدگاه بسیار بدبینانه؛ مانع ریسک‌پذیری و پیشرفت عامل می‌شود.</td></tr>
+<tr><td dir="rtl" lang="fa">بیشینه (<span dir="ltr">Maximum</span>)</td><td class="mono" dir="ltr" lang="en">U(r) = max<sub>t</sub> u(e<sub>t</sub>)</td><td dir="rtl" lang="fa">دیدگاه کوته‌بینانه؛ خطر نادیده گرفتن حالت‌های بسیار مخرب در طول مسیر را دارد.</td></tr>
+<tr><td dir="rtl" lang="fa">حالت نهایی (<span dir="ltr">Final State</span>)</td><td class="mono" dir="ltr" lang="en">U(r) = u(e<sub>k</sub>)</td><td dir="rtl" lang="fa">تنها در مسائل دارای حالت پایانی مشخص (مانند شطرنج) کاربرد دارد و در ران‌های نامحدود کارایی ندارد.</td></tr>
+<tr><td dir="rtl" lang="fa">مجموع ساده (<span dir="ltr">Simple Sum</span>)</td><td class="mono" dir="ltr" lang="en">U(r) = Σ<sub>t=0</sub><sup>∞</sup> u(e<sub>t</sub>)</td><td dir="rtl" lang="fa">خطر واگرایی به بی‌نهایت (<span class="mono" dir="ltr">∞</span>)؛ عامل ممکن است در چرخه‌های تکراری با سودمندی اندک گیر افتاده و هرگز به هدف نهایی نرود.</td></tr>
+<tr><td dir="rtl" lang="fa">مجموع تنزیل‌شده (<span dir="ltr">Discounted Sum</span>)</td><td class="mono" dir="ltr" lang="en">U(r) = Σ<sub>t=0</sub><sup>∞</sup> γ<sup>t</sup> · u(e<sub>t</sub>)</td><td dir="rtl" lang="fa">روش استاندارد؛ همگرایی ریاضی را تضمین کرده و دید بلندمدت متوازن ایجاد می‌کند.</td></tr>
+</tbody></table></div>
+
+<h3 id="۴-۳-فرمول-بندی-فاکتور-تنزیل" dir="rtl" lang="fa">۴.۳. فرمول‌بندی فاکتور تنزیل<span class="h-en" dir="ltr">Discount Factor (γ)</span></h3>
+<p dir="rtl" lang="fa">برای جلوگیری از واگرایی و لحاظ نمودن ارزش زمانی پاداش‌ها، از فاکتور تنزیل (<span class="mono" dir="ltr">γ ∈ [0, 1)</span>) استفاده می‌شود:</p>
+<div class="formula" dir="ltr" lang="en">U(r) = u(e<sub>0</sub>) + γ·u(e<sub>1</sub>) + γ<sup>2</sup>·u(e<sub>2</sub>) + … = Σ<sub>t=0</sub><sup>∞</sup> γ<sup>t</sup> · u(e<sub>t</sub>)</div>
+<div class="callout callout--note"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.4.3.6.7.6 1.2V16h6v-1c0-.5.2-.9.6-1.2A6 6 0 0 0 12 3Z"/></svg></span><span>اثبات همگرایی ریاضی</span><span class="co-label">Geometric Series Convergence</span></div><div class="callout-body">
+<p dir="rtl" lang="fa">اگر حداکثر سودمندی هر حالت برابر با <span class="mono" dir="ltr">u<sub>max</sub></span> باشد، مجموع سودمندی ران توسط سری هندسی زیر محدود می‌شود:</p>
+<p><span class="mono" dir="ltr">U(r) ≤ u<sub>max</sub> · Σ<sub>t=0</sub><sup>∞</sup> γ<sup>t</sup> = u<sub>max</sub> · 1/(1 − γ) &lt; ∞</span></p>
+<p dir="rtl" lang="fa">از آنجا که <span class="mono" dir="ltr">γ &lt; 1</span> است، حاصل مجموع سری هندسی همواره یک عدد حقیقی محدود (<span dir="ltr">Bounded</span>) خواهد بود که امکان مقایسه عددی ران‌های مختلف را فراهم می‌سازد.</p>
+</div></div>
+<p dir="rtl" lang="fa"><strong>اثر پارامتر <span class="mono" dir="ltr">γ</span> بر رفتار عامل</strong></p>
+<ul dir="auto">
+<li dir="rtl" lang="fa">وقتی <span class="mono" dir="ltr">γ → 0</span>: عامل کاملاً کوته‌بین (<span dir="ltr">Myopic</span>) می‌شود و تنها پاداش‌های بلافاصله‌ای (<span class="mono" dir="ltr">e<sub>0</sub></span>) برایش اهمیت دارد.</li>
+<li dir="rtl" lang="fa">وقتی <span class="mono" dir="ltr">γ → 1</span>: عامل پاداش‌های آینده دور را تقریباً هم‌ارز با پاداش‌های فعلی وزن‌دهی می‌کند.</li>
+</ul>
+
+<h2 id="۵-سودمندی-انتظاری-و-عقلانیت-محدود" dir="rtl" lang="fa">۵. سودمندی انتظاری و عقلانیت محدود<span class="h-en" dir="ltr">Expected Utility &amp; Bounded Rationality</span></h2>
+
+<h3 id="۵-۱-سودمندی-انتظاری-و-عامل-بهینه" dir="rtl" lang="fa">۵.۱. سودمندی انتظاری و عامل بهینه<span class="h-en" dir="ltr">Expected Utility &amp; Optimal Agent</span></h3>
+<p dir="rtl" lang="fa">به دلیل غیرقطعی بودن محیط، اجرای یک خط‌مشی توسط عامل می‌تواند منجر به ران‌های مختلفی شود که هر کدام با احتمال <span class="mono" dir="ltr">P(r)</span> رخ می‌دهند (<span class="mono" dir="ltr">Σ<sub>r ∈ R</sub> P(r) = 1</span>).</p>
+<p dir="rtl" lang="fa">سودمندی انتظاری (<span class="mono" dir="ltr">E[U(Ag)]</span> or <span class="mono" dir="ltr">EU</span>) عامل برابر است با میانگین وزنی سودمندی ران‌ها بر اساس احتمال وقوع آن‌ها:</p>
+<div class="formula" dir="ltr" lang="en">E[U(Ag)] = Σ<sub>r ∈ R</sub> P(r) · U(r)</div>
+<p dir="rtl" lang="fa">عامل بهینه تئوریک (<span class="mono" dir="ltr">Ag<sup>*</sup></span>) عاملی است که سودمندی انتظاری را بیشینه کند:</p>
+<div class="formula" dir="ltr" lang="en">Ag<sup>*</sup> = argmax<sub>Ag</sub> E[U(Ag)]</div>
+
+<h3 id="۵-۲-مفهوم-عقلانیت-محدود" dir="rtl" lang="fa">۵.۲. مفهوم عقلانیت محدود<span class="h-en" dir="ltr">Bounded Rationality</span></h3>
+<p dir="rtl" lang="fa">در دنیای واقعی، عامل بهینه تئوریک ممکن است غیرقابل اجرا باشد زیرا نیازمند حافظه بی‌نهایت، توان پردازشی نامحدود یا سنسورهای با تفکیک‌پذیری بسیار بالا است.</p>
+<p dir="rtl" lang="fa">عقلانیت محدود (<span dir="ltr">Bounded Rationality</span>) بیان می‌کند که بهینه‌سازی باید با در نظر گرفتن محدودیت‌های سخت‌افزاری و پردازشی ماشین انجام شود. یعنی عامل بهینه واقعی (<span class="mono" dir="ltr">Ag<sub>bounded</sub><sup>*</sup></span>) عاملی است که بهترین تصمیم ممکن را در الگوریتم قابل اجرا روی سخت‌افزار موجود (با محدودیت زمان، حافظه و سنسور) اخذ نماید.</p>
+
+<h2 id="۶-پرسش-و-پاسخ-های-استخراج-شده-از-کلاس-درس" dir="rtl" lang="fa">۶. پرسش و پاسخ‌های استخراج‌شده از کلاس درس<span class="h-en" dir="ltr">Classroom Q&amp;A</span></h2>
+<p dir="rtl" lang="fa"><strong>توجه:</strong> تمامی پرسش‌ها و پاسخ‌های این بخش منحصراً از فایل‌های صوتی جلسه چهارم استخراج و تنظیم شده‌اند.</p>
+<div class="qa-list">
+<details class="qa"><summary><span><strong>پرسش ۱:</strong> آیا در ارزیابی سودمندی یک ران، بررسی فقط حالت نهایی (<span dir="ltr">Final State Utility</span>) کافی نیست؟ (مثلاً در بازی شطرنج)</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>پاسخ استاد:</strong> در مسائل بسیار ساده و محدود که فضای حالت کوچک است و امکان پیمایش کامل درخت جستجو تا حالت پایانی وجود دارد، ارزیابی حالت نهایی می‌تواند مبنا قرار گیرد. اما در اکثر مسائل واقعی و محیط‌های پیچیده، ابعاد مسئله بسیار بزرگ است و امکان دیدن انتهای ران وجود ندارد. بنابراین عامل باید در طول مسیر و در گام‌های میانی، بر اساس تخمین سودمندی حالت‌ها تصمیم‌گیری کند و نمی‌تواند صرفاً منتظر حالت نهایی بماند.</p></div></details>
+<details class="qa"><summary><span><strong>پرسش ۲:</strong> چرا در محاسبات سودمندی، ضریب حالت‌های آینده (<span class="mono" dir="ltr">γ<sup>t</sup></span>) هی کوچک‌تر می‌شود؟ اگر اقدامات آینده دور اهمیت بیشتری داشته باشند چطور؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>پاسخ استاد و بحث کلاس:</strong></p>
+<ol dir="auto">
+<li dir="rtl" lang="fa"><strong>عدم قطعیت آینده:</strong> هرچه یک گام در آینده دورتر باشد، احتمال رسیدن دقیق به آن حالت کمتر است؛ بنابراین عقلانی است که وزن کمتری به آن اختصاص یابد.</li>
+<li dir="rtl" lang="fa"><strong>جلوگیری از واگرایی ریاضی:</strong> اگر ضرایب آینده صعودی یا برابر ۱ باشند، مجموع سودمندی یک ران نامحدود به بی‌نهایت (<span class="mono" dir="ltr">∞</span>) واگرا می‌شود و ریاضیات تصمیم‌گیری فرو می‌ریزد.</li>
+<li dir="rtl" lang="fa"><strong>توازن بین پاداش فوری و دید بلندمدت:</strong> فاکتور تنزیل تضمین می‌کند که عامل در عین داشتن دید بلندمدت (<span dir="ltr">Long-term view</span>)، مقادیر کراندار و قابل مقایسه‌ای را برای انتخاب کنش بهینه محاسبه کند.</li>
+</ol></div></details>
+<details class="qa"><summary><span><strong>پرسش ۳:</strong> چرا خروجی تابع ترنزیشن (<span class="mono" dir="ltr">τ</span>) به صورت یک مجموعه از حالت‌ها (<span class="mono" dir="ltr">P(E)</span>) تعریف می‌شود؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>پاسخ استاد:</strong> به این دلیل که اکثر محیط‌های عملیاتی غیرقطعی (<span dir="ltr">Non-deterministic</span>) هستند. هنگامی که عامل کنشی را در یک حالت انجام می‌دهد، ممکن است بر اثر شانس یا عوامل محیطی به یکی از چندین حالت ممکن منتقل شود. تعریف خروجی به صورت زیرمجموعه‌ای از حالت‌ها، تمامی حالات غیرقطعی را پوشش می‌دهد.</p></div></details>
+<details class="qa"><summary><span><strong>پرسش ۴:</strong> تفاوت عملیاتی مشاهدات سنسوری (<span dir="ltr">Percepts</span> - <span class="mono" dir="ltr">C</span>) و حالت درونی (<span dir="ltr">Internal State</span> - <span class="mono" dir="ltr">I</span>) در چیست؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>پاسخ استاد:</strong> سنسورهای عامل تمامی داده‌های ورودی خام (مانند داده‌های تصویری و صوتی) را ثبت می‌کنند که دامنه آن‌ها می‌تواند بی‌نهایت و حاوی نویزهای بی‌ارتباط باشد. اما حالت درونی (<span class="mono" dir="ltr">I</span>) متغیرهایی است که پس از فیلتر کردن نویز و استخراج اطلاعات کلیدی تشکیل می‌شوند و مبنای واقعی تصمیم‌گیری عامل قرار می‌گیرند.</p></div></details>
+</div>
+
+<h2 id="۷-واژه-نامه-تخصصی-جلسه-چهارم" dir="rtl" lang="fa">۷. واژه‌نامه تخصصی جلسه چهارم<span class="h-en" dir="ltr">Glossary</span></h2>
+<div class="table-scroll"><table class="glossary-table" dir="rtl" lang="fa"><thead><tr><th dir="rtl" lang="fa">فارسی</th><th dir="ltr" lang="en">English</th><th dir="rtl" lang="fa">معنی کوتاه</th></tr></thead><tbody>
+<tr><td dir="rtl" lang="fa">حالت محیط</td><td dir="ltr" lang="en"><span class="mono">Environment State — E</span></td><td dir="rtl" lang="fa">وضعیت فیزیکی یا منطقی کامل محیط در یک لحظه مشخص.</td></tr>
+<tr><td dir="rtl" lang="fa">اجرا / ران</td><td dir="ltr" lang="en"><span class="mono">Run — r</span></td><td dir="rtl" lang="fa">دنباله‌ای متناوب از حالت‌ها و کنش‌ها که نحوه تعامل عامل و محیط را در طول زمان ثبت می‌کند.</td></tr>
+<tr><td dir="rtl" lang="fa">تابع تغییر حالت</td><td dir="ltr" lang="en"><span class="mono">State Transformer Function — τ</span></td><td dir="rtl" lang="fa">تابعی که نگاشت حالت فعلی و کنش به حالت‌های بعدی را با در نظر گرفتن غیرقطعی بودن محیط انجام می‌دهد.</td></tr>
+<tr><td dir="rtl" lang="fa">خط‌مشی / تابع عامل</td><td dir="ltr" lang="en"><span class="mono">Policy / Agent Function — Ag</span></td><td dir="rtl" lang="fa">منطق تصمیم‌گیری عامل که تاریخچه مشاهدات/حالت‌ها را به کنش بعدی نگاشت می‌دهد.</td></tr>
+<tr><td dir="rtl" lang="fa">مشاهده</td><td dir="ltr" lang="en"><span class="mono">Perception / Percept — C</span></td><td dir="rtl" lang="fa">داده‌های ورودی خام که سنسورهای عامل از محیط دریافت می‌کنند.</td></tr>
+<tr><td dir="rtl" lang="fa">حالت درونی</td><td dir="ltr" lang="en"><span class="mono">Internal State — I</span></td><td dir="rtl" lang="fa">نمایش خلاصه و ساختاریافته درونی عامل از محیط که فیلتر شده مشاهدات است.</td></tr>
+<tr><td dir="rtl" lang="fa">چرخه کنترل عامل</td><td dir="ltr" lang="en"><span class="mono">Agent Control Loop</span></td><td dir="rtl" lang="fa">الگوریتم اصلی تکرارشونده برای دریافت مشاهده، به‌روزرسانی حالت درونی و اجرای کنش.</td></tr>
+<tr><td dir="rtl" lang="fa">سودمندی</td><td dir="ltr" lang="en"><span class="mono">Utility — u</span></td><td dir="rtl" lang="fa">عدد حقیقی نشان‌دهنده میزان مطلوبیت یک حالت یا ران برای عامل.</td></tr>
+<tr><td dir="rtl" lang="fa">فاکتور تنزیل</td><td dir="ltr" lang="en"><span class="mono">Discount Factor — γ</span></td><td dir="rtl" lang="fa">ضریبی بین ۰ و ۱ که برای کاهش وزن پاداش‌های آینده و تضمین همگرایی ریاضی مجموع سودمندی استفاده می‌شود.</td></tr>
+<tr><td dir="rtl" lang="fa">سودمندی انتظاری</td><td dir="ltr" lang="en"><span class="mono">Expected Utility — E[U]</span></td><td dir="rtl" lang="fa">میانگین وزنی سودمندی ران‌های مختلف بر اساس احتمال وقوع آن‌ها در محیط غیرقطعی.</td></tr>
+<tr><td dir="rtl" lang="fa">عقلانیت محدود</td><td dir="ltr" lang="en"><span class="mono">Bounded Rationality</span></td><td dir="rtl" lang="fa">اصل بهینه‌سازی تصمیم‌گیری عامل با لحاظ کردن محدودیت‌های سخت‌افزاری، پردازشی و حافظه‌ای ماشین.</td></tr>
+</tbody></table></div>
+      </div>
+
+      <div class="session-foot-note">
+        این صفحه یادداشت مطالعاتی دانشجویان بر اساس جلسهٔ کلاس درس سیستم‌های چندعامله (دکتر منیره عبدوس) است و جایگزین اعلام‌های رسمی استاد نیست.
+        <br>منبع: جزوهٔ اختصاصی جلسه ۴.
+      </div>
+
+      <nav class="session-nav" aria-label="ناوبری جلسات">
+        <a class="prev" href="session-03.html"><span class="sn-label">جلسهٔ قبل</span><span class="sn-title">جلسه ۰۳ — تعاملات اجتماعی، چالش‌های پیشرفته و فرمول‌بندی عامل‌ها</span></a>
+      </nav>
+    </article>
+
+    <aside class="toc" data-toc aria-label="فهرست مطالب">
+      <div class="toc-title">در این صفحه</div>
+      <ol><li><a href="#۱-مقدمه-و-قاب-بندی-مفهومی-جلسه-چهارم">۱. مقدمه و قاب‌بندی مفهومی جلسه چهارم</a></li>
+<li><a href="#۲-فرمول-بندی-ریاضی-و-تعاریف-رسمی-سیستم-چندعامله">۲. فرمول‌بندی ریاضی و تعاریف رسمی سیستم چندعامله</a></li>
+<li class="toc-sub"><a href="#۲-۱-مجموعه-های-پایه-و-تعریف-اجرای-سیستم">۲.۱. مجموعه‌های پایه و تعریف اجرای سیستم</a></li>
+<li class="toc-sub"><a href="#۲-۲-تابع-تغییر-حالت-محیط">۲.۲. تابع تغییر حالت محیط</a></li>
+<li class="toc-sub"><a href="#۲-۳-تابع-عامل">۲.۳. تابع عامل</a></li>
+<li><a href="#۳-معماری-تفکیک-مشاهدات-حالت-درونی-و-چرخه-کنترل-عامل">۳. معماری تفکیک مشاهدات، حالت درونی و چرخه کنترل عامل</a></li>
+<li class="toc-sub"><a href="#۳-۱-تفکیک-مشاهدات-از-حالت-درونی">۳.۱. تفکیک مشاهدات از حالت درونی</a></li>
+<li class="toc-sub"><a href="#۳-۲-چرخه-الگوریتمی-کنترل-عامل">۳.۲. چرخه الگوریتمی کنترل عامل</a></li>
+<li class="toc-sub"><a href="#۳-۳-عامل-های-واکنشی-ساده">۳.۳. عامل‌های واکنشی ساده</a></li>
+<li><a href="#۴-تئوری-سودمندی-محاسبه-سودمندی-ران-و-فاکتور-تنزیل">۴. تئوری سودمندی، محاسبه سودمندی ران و فاکتور تنزیل</a></li>
+<li class="toc-sub"><a href="#۴-۱-تابع-سودمندی-حالت">۴.۱. تابع سودمندی حالت</a></li>
+<li class="toc-sub"><a href="#۴-۲-ارزیابی-سودمندی-یک-ران">۴.۲. ارزیابی سودمندی یک ران</a></li>
+<li class="toc-sub"><a href="#۴-۳-فرمول-بندی-فاکتور-تنزیل">۴.۳. فرمول‌بندی فاکتور تنزیل</a></li>
+<li><a href="#۵-سودمندی-انتظاری-و-عقلانیت-محدود">۵. سودمندی انتظاری و عقلانیت محدود</a></li>
+<li class="toc-sub"><a href="#۵-۱-سودمندی-انتظاری-و-عامل-بهینه">۵.۱. سودمندی انتظاری و عامل بهینه</a></li>
+<li class="toc-sub"><a href="#۵-۲-مفهوم-عقلانیت-محدود">۵.۲. مفهوم عقلانیت محدود</a></li>
+<li><a href="#۶-پرسش-و-پاسخ-های-استخراج-شده-از-کلاس-درس">۶. پرسش و پاسخ‌های استخراج‌شده از کلاس درس</a></li>
+<li><a href="#۷-واژه-نامه-تخصصی-جلسه-چهارم">۷. واژه‌نامه تخصصی جلسه چهارم</a></li></ol>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-brand" style="margin-bottom:14px">
+      <span class="brand-logo" aria-hidden="true"><img src="../assets/img/mas-logo.svg" alt=""></span>
+      <span><strong>سیستم‌های چندعامله</strong><span>MAS · Multi-Agent Systems</span></span>
+    </div>
+    <div class="footer-bottom" style="margin-top:0;border-top:0;padding-top:0">
+      <span>© <span data-year>2026</span> — سیستم‌های چندعامله · یادداشت‌های درسی دانشجویان</span>
+      <span class="mono">MAS · Multi-Agent Systems</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/mas-fun.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

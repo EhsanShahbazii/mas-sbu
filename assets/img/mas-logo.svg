@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="سیستم‌های چندعامله">
+  <title>MAS · Multi-Agent Systems</title>
+  <!-- antenna -->
+  <line x1="24" y1="18" x2="24" y2="10.5" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="24" cy="7.2" r="3.2" fill="#a3e635"/>
+  <!-- ears -->
+  <rect x="1.5" y="27" width="6.5" height="14" rx="3.25" fill="#0f2b1e" stroke="#6ee7b7" stroke-width="2.4"/>
+  <rect x="40" y="27" width="6.5" height="14" rx="3.25" fill="#0f2b1e" stroke="#6ee7b7" stroke-width="2.4"/>
+  <!-- head -->
+  <rect x="8" y="17" width="32" height="36" rx="10" fill="#10291d" stroke="#34d399" stroke-width="2.75"/>
+  <!-- eyes -->
+  <circle cx="19" cy="33.5" r="4.4" fill="#6ee7b7"/>
+  <circle cx="29" cy="33.5" r="4.4" fill="#6ee7b7"/>
+  <circle cx="20.3" cy="31.9" r="1.4" fill="#0f2b1e"/>
+  <circle cx="30.3" cy="31.9" r="1.4" fill="#0f2b1e"/>
+  <!-- mouth -->
+  <path d="M20.5 42.5 q3.5 4 7 0" fill="none" stroke="#34d399" stroke-width="2.75" stroke-linecap="round"/>
+</svg>

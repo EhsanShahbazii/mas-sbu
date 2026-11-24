@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>تعاملات اجتماعی، چالش‌های پیشرفته و فرمول‌بندی عامل‌ها — جلسه ۳ · سیستم‌های چندعامله</title>
+<meta name="description" content="مرور زاویه دید عامل و محیط، محیط‌های تصادفی و غیرقطعی، رفتارهای واکنشی و پیش‌فعال، همکاری، هماهنگی و مذاکره، چالش‌های سیستم‌های چندعامله و فرمول‌بندی ریاضی عامل‌ها.">
+<meta name="theme-color" content="#0a1e15">
+<script>(function(){try{var t=localStorage.getItem("nlp-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/mas-logo-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/mas-theme.css">
+<style>
+  /* Page-scoped additions: topbar nav + session hero visual */
+  .topbar-nav { display: flex; align-items: center; gap: 14px; margin-inline-start: auto; }
+  .topbar-nav a { font-size: 0.78rem; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  .topbar-nav a:hover { color: var(--brand); }
+  .topbar-nav a[aria-current="page"] { color: var(--brand); }
+  .session-topbar .actions { margin-inline-start: 14px; }
+  @media (max-width: 980px) { .topbar-nav { display: none; } }
+  .session-visual.hero-bot svg { max-width: 560px; }
+  .session-visual { margin: 6px 0 18px; }
+  .drift-a { animation: mas-drift 7s ease-in-out infinite alternate; }
+  .drift-b { animation: mas-drift 6s ease-in-out infinite alternate-reverse; }
+  @keyframes mas-drift { from { transform: translateX(0); } to { transform: translateX(20px); } }
+  @media (prefers-reduced-motion: reduce) {
+    .drift-a, .drift-b, .session-visual.hero-bot svg,
+    .session-visual .bot-antenna, .session-visual .bot-eye,
+    .session-visual .bot-glow, .session-visual .bot-shadow { animation: none; }
+  }
+  .qa-a blockquote { margin: 0 0 10px; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+<div class="read-progress" data-read-progress aria-hidden="true"><span></span></div>
+
+<header class="session-topbar">
+  <div class="container inner">
+    <span class="brand-logo brand-logo--sm" aria-hidden="true"><img src="../assets/img/mas-logo.svg" alt=""></span>
+    <a class="back" href="../notes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg><span>یادداشت‌ها</span></a>
+    <div class="bar-title"><span class="mono">S۰۳</span>تعاملات اجتماعی، چالش‌های پیشرفته و فرمول‌بندی عامل‌ها</div>
+    <nav class="topbar-nav" aria-label="ناوبری اصلی">
+      <a href="../index.html">خانه</a>
+      <a href="../notes.html" aria-current="page">یادداشت جلسات</a>
+      <a href="../index.html#grading">ارزشیابی و پروژه</a>
+    </nav>
+    <div class="actions">
+      <button class="icon-btn" type="button" data-print aria-label="چاپ صفحه" title="چاپ صفحه"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg></button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="تغییر پوسته" title="تغییر پوسته"><svg data-icon-moon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg><svg data-icon-sun viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <div class="session-layout">
+    <article class="session-main">
+      <header class="session-hero">
+        <nav class="breadcrumb" aria-label="مسیر">
+          <a href="../index.html">خانه</a><span class="sep">/</span>
+          <a href="../notes.html">یادداشت جلسات</a><span class="sep">/</span>
+          <span>جلسه ۳</span>
+        </nav>
+        <div class="session-kicker">
+          <span class="badge badge--live">جلسه ۰۳</span>
+          <span class="tag tag--brand">سیستم‌های چندعامله</span>
+        </div>
+        <h1>تعاملات اجتماعی، چالش‌های پیشرفته و فرمول‌بندی عامل‌ها</h1>
+        <div class="h1-en" dir="ltr">Social Interaction, Advanced Challenges &amp; Formal Agent Formulation</div>
+        <div class="hero-bot session-visual" aria-hidden="true">
+          <svg viewBox="0 0 560 300" fill="none" role="img" aria-label="دو ربات در حال مذاکره در کنار دو تیم عامل که گله را به آغل هدایت می‌کنند">
+            <defs>
+              <pattern id="grid3" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="rgba(110,231,183,.05)" stroke-width="1"/></pattern>
+              <marker id="arwG" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker>
+              <marker id="arwR" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f87171"/></marker>
+              <marker id="arwB" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#60a5fa"/></marker>
+            </defs>
+            <rect x="0" y="0" width="560" height="300" fill="url(#grid3)"/>
+            <path d="M24 252h512" stroke="rgba(110,231,183,.28)" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- corral (right) -->
+            <rect x="428" y="158" width="116" height="94" rx="8" fill="rgba(52,211,153,.06)" stroke="#6ee7b7" stroke-width="2"/>
+            <line x1="428" y1="186" x2="428" y2="214" stroke="#0a1e15" stroke-width="4"/>
+            <line x1="428" y1="190" x2="428" y2="210" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <line x1="528" y1="158" x2="528" y2="142" stroke="#6ee7b7" stroke-width="2"/>
+            <path d="M528 142h16l-5 4.5 5 4.5h-16z" fill="#a3e635"/>
+            <circle cx="452" cy="204" r="6" fill="#fbbf24"/><circle cx="450" cy="202" r="1.8" fill="rgba(10,30,21,.5)"/>
+            <circle cx="477" cy="192" r="6" fill="#fbbf24"/><circle cx="475" cy="190" r="1.8" fill="rgba(10,30,21,.5)"/>
+            <circle cx="466" cy="228" r="6" fill="#fbbf24"/><circle cx="464" cy="226" r="1.8" fill="rgba(10,30,21,.5)"/>
+
+            <!-- herd (dots) -->
+            <g class="drift-a">
+              <circle cx="368" cy="206" r="5.5" fill="#e6f3ea" stroke="rgba(251,191,36,.4)" stroke-width="1.5"/>
+              <circle cx="382" cy="194" r="5.5" fill="#e6f3ea" stroke="rgba(251,191,36,.4)" stroke-width="1.5"/>
+              <circle cx="396" cy="206" r="5.5" fill="#e6f3ea" stroke="rgba(251,191,36,.4)" stroke-width="1.5"/>
+            </g>
+            <g class="drift-b">
+              <circle cx="406" cy="220" r="5.5" fill="#e6f3ea" stroke="rgba(251,191,36,.4)" stroke-width="1.5"/>
+              <circle cx="392" cy="234" r="5.5" fill="#e6f3ea" stroke="rgba(251,191,36,.4)" stroke-width="1.5"/>
+              <circle cx="374" cy="228" r="5.5" fill="#e6f3ea" stroke="rgba(251,191,36,.4)" stroke-width="1.5"/>
+            </g>
+
+            <!-- herder agents (red & blue teams) -->
+            <path d="M340 204 Q368 202 376 202" stroke="rgba(248,113,113,.45)" stroke-width="1.5" stroke-dasharray="2 4" marker-end="url(#arwR)"/>
+            <path d="M332 238 Q364 234 380 226" stroke="rgba(96,165,250,.45)" stroke-width="1.5" stroke-dasharray="2 4" marker-end="url(#arwB)"/>
+            <circle cx="330" cy="204" r="9" fill="#10291d" stroke="#f87171" stroke-width="2.5"/>
+            <circle cx="327.2" cy="202" r="1.4" fill="#f87171"/><circle cx="332.8" cy="202" r="1.4" fill="#f87171"/>
+            <line x1="330" y1="195" x2="330" y2="189.5" stroke="#f87171" stroke-width="1.5"/><circle cx="330" cy="187.5" r="2" fill="#f87171"/>
+            <circle cx="322" cy="238" r="9" fill="#10291d" stroke="#60a5fa" stroke-width="2.5"/>
+            <circle cx="319.2" cy="236" r="1.4" fill="#60a5fa"/><circle cx="324.8" cy="236" r="1.4" fill="#60a5fa"/>
+            <line x1="322" y1="229" x2="322" y2="223.5" stroke="#60a5fa" stroke-width="1.5"/><circle cx="322" cy="221.5" r="2" fill="#60a5fa"/>
+            <text x="330" y="226" text-anchor="middle" font-size="8.5" fill="#f87171" style="direction:rtl">قرمز</text>
+            <text x="322" y="259" text-anchor="middle" font-size="8.5" fill="#60a5fa" style="direction:rtl">آبی</text>
+
+            <!-- robot A (emerald, negotiator) -->
+            <ellipse class="bot-shadow" cx="96" cy="254" rx="32" ry="4.5" fill="rgba(6,46,28,.55)"/>
+            <path d="M96 62v26" stroke="rgba(52,211,153,.35)" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <g class="bot-antenna">
+              <line x1="96" y1="122" x2="96" y2="97" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="96" cy="90" r="4.5" fill="#a3e635"/>
+            </g>
+            <rect x="65" y="112" width="6" height="14" rx="3" fill="#0f2b1e" stroke="#6ee7b7" stroke-width="2"/>
+            <rect x="121" y="112" width="6" height="14" rx="3" fill="#0f2b1e" stroke="#6ee7b7" stroke-width="2"/>
+            <rect x="71" y="98" width="50" height="44" rx="12" fill="#10291d" stroke="#34d399" stroke-width="2.5"/>
+            <g class="bot-eye">
+              <circle cx="88" cy="116" r="5.5" fill="#6ee7b7"/><circle cx="104" cy="116" r="5.5" fill="#6ee7b7"/>
+              <circle cx="89.4" cy="114.4" r="1.7" fill="#0f2b1e"/><circle cx="105.4" cy="114.4" r="1.7" fill="#0f2b1e"/>
+            </g>
+            <path d="M89 131q7 7 14 0" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+            <rect x="74" y="146" width="44" height="34" rx="9" fill="#143325" stroke="#34d399" stroke-width="2.5"/>
+            <circle class="bot-glow" cx="96" cy="163" r="5" fill="#34d399" opacity=".55"/>
+            <path d="M74 152h-14M118 152h14" stroke="#34d399" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="60" cy="152" r="3.5" fill="#34d399"/><circle cx="132" cy="152" r="3.5" fill="#34d399"/>
+            <path d="M84 180v70M108 180v70" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/>
+            <!-- bubble A -->
+            <path d="M88 48l16 0-8 14z" fill="#10291d"/>
+            <rect x="36" y="14" width="120" height="34" rx="10" fill="#10291d" stroke="rgba(110,231,183,.35)"/>
+            <text x="96" y="36" text-anchor="middle" font-size="13" fill="#e6f3ea" style="direction:rtl">پیشنهاد</text>
+
+            <!-- robot B (blue, negotiator) -->
+            <ellipse class="bot-shadow" cx="264" cy="254" rx="32" ry="4.5" fill="rgba(6,46,28,.55)"/>
+            <path d="M284 56v32" stroke="rgba(96,165,250,.35)" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <g class="bot-antenna">
+              <line x1="264" y1="122" x2="264" y2="97" stroke="#60a5fa" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="264" cy="90" r="4.5" fill="#60a5fa"/>
+            </g>
+            <rect x="233" y="112" width="6" height="14" rx="3" fill="#0f2b1e" stroke="#60a5fa" stroke-width="2"/>
+            <rect x="289" y="112" width="6" height="14" rx="3" fill="#0f2b1e" stroke="#60a5fa" stroke-width="2"/>
+            <rect x="239" y="98" width="50" height="44" rx="12" fill="#10291d" stroke="#60a5fa" stroke-width="2.5"/>
+            <g class="bot-eye">
+              <circle cx="256" cy="116" r="5.5" fill="#93c5fd"/><circle cx="272" cy="116" r="5.5" fill="#93c5fd"/>
+              <circle cx="257.4" cy="114.4" r="1.7" fill="#0f2b1e"/><circle cx="273.4" cy="114.4" r="1.7" fill="#0f2b1e"/>
+            </g>
+            <path d="M257 131q7 7 14 0" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+            <rect x="242" y="146" width="44" height="34" rx="9" fill="#143325" stroke="#60a5fa" stroke-width="2.5"/>
+            <circle class="bot-glow" cx="264" cy="163" r="5" fill="#60a5fa" opacity=".55"/>
+            <path d="M242 152h-14M286 152h14" stroke="#60a5fa" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="228" cy="152" r="3.5" fill="#60a5fa"/><circle cx="300" cy="152" r="3.5" fill="#60a5fa"/>
+            <path d="M252 180v70M276 180v70" stroke="#60a5fa" stroke-width="4.5" stroke-linecap="round"/>
+            <!-- bubble B -->
+            <path d="M268 42l32 0-16 14z" fill="#10291d"/>
+            <rect x="224" y="8" width="120" height="34" rx="10" fill="#10291d" stroke="rgba(96,165,250,.35)"/>
+            <text x="284" y="30" text-anchor="middle" font-size="13" fill="#e6f3ea" style="direction:rtl">پادپیشنهاد</text>
+
+            <!-- negotiation zone -->
+            <circle cx="196" cy="126" r="46" fill="rgba(251,191,36,.05)"/>
+            <line x1="170" y1="126" x2="222" y2="126" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5 4" marker-start="url(#arwG)" marker-end="url(#arwG)"/>
+            <polygon points="196,119 197.65,123.73 202.66,123.84 198.66,126.87 200.11,131.66 196,128.8 191.89,131.66 193.34,126.87 189.34,123.84 194.35,123.73" fill="#fbbf24" stroke="#0a1e15" stroke-width="1"/>
+            <text x="196" y="148" text-anchor="middle" font-size="10.5" fill="#fbbf24" style="direction:rtl">توافق</text>
+            <text x="196" y="272" text-anchor="middle" font-size="9" fill="#9fb8a9" style="letter-spacing:1.5px">NEGOTIATION</text>
+            <text x="486" y="272" text-anchor="middle" font-size="9" fill="#9fb8a9" style="letter-spacing:1.5px">HERDING</text>
+          </svg>
+        </div>
+        <div class="session-summary"><strong>خلاصه: </strong>مرور زاویه دید عامل و محیط و تفکیک محیط‌های تصادفی و غیرقطعی؛ تحلیل رفتارهای واکنشی و پیش‌فعال و سیستم‌های ترکیبی؛ ابعاد سه‌گانه تعاملات اجتماعی (همکاری، هماهنگی، مذاکره)؛ چالش‌های ساختاری و عملیاتی سیستم‌های چندعامله؛ فرمول‌بندی ریاضی عامل‌ها (مجموعه حالت‌ها و کنش‌ها، اجرا، تابع ترانزیشن و تابع عامل) و آشنایی با معماری BDI.</div>
+        <div class="session-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>دکتر منیره عبدوس</span></span></div>
+      </header>
+
+      <details class="toc-mobile"><summary>فهرست مطالب</summary><ol><li><a href="#۱-مرور-تثبیت-مفاهیم-و-رفع-ابهامات-جلسه-گذشته">۱. مرور، تثبیت مفاهیم و رفع ابهامات جلسه گذشته</a></li>
+<li class="toc-sub"><a href="#۱-۱-دیدگاه-عامل-در-برابر-دیدگاه-محیط">۱.۱. دیدگاه عامل در برابر دیدگاه محیط</a></li>
+<li class="toc-sub"><a href="#۱-۲-تفکیک-محیط-های-تصادفی-و-غیرقطعی">۱.۲. تفکیک محیط‌های تصادفی و غیرقطعی</a></li>
+<li><a href="#۲-تحلیل-رفتارهای-واکنشی-و-پیش-فعال">۲. تحلیل رفتارهای واکنشی و پیش‌فعال</a></li>
+<li class="toc-sub"><a href="#۲-۱-رفتارهای-واکنشی">۲.۱. رفتارهای واکنشی</a></li>
+<li class="toc-sub"><a href="#۲-۲-رفتارهای-پیش-فعال">۲.۲. رفتارهای پیش‌فعال</a></li>
+<li class="toc-sub"><a href="#۲-۳-سیستم-های-ترکیبی-در-دنیای-واقعی">۲.۳. سیستم‌های ترکیبی در دنیای واقعی</a></li>
+<li><a href="#۳-ابعاد-سه-گانه-تعاملات-اجتماعی">۳. ابعاد سه‌گانه تعاملات اجتماعی</a></li>
+<li class="toc-sub"><a href="#۳-۱-همکاری">۳.۱. همکاری</a></li>
+<li class="toc-sub"><a href="#۳-۲-هماهنگی">۳.۲. هماهنگی</a></li>
+<li class="toc-sub"><a href="#۳-۳-مذاکره">۳.۳. مذاکره</a></li>
+<li class="toc-sub"><a href="#۳-۴-طیف-محیط-های-تعاملی-از-منظر-اهداف">۳.۴. طیف محیط‌های تعاملی از منظر اهداف</a></li>
+<li><a href="#۴-چالش-های-ساختاری-و-عملیاتی-در-سیستم-های-چندعامله">۴. چالش‌های ساختاری و عملیاتی در سیستم‌های چندعامله</a></li>
+<li class="toc-sub"><a href="#۴-۱-تداخل-عملیاتی-و-گراف-ارتباطات">۴.۱. تداخل عملیاتی و گراف ارتباطات</a></li>
+<li class="toc-sub"><a href="#۴-۲-یادگیری-همزمان-و-غیرپایدار-شدن-محیط">۴.۲. یادگیری همزمان و غیرپایدار شدن محیط</a></li>
+<li class="toc-sub"><a href="#۴-۳-مسئله-استاندارد-هدایت-گله">۴.۳. مسئله استاندارد هدایت گله</a></li>
+<li class="toc-sub"><a href="#۴-۴-دید-محلی-و-توزیع-یافتگی-اطلاعات">۴.۴. دید محلی و توزیع‌یافتگی اطلاعات</a></li>
+<li class="toc-sub"><a href="#۴-۵-اشتراک-گذاری-تجربه-و-مدیریت-تضاد">۴.۵. اشتراک‌گذاری تجربه و مدیریت تضاد</a></li>
+<li><a href="#۵-فرمول-بندی-ریاضی-و-مدل-سازی-صریح-عامل-ها">۵. فرمول‌بندی ریاضی و مدل‌سازی صریح عامل‌ها</a></li>
+<li class="toc-sub"><a href="#۵-۱-مجموعه-ها-و-تعاریف-پایه">۵.۱. مجموعه‌ها و تعاریف پایه</a></li>
+<li class="toc-sub"><a href="#۵-۲-مفهوم-اجرا-و-تابع-ترانزیشن">۵.۲. مفهوم اجرا و تابع ترانزیشن</a></li>
+<li class="toc-sub"><a href="#۵-۳-تعریف-فرمال-تابع-عامل">۵.۳. تعریف فرمال تابع عامل</a></li>
+<li class="toc-sub"><a href="#۵-۴-پیش-درآمدی-بر-معماری-bdi">۵.۴. پیش‌درآمدی بر معماری BDI</a></li>
+<li><a href="#۶-پرسش-و-پاسخ-های-مطرح-شده-در-کلاس">۶. پرسش و پاسخ‌های مطرح‌شده در کلاس</a></li>
+<li><a href="#۷-واژه-نامه-تخصصی">۷. واژه‌نامه تخصصی</a></li></ol></details>
+
+      <div class="prose">
+<p dir="rtl" lang="fa">این جزوه آموزشی بر اساس مباحث، تحلیل‌ها و گفت‌وگوهای مطرح‌شده در جلسه سوم درس سیستم‌های چندعامله تنظیم شده است. هدف این سند ارائه یک چارچوب تحلیلی دقیق از ابعاد تعاملات اجتماعی، رفتارهای واکنشی و پیش‌فعال، چالش‌های سیستم‌های توزیع‌شده، و مدل‌سازی ریاضی عامل‌ها همراه با پاسخ به پرسش‌های واقعی مطرح‌شده در کلاس درس می‌باشد.</p>
+<h2 id="۱-مرور-تثبیت-مفاهیم-و-رفع-ابهامات-جلسه-گذشته" dir="rtl" lang="fa">۱. مرور، تثبیت مفاهیم و رفع ابهامات جلسه گذشته</h2>
+<p dir="rtl" lang="fa">در ابتدای جلسه، برای شفاف‌سازی مفاهیم پایه مطرح‌شده در جلسه قبل، دو موضوع کلیدی در خصوص زاویه دید عامل و نحوه طبقه‌بندی قطعیت و احتمالات در محیط مورد بررسی دقیق قرار گرفت.</p>
+<h3 id="۱-۱-دیدگاه-عامل-در-برابر-دیدگاه-محیط" dir="rtl" lang="fa">۱.۱. دیدگاه عامل در برابر دیدگاه محیط<span class="h-en" dir="ltr">Agent's Perspective vs. Environment's Perspective</span></h3>
+<p dir="rtl" lang="fa">یکی از نکات مورد بحث در تعیین ویژگی‌های محیط، مرز میان قطعی بودن <span class="mono" dir="ltr">(Deterministic)</span> و غیرقطعی بودن <span class="mono" dir="ltr">(Nondeterministic)</span> است. این تمایز کاملاً به زاویه دید <span class="mono" dir="ltr">(Perspective)</span> تحلیل وابسته است:</p>
+<ul dir="rtl" lang="fa">
+<li><strong>دیدگاه کلی محیط <span class="mono" dir="ltr">(Environment's Perspective)</span>:</strong> اگر تمام اطلاعات موجود در جهان مسئله (مانند وضعیت دقیق تمامی کارت‌های دست همه بازیکنان در یک بازی کارت) در تعریف حالت <span class="mono" dir="ltr">(State)</span> گنجانده شود، ترانزیشن یا انتقال از یک حالت به حالت بعدی با انجام هر اکشن کاملاً قطعی و مشخص خواهد بود.</li>
+<li><strong>دیدگاه عامل <span class="mono" dir="ltr">(Agent's Perspective)</span>:</strong> از آنجا که عامل تنها دست کارت خود را می‌بیند و کارت‌های سایر بازیکنان برای او پنهان است، محیط برای عامل به صورت مشاهده‌پذیری جزئی <span class="mono" dir="ltr">(Partially Observable)</span> تعریف می‌شود. در این حالت، عامل نمی‌تواند با قطعیت کامل حالت بعدی جهان را پیش‌بینی کند؛ بنابراین محیط از دیدگاه عامل غیرقطعی <span class="mono" dir="ltr">(Nondeterministic)</span> تلقی می‌گردد.</li>
+</ul>
+<h3 id="۱-۲-تفکیک-محیط-های-تصادفی-و-غیرقطعی" dir="rtl" lang="fa">۱.۲. تفکیک محیط‌های تصادفی و غیرقطعی<span class="h-en" dir="ltr">Stochastic &amp; Nondeterministic</span></h3>
+<p dir="rtl" lang="fa">در مرجع استاندارد راسل و نورویگ، تمایز دقیقی میان محیط‌های تصادفی و غیرقطعی برقرار شده است:</p>
+<div class="table-scroll"><table dir="rtl" lang="fa"><thead><tr><th dir="rtl" lang="fa">نوع محیط</th><th dir="rtl" lang="fa">تعریف ساختاری</th><th dir="rtl" lang="fa">میزان شفافیت احتمالات</th></tr></thead><tbody><tr><td dir="rtl" lang="fa">محیط تصادفی <span dir="ltr">(Stochastic Environment)</span></td><td dir="rtl" lang="fa">تغییرات محیط دارای عناصر احتمالی مشخص است و مقادیر صریح و دقیق احتمالات <span class="mono" dir="ltr">(Explicit Probabilities)</span> برای تمام برآمدها در دسترس است.</td><td dir="rtl" lang="fa">احتمالات دقیقاً محاسبه‌پذیر و معلوم هستند.</td></tr><tr><td dir="rtl" lang="fa">محیط غیرقطعی <span dir="ltr">(Nondeterministic Environment)</span></td><td dir="rtl" lang="fa">مجموعه تمام حالت‌های ممکن بعدی شناخته‌شده است، اما هیچ عدد و توزیع احتمالی صریحی برای وقوع آن‌ها وجود ندارد.</td><td dir="rtl" lang="fa">ابهام کامل در توزیع احتمالات وجود دارد.</td></tr></tbody></table></div>
+<h2 id="۲-تحلیل-رفتارهای-واکنشی-و-پیش-فعال" dir="rtl" lang="fa">۲. تحلیل رفتارهای واکنشی و پیش‌فعال<span class="h-en" dir="ltr">Reactive &amp; Proactive Behaviors</span></h2>
+<p dir="rtl" lang="fa">تحلیل رفتار عامل‌ها بر اساس نحوه تصمیم‌گیری و زمان پاسخ‌دهی به دو دسته عمده تقسیم می‌شود که در سیستم‌های واقعی معمولاً به صورت ترکیبی <span class="mono" dir="ltr">(Hybrid)</span> به کار می‌روند.</p>
+<h3 id="۲-۱-رفتارهای-واکنشی" dir="rtl" lang="fa">۲.۱. رفتارهای واکنشی<span class="h-en" dir="ltr">Reactive Behaviors</span></h3>
+<p dir="rtl" lang="fa">رفتار واکنشی به معنای نشان دادن پاسخ مناسب در یک بازه زمانی قابل قبول و معمولاً بسیار کوتاه نسبت به محرک‌های محیطی است. ویژگی‌های اصلی این رفتار عبارتند از:</p>
+<ul dir="rtl" lang="fa">
+<li><strong>ساختار قاعده‌محور <span class="mono" dir="ltr">(Rule-based Architecture)</span>:</strong> رفتارهای واکنشی عمدتاً در قالب قواعد شرط-کنش <span class="mono" dir="ltr">(Condition-Action Rules)</span> یا <span dir="ltr">If-Then Rules</span> در پایگاه دانش <span class="mono" dir="ltr">(Knowledge Base)</span> عامل ذخیره می‌شوند.</li>
+<li><strong>مفهوم شلیک قواعد <span class="mono" dir="ltr">(Firing of Rules)</span>:</strong> هنگامی که بخش مقدم <span class="mono" dir="ltr">(Condition)</span> یک یا چند قاعده توزیع‌شده در پایگاه دانش برآورده و صادق <span class="mono" dir="ltr">(True)</span> شود، اصطلاحاً آن قواعد «شلیک» <span class="mono" dir="ltr">(Fire)</span> می‌گردند و کنش مربوطه سریعاً اجرا می‌شود.</li>
+<li><strong>پاسخ‌های ناخودآگاه و روتین:</strong> این رفتار مشابه پاسخ‌های انعکاسی یا عادت‌های ثبت‌شده در رفتارهای انسانی است که بدون نیاز به پردازش‌های سنگین فکری صورت می‌گیرد.</li>
+<li><strong>مثال کاربردی:</strong> در طراحی سیستم مدیریت خودروی خودران، ماژول ترمز اضطراری که با نزدیک شدن به یک مانع یا عابر پیاده بلافاصله خودرو را متوقف می‌کند، یک رفتار کاملاً واکنشی است.</li>
+</ul>
+<h3 id="۲-۲-رفتارهای-پیش-فعال" dir="rtl" lang="fa">۲.۲. رفتارهای پیش‌فعال<span class="h-en" dir="ltr">Proactive Behaviors</span></h3>
+<p dir="rtl" lang="fa">رفتار پیش‌فعال رفتاری هدایت‌شده به سمت هدف <span class="mono" dir="ltr">(Goal-directed Behavior)</span> است که بر پایه تفکر، برنامه‌ریزی <span class="mono" dir="ltr">(Planning)</span> و آینده‌نگری استوار است:</p>
+<ul dir="rtl" lang="fa">
+<li><strong>نیاز به هسته پردازشی قوی:</strong> بر خلاف رفتارهای واکنشی، رفتارهای پیش‌فعال را نمی‌توان به راحتی در قالب قواعد ساده شرط-کنش بیان کرد؛ بلکه استخراج برنامه نیازمند محاسبات سنگین و مدل‌سازی مسیر است.</li>
+<li><strong>مثال کاربردی:</strong> در همان خودروی خودران، الگوریتم مسیریابی که بر اساس معیارهایی نظیر کاهش ترافیک، حداقل زمان سفر و بهینه‌سازی مصرف سوخت، مسیر حرکت از مبدا به مقصد را محاسبه می‌کند، رفتاری پیش‌فعال است.</li>
+</ul>
+<h3 id="۲-۳-سیستم-های-ترکیبی-در-دنیای-واقعی" dir="rtl" lang="fa">۲.۳. سیستم‌های ترکیبی در دنیای واقعی<span class="h-en" dir="ltr">Hybrid Systems</span></h3>
+<p dir="rtl" lang="fa">در کاربردهای عملی، عامل‌های هوشمند همزمان از هر دو بعد رفتاری بهره می‌برند. به عنوان مثال، یک ربات جاروبرقی صنعتی برای پاکسازی هوشمندانه محیط نیازمند برنامه‌ریزی پیش‌فعال جهت پوشش کامل فضا است، اما هنگام برخورد فیزیکی با یک مانع پیش‌بینی‌نشده، با استفاده از رفتارهای واکنشی سریعاً تغییر مسیر می‌دهد تا به بدنه ربات آسیبی وارد نشود.</p>
+<h2 id="۳-ابعاد-سه-گانه-تعاملات-اجتماعی" dir="rtl" lang="fa">۳. ابعاد سه‌گانه تعاملات اجتماعی<span class="h-en" dir="ltr">Cooperation, Coordination, Negotiation</span></h2>
+<p dir="rtl" lang="fa">در محیط‌های چندعامله، عامل‌ها نمی‌توانند بدون در نظر گرفتن حضور و تصمیمات سایر عامل‌ها به عملکرد بهینه دست یابند. تعاملات اجتماعی میان عامل‌ها در سه سطح اصلی طبقه‌بندی می‌شوند:</p>
+<h3 id="۳-۱-همکاری" dir="rtl" lang="fa">۳.۱. همکاری<span class="h-en" dir="ltr">Cooperation</span></h3>
+<p dir="rtl" lang="fa">همکاری زمانی رخ می‌دهد که مجموعه‌ای از عامل‌ها در قالب یک تیم کار کرده و دارای یک هدف مشترک <span class="mono" dir="ltr">(Shared Goal)</span> باشند.</p>
+<ul dir="rtl" lang="fa">
+<li><strong>مثال استاندارد <span class="mono" dir="ltr">(Box Pushing Problem)</span>:</strong> در مسئله جابه‌جایی جعبه‌ها، جعبه‌های سبک توسط یک عامل قابل حمل هستند، اما جعبه‌های سنگین‌تر وزنی بیش از توان یک عامل دارند و حتماً نیازمند فشار و جابه‌جایی همزمان دو یا چند عامل همکاری‌کننده به سمت مقصد مشترک می‌باشند.</li>
+</ul>
+<h3 id="۳-۲-هماهنگی" dir="rtl" lang="fa">۳.۲. هماهنگی<span class="h-en" dir="ltr">Coordination</span></h3>
+<p dir="rtl" lang="fa">هماهنگی به معنای مدیریت وابستگی‌های متقابل <span class="mono" dir="ltr">(Dependencies)</span> میان فعالیت‌های عامل‌ها است، حتی زمانی که عامل‌ها فاقد هدف تیمی مشترک باشند. نیاز به هماهنگی عمدتاً ناشی از وجود منابع غیرقابل‌اشتراک <span class="mono" dir="ltr">(Non-shareable Resources)</span> است.</p>
+<p dir="rtl" lang="fa"><strong>مثال‌های کاربردی:</strong></p>
+<ol dir="rtl" lang="fa">
+<li><strong>خروج از در کلاس:</strong> دانشجویان هنگام خروج از کلاس هدف تیمی مشترکی ندارند، اما به دلیل محدودیت فیزیکی عرض در (منبع غیرقابل‌اشتراک همزمان)، نیازمند هماهنگی ترتیب خروج هستند.</li>
+<li><strong>مدیریت پروسه‌ها در سیستم‌عامل:</strong> پروسه‌های مختلف رقابتی یا مستقل برای دسترسی به پردازنده یا حافظه نیازمند الگوریتم‌های هماهنگی و زمان‌بندی هستند.</li>
+<li><strong>شوت زدن همزمان دو بازیکن:</strong> اگر دو بازیکن فوتبال به طور همزمان سعی در شوت زدن یک توپ داشته باشند، برخورد و مصدومیت رخ خواهد داد؛ لذا هماهنگی جهت تخصیص کنش به یک بازیکن الزامی است.</li>
+</ol>
+<h3 id="۳-۳-مذاکره" dir="rtl" lang="fa">۳.۳. مذاکره<span class="h-en" dir="ltr">Negotiation</span></h3>
+<p dir="rtl" lang="fa">مذاکره فرایند تبادل پیشنهادها و پادپیشنهادها <span class="mono" dir="ltr">(Offers and Counter-offers)</span> برای دستیابی به یک توافق <span class="mono" dir="ltr">(Agreement)</span> میان عامل‌های ذی‌نفع است.</p>
+<ul dir="rtl" lang="fa">
+<li><strong>مفهوم منفعت‌طلبی <span class="mono" dir="ltr">(Self-interested Agents)</span>:</strong> منفعت‌طلب بودن عامل‌ها به معنای تلاش هر عامل برای بیشینه‌سازی سودمندی <span class="mono" dir="ltr">(Utility)</span> خود است و به هیچ‌وجه به معنای نیت آسیب رساندن به دیگران نیست. منفعت‌طلبی ویژگی ذاتی و ضروری عامل‌های هوشمند است.</li>
+<li><strong>ماهیت توافق پایدار <span class="mono" dir="ltr">(Stable Agreement)</span>:</strong> در فرایند مذاکره، معمولاً طرفین در جهت‌های مخالف حرکت کرده و پله‌پله کوتاه می‌آیند. از نظر ساختاری، توافقی پایدار و موفق تلقی می‌شود که در آن هر دو طرف تا حدی احساس کوتاه آمدن یا عدم رضایت نسبی داشته باشند، زیرا اگر یک طرف کاملاً برنده و طرف دیگر کاملاً بازنده باشد، انگیزه برهم زدن توافق ایجاد خواهد شد.</li>
+</ul>
+<h3 id="۳-۴-طیف-محیط-های-تعاملی-از-منظر-اهداف" dir="rtl" lang="fa">۳.۴. طیف محیط‌های تعاملی از منظر اهداف</h3>
+<p dir="rtl" lang="fa">روابط میان اهداف عامل‌ها را می‌توان در قالب جدول زیر خلاصه‌سازی نمود:</p>
+<div class="table-scroll"><table dir="rtl" lang="fa"><thead><tr><th dir="rtl" lang="fa">نوع محیط</th><th dir="rtl" lang="fa">ساختار اهداف عامل‌ها</th><th dir="rtl" lang="fa">نمونه کاربردی</th></tr></thead><tbody><tr><td dir="rtl" lang="fa">کاملاً همکاری <span dir="ltr">(Cooperative)</span></td><td dir="rtl" lang="fa">اهداف تمام عامل‌ها کاملاً منطبق و یکسان است.</td><td dir="rtl" lang="fa">تیم ربات‌های امداد و نجات</td></tr><tr><td dir="rtl" lang="fa">کاملاً رقابتی <span dir="ltr">(Competitive)</span></td><td dir="rtl" lang="fa">برد یک عامل مستقیماً به معنای باخت عامل دیگر است <span dir="ltr">(Zero-sum)</span>.</td><td dir="rtl" lang="fa">بازی شطرنج</td></tr><tr><td dir="rtl" lang="fa">نیمه‌رقابتی <span dir="ltr">(Semi-competitive)</span></td><td dir="rtl" lang="fa">کل سیستم دارای یک هدف کلان واحد است، اما عامل‌ها اهداف فردی متضادی نیز دارند.</td><td dir="rtl" lang="fa">تیم فوتبال (هدف کلان: برد تیم؛ هدف فردی: کسب عنوان آقای گل) یا تخصیص ۳ تسک با ارزش‌های متفاوت (۱۰، ۱۵ و ۲۰) به ۳ عامل</td></tr></tbody></table></div>
+<h2 id="۴-چالش-های-ساختاری-و-عملیاتی-در-سیستم-های-چندعامله" dir="rtl" lang="fa">۴. چالش‌های ساختاری و عملیاتی در سیستم‌های چندعامله</h2>
+<p dir="rtl" lang="fa">طراحی و پیاده‌سازی سیستم‌های چندعامله با چالش‌های فنی و مفهوم پیچیده‌ای همراه است که عمده‌ترین آن‌ها عبارتند از:</p>
+<h3 id="۴-۱-تداخل-عملیاتی-و-گراف-ارتباطات" dir="rtl" lang="fa">۴.۱. تداخل عملیاتی و گراف ارتباطات<span class="h-en" dir="ltr">Interference &amp; Neighbor Adjacency</span></h3>
+<p dir="rtl" lang="fa">هر کنش عامل باعث تغییر در استیت محیط مشترک شده و مستقیماً بر استیت سایر عامل‌های مجاور <span class="mono" dir="ltr">(Neighbors)</span> تأثیر می‌گذارد. ارتباطات عامل‌ها را می‌توان در قالب یک گراف مدل‌سازی کرد:</p>
+<ul dir="rtl" lang="fa">
+<li><strong>گراف کامل <span class="mono" dir="ltr">(Fully-connected Graph)</span>:</strong> تمام عامل‌ها مستقیماً بر یکدیگر تأثیرگذارند.</li>
+<li><strong>گراف محلی <span class="mono" dir="ltr">(Local Adjacency Graph)</span>:</strong> هر عامل تنها با همسایگان مجاور خود تعامل دارد (مانند سیستم کنترل هوشمند چراغ‌های راهنمایی در چهارراه‌های مجاور).</li>
+</ul>
+<h3 id="۴-۲-یادگیری-همزمان-و-غیرپایدار-شدن-محیط" dir="rtl" lang="fa">۴.۲. یادگیری همزمان و غیرپایدار شدن محیط<span class="h-en" dir="ltr">Multi-Agent Learning &amp; Non-stationarity</span></h3>
+<p dir="rtl" lang="fa">هنگامی که چندین عامل به طور همزمان با روش‌های سعی و خطا <span class="mono" dir="ltr">(Trial and Error)</span> در حال یادگیری <span class="mono" dir="ltr">(Learning)</span> باشند، محیط از دید هر عامل رفتاری غیرپایدار <span class="mono" dir="ltr">(Non-stationary)</span> پیدا می‌کند، زیرا نحوه پاسخ‌دهی محیط و سایر عامل‌ها مداوماً در حال تغییر است.</p>
+<h3 id="۴-۳-مسئله-استاندارد-هدایت-گله" dir="rtl" lang="fa">۴.۳. مسئله استاندارد هدایت گله<span class="h-en" dir="ltr">Herding Problem Benchmark</span></h3>
+<p dir="rtl" lang="fa">مسئله هدایت گله یکی از بنچمارک‌های معروف در MAS است که در آن دو تیم عامل (قرمز و آبی) باید گله‌های گاو را به سمت آغل <span class="mono" dir="ltr">(Corral)</span> خود هدایت کنند:</p>
+<ul dir="rtl" lang="fa">
+<li><strong>پویایی محیط <span class="mono" dir="ltr">(Dynamics)</span>:</strong> گاوها پس از هدایت به آغل ممکن است مجدداً فرار کنند؛ لذا سیاست <span class="mono" dir="ltr">(Policy)</span> عامل‌ها باید شامل نگهبانی و تثبیت نیز باشد.</li>
+<li><strong>آرایش هندسی <span class="mono" dir="ltr">(Geometric Formations)</span>:</strong> عامل‌ها با تشکیل بردار موقعیت و آرایش‌های سهمی‌گون، گله را هدایت می‌کنند.</li>
+<li><strong>استراتژی‌های تخریبی <span class="mono" dir="ltr">(Disruptive Strategies)</span>:</strong> در محیط‌های رقابتی، تیمی که بخشی از عامل‌های خود را برای ایجاد کارشکنی و مسدوسازی ورودی آغل حریف اختصاص دهد، می‌تواند مانع موفقیت استراتژی‌های بهینه‌سازی طرف مقابل شود.</li>
+</ul>
+<h3 id="۴-۴-دید-محلی-و-توزیع-یافتگی-اطلاعات" dir="rtl" lang="fa">۴.۴. دید محلی و توزیع‌یافتگی اطلاعات<span class="h-en" dir="ltr">Local View &amp; Information Asymmetry</span></h3>
+<p dir="rtl" lang="fa">عامل‌ها به دلیل محدودیت‌های حسگری دارای دید محلی <span class="mono" dir="ltr">(Local View)</span> هستند (مثلاً شعاع دید محدود در یک شبکه <span class="mono" dir="ltr">11×11</span>). اتخاذ تصمیم صرفاً بر اساس دید محلی منجر به پاسخ‌های زیربهینه <span class="mono" dir="ltr">(Sub-optimal)</span> در سطح کل سیستم می‌شود.</p>
+<h3 id="۴-۵-اشتراک-گذاری-تجربه-و-مدیریت-تضاد" dir="rtl" lang="fa">۴.۵. اشتراک‌گذاری تجربه و مدیریت تضاد<span class="h-en" dir="ltr">Experience Sharing &amp; Conflict Management</span></h3>
+<p dir="rtl" lang="fa">برای جلوگیری از دوباره‌کاری و کاهش خطرات سعی و خطا، عامل‌ها باید دانش و تجربیات خود را به اشتراک بگذارند. اما هنگام ترکیب اطلاعات ممکن است تضاد دانش <span class="mono" dir="ltr">(Conflict)</span> رخ دهد؛ لذا ماژول‌های مدیریت تضاد <span class="mono" dir="ltr">(Conflict Management)</span> و انتقال یادگیری <span class="mono" dir="ltr">(Transfer Learning)</span> الزامی هستند.</p>
+<h2 id="۵-فرمول-بندی-ریاضی-و-مدل-سازی-صریح-عامل-ها" dir="rtl" lang="fa">۵. فرمول‌بندی ریاضی و مدل‌سازی صریح عامل‌ها<span class="h-en" dir="ltr">Formal Agent Formulation</span></h2>
+<p dir="rtl" lang="fa">برای تحلیل ریاضی سیستم‌های چندعامله، رفتار عامل و محیط در قالب تعاریف صریح مجموعه‌ای و توابع نگاشت فرمول‌بندی می‌شود.</p>
+<h3 id="۵-۱-مجموعه-ها-و-تعاریف-پایه" dir="rtl" lang="fa">۵.۱. مجموعه‌ها و تعاریف پایه</h3>
+<ul dir="rtl" lang="fa">
+<li><strong>مجموعه حالت‌های محیط <span class="mono" dir="ltr">(State Space)</span>:</strong> مجموعه متناهی حالت‌های جهان که با <span class="mono" dir="ltr">S = {s<sub>1</sub>, s<sub>2</sub>, …, s<sub>n</sub>}</span> نمایش داده می‌شود.</li>
+<li><strong>مجموعه کنش‌های عامل <span class="mono" dir="ltr">(Action Space)</span>:</strong> مجموعه متناهی کنش‌های ممکن عامل که با <span class="mono" dir="ltr">A = {a<sub>1</sub>, a<sub>2</sub>, …, a<sub>m</sub>}</span> نشان داده می‌شود.</li>
+</ul>
+<div class="formula" dir="ltr">S = {s<sub>1</sub>, s<sub>2</sub>, …, s<sub>n</sub>} &nbsp;&nbsp;·&nbsp;&nbsp; A = {a<sub>1</sub>, a<sub>2</sub>, …, a<sub>m</sub>}</div>
+<h3 id="۵-۲-مفهوم-اجرا-و-تابع-ترانزیشن" dir="rtl" lang="fa">۵.۲. مفهوم اجرا <span class="mono" dir="ltr">(Run)</span> و تابع ترانزیشن</h3>
+<p dir="rtl" lang="fa">یک اجرا یا سیر تحول محیط <span class="mono" dir="ltr">(Run)</span>، توالی متناوبی از حالت‌ها و کنش‌ها است:</p>
+<div class="formula" dir="ltr">r: s<sub>0</sub> →<sup>a<sub>1</sub></sup> s<sub>1</sub> →<sup>a<sub>2</sub></sup> s<sub>2</sub> →<sup>a<sub>3</sub></sup> …</div>
+<div class="math-block" aria-hidden="true">
+<svg viewBox="0 0 420 74" fill="none" role="img" aria-label="زنجیره ترانزیشن حالت‌ها: s0 با اکشن a1 به s1 و سپس با a2 به s2 و سپس با a3 به s3">
+  <defs>
+    <marker id="stArw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6ee7b7"/></marker>
+  </defs>
+  <circle cx="46" cy="37" r="26" fill="rgba(52,211,153,.08)" stroke="#34d399" stroke-width="2"/>
+  <text x="46" y="44" text-anchor="middle" font-size="16" fill="#e6f3ea" style="font-family:inherit">s<sub>0</sub></text>
+  <line x1="78" y1="37" x2="128" y2="37" stroke="rgba(110,231,183,.55)" stroke-width="1.5" marker-end="url(#stArw)"/>
+  <text x="103" y="27" text-anchor="middle" font-size="11" fill="#a3e635">a<sub>1</sub></text>
+  <circle cx="160" cy="37" r="26" fill="rgba(52,211,153,.08)" stroke="#34d399" stroke-width="2"/>
+  <text x="160" y="44" text-anchor="middle" font-size="16" fill="#e6f3ea" style="font-family:inherit">s<sub>1</sub></text>
+  <line x1="192" y1="37" x2="242" y2="37" stroke="rgba(110,231,183,.55)" stroke-width="1.5" marker-end="url(#stArw)"/>
+  <text x="217" y="27" text-anchor="middle" font-size="11" fill="#a3e635">a<sub>2</sub></text>
+  <circle cx="274" cy="37" r="26" fill="rgba(52,211,153,.08)" stroke="#34d399" stroke-width="2"/>
+  <text x="274" y="44" text-anchor="middle" font-size="16" fill="#e6f3ea" style="font-family:inherit">s<sub>2</sub></text>
+  <line x1="306" y1="37" x2="356" y2="37" stroke="rgba(110,231,183,.55)" stroke-width="1.5" marker-end="url(#stArw)"/>
+  <text x="331" y="27" text-anchor="middle" font-size="11" fill="#a3e635">a<sub>3</sub></text>
+  <circle cx="388" cy="37" r="26" fill="rgba(52,211,153,.08)" stroke="#6ee7b7" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="388" y="44" text-anchor="middle" font-size="16" fill="#9fb8a9" style="font-family:inherit">…</text>
+</svg>
+</div>
+<p dir="rtl" lang="fa">تابع ترانزیشن یا تغییر حالت محیط <span class="mono" dir="ltr">(τ)</span> به صورت زیر تعریف می‌شود:</p>
+<div class="formula" dir="ltr">τ: S × A → S</div>
+<p dir="rtl" lang="fa">اگر تابع ترانزیشن به کل تاریخچه حالت‌ها و کنش‌های گذشته وابسته باشد، تابع ترانزیشن وابسته به تاریخچه <span class="mono" dir="ltr">(History-dependent)</span> نامیده می‌شود. نهایتاً اگر اجرای یک عامل به حالت تهی <span class="mono" dir="ltr">(∅)</span> برسد، نشان‌دهنده پایان اپیزود <span class="mono" dir="ltr">(Episode)</span> یا خاتمه کار عامل است.</p>
+<h3 id="۵-۳-تعریف-فرمال-تابع-عامل" dir="rtl" lang="fa">۵.۳. تعریف فرمال تابع عامل<span class="h-en" dir="ltr">Agent Function</span></h3>
+<p dir="rtl" lang="fa">اگر <span class="mono" dir="ltr">R<sub>E</sub></span> نشان‌دهنده مجموعه تمام اجراهایی باشد که منتهی به یک حالت محیطی شده‌اند، تابع عامل <span class="mono" dir="ltr">(f)</span> به عنوان نگاشتی از تاریخچه اجرا به کنش بعدی تعریف می‌شود:</p>
+<div class="formula" dir="ltr">f: R<sub>E</sub> → A</div>
+<p dir="rtl" lang="fa">این فرمول‌بندی نشان می‌دهد که هر عامل در ساده‌ترین بیان ریاضی، توابعی است که با دریافت تاریخچه مشاهدات و استیت جاری، کنش بهینه بعدی را انتخاب می‌نماید.</p>
+<h3 id="۵-۴-پیش-درآمدی-بر-معماری-bdi" dir="rtl" lang="fa">۵.۴. پیش‌درآمدی بر معماری BDI<span class="h-en" dir="ltr">Belief-Desire-Intention</span></h3>
+<p dir="rtl" lang="fa">در عامل‌های پیشرفته، تصمیم‌گیری بر اساس سه مؤلفه شناختی صورت می‌گیرد:</p>
+<ol dir="rtl" lang="fa">
+<li><strong>باورها <span class="mono" dir="ltr">(Beliefs)</span>:</strong> اطلاعات و دانش عامل از وضعیت محیط.</li>
+<li><strong>خواسته‌ها <span class="mono" dir="ltr">(Desires)</span>:</strong> اهداف و وضعیت‌های مطلوبی که عامل تمایل دارد به آن‌ها برسد.</li>
+<li><strong>قصدها <span class="mono" dir="ltr">(Intentions)</span>:</strong> برنامه‌ها و کنش‌های انتخاب‌شده‌ای که عامل تعهد به اجرای آن‌ها دارد.</li>
+</ol>
+<h2 id="۶-پرسش-و-پاسخ-های-مطرح-شده-در-کلاس" dir="rtl" lang="fa">۶. پرسش و پاسخ‌های مطرح‌شده در کلاس<span class="h-en" dir="ltr">Classroom Q&amp;A</span></h2>
+<p dir="rtl" lang="fa">در این بخش، تمامی پرسش‌های تخصصی مطرح‌شده توسط دانشجویان در طول جلسه سوم کلاس همراه با پاسخ‌های تشریحی استاد به صورت دقیق ارائه شده است.</p>
+<div class="qa-list">
+<details class="qa"><summary><span>پرسش اول: تفاوت ساختاری رفتارهای واکنشی <span dir="ltr">(Reactive)</span> و پیش‌فعال <span dir="ltr">(Proactive)</span> چیست؟</span></summary><div class="qa-a" dir="rtl" lang="fa">
+<blockquote><strong>متن پرسش دانشجو:</strong> «فرق ریاکتیو و پراکتیو میشه دیگه؟»</blockquote>
+<p><strong>پاسخ تشریحی:</strong> رفتارهای واکنشی <span class="mono" dir="ltr">(Reactive)</span> بر پایه قواعد شرط-کنش <span class="mono" dir="ltr">(Condition-Action Rules)</span> تعریف می‌شوند و با صادق شدن شرط، قواعد بلافاصله شلیک <span class="mono" dir="ltr">(Fire)</span> می‌گردند. این رفتارها نیازمند زمان پاسخ کوتاه و پردازش اندک هستند. در مقابل، رفتارهای پیش‌فعال <span class="mono" dir="ltr">(Proactive)</span> هدایت‌شده به سمت هدف <span class="mono" dir="ltr">(Goal-directed)</span> بوده، متکی بر برنامه‌ریزی <span class="mono" dir="ltr">(Planning)</span> و محاسبات سنگین در هسته پردازشی هستند و نمی‌توان آن‌ها را در قالب قواعد ساده شرط-کنش خلاصه‌سازی نمود.</p>
+</div></details>
+<details class="qa"><summary><span>پرسش دوم: چرا مسئله استفاده از تلویزیون مشترک، مذاکره <span dir="ltr">(Negotiation)</span> محسوب می‌شود و هماهنگی <span dir="ltr">(Coordination)</span> نیست؟</span></summary><div class="qa-a" dir="rtl" lang="fa">
+<blockquote><strong>متن پرسش دانشجو:</strong> «این مثالی که زدین کدینیشن نمیشه؟ یه ریسورس داریم تلویزیون… یکی میخواد فوتبال ببینه یکی هم میخواد فیلم ببینه… اینا کدینیت می‌کنند که؟»</blockquote>
+<p><strong>پاسخ تشریحی:</strong> اگر دو نفر زمان استفاده از تلویزیون را تقسیم کنند (مثلاً ۱۰ دقیقه این و ۱۰ دقیقه آن)، هماهنگی <span class="mono" dir="ltr">(Coordination)</span> رخ داده است. اما هنگامی که دو برنامه همزمان در حال پخش است و امکان تقسیم منبع وجود ندارد، طرفین وارد چانه‌زنی و ارائه پیشنهاد <span class="mono" dir="ltr">(Offer)</span> می‌شوند (مثلاً امشب مشاهده فوتبال آنلاین و فردا مشاهده فیلم ضبط‌شده). این فرایند دستیابی به توافق <span class="mono" dir="ltr">(Agreement)</span> با قبول کوتاه آمدن طرفین، کاملاً در ساختار مذاکره <span class="mono" dir="ltr">(Negotiation)</span> قرار می‌گیرد.</p>
+</div></details>
+<details class="qa"><summary><span>پرسش سوم: آیا در محیط‌های غیرقابل مشاهده <span dir="ltr">(Partially Observable)</span> یا کاملاً ناشناخته، تعریف مجموعه حالت‌ها <span class="mono" dir="ltr">(S)</span> امکان‌پذیر است یا باید صرفاً از استنتاج استفاده کرد؟</span></summary><div class="qa-a" dir="rtl" lang="fa">
+<blockquote><strong>متن پرسش دانشجو:</strong> «استیتش که برام تعریف نشده است… برای محیط‌هایی که غیرقابل مشاهده‌ام باید از استیت استفاده کنیم؟ کلاً بهتر نیست از استنتاج استفاده کنیم چون یه تعداد مشخصی استیت وجود نداره دیگه تعدادش خیلی زیاد…»</blockquote>
+<p><strong>پاسخ تشریحی:</strong> در مدل‌سازی ریاضی پایه، مجموعه حالت‌ها <span class="mono" dir="ltr">(S)</span> همواره متناهی <span class="mono" dir="ltr">(Finite)</span> فرض می‌شود. حتی در بازی کارت که دست سایرین برای عامل پنهان است، کل حالت‌های جهان بازی متناهی و مشخص است، اگرچه از دیدگاه عامل غیرقطعی به نظر می‌رسد. در محیط‌های کاملاً ناشناخته واقعی، مدل‌سازی می‌تواند به صورت افزایشی <span class="mono" dir="ltr">(Incremental)</span> تعاریف حالت جدید را در طول زمان اضافه کند، اما چارچوب فرمال اولیه بر فرض وجود مجموعه S استوار است.</p>
+</div></details>
+<details class="qa"><summary><span>پرسش چهارم: آیا وابستگی تابع عامل به تاریخچه <span dir="ltr">(History-dependent)</span> با خاصیت مارکوف <span dir="ltr">(Markov Property)</span> تناقض دارد؟</span></summary><div class="qa-a" dir="rtl" lang="fa">
+<blockquote><strong>متن پرسش دانشجو:</strong> «این که میگید هیستوری-دیپندنت مثلاً اینا استیت حالت مارکوفی داره؟»</blockquote>
+<p><strong>پاسخ تشریحی:</strong> خیر، در صورتی که محیط دارای خاصیت مارکوف باشد <span class="mono" dir="ltr">(Markov Decision Process - MDP)</span>، تابع ترانزیشن و تصمیم‌گیری تنها به حالت جاری و کنش انتخابی وابسته خواهد بود <span class="mono" dir="ltr">(T(s, a) → s')</span>. اما تعریف ریاضی عام عامل <span class="mono" dir="ltr">(f: R<sub>E</sub> → A)</span> به گونه‌ای فرمول‌بندی شده است که شامل حالت‌های غیرمارکوفی که تصمیم‌گیری در آن‌ها به کل تاریخچه تعاملات <span class="mono" dir="ltr">(History)</span> بستگی دارد نیز بشود.</p>
+</div></details>
+</div>
+<h2 id="۷-واژه-نامه-تخصصی" dir="rtl" lang="fa">۷. واژه‌نامه تخصصی<span class="h-en" dir="ltr">Glossary of Technical Terms</span></h2>
+<div class="table-scroll"><table dir="rtl" lang="fa" class="glossary-table"><thead><tr><th dir="rtl" lang="fa">اصطلاح انگلیسی</th><th dir="rtl" lang="fa">معادل و مفهوم فارسی</th></tr></thead><tbody>
+<tr><td dir="ltr"><span class="en">Agent's vs. Environment's Perspective</span></td><td dir="rtl" lang="fa">زاویه دید عامل در برابر دیدگاه کلی محیط</td></tr>
+<tr><td dir="ltr"><span class="en">Reactive Behavior</span></td><td dir="rtl" lang="fa">رفتار واکنشی (مبتنی بر قواعد سریع شرط-کنش)</td></tr>
+<tr><td dir="ltr"><span class="en">Proactive Behavior</span></td><td dir="rtl" lang="fa">رفتار پیش‌فعال (هدف‌گرا و مبتنی بر برنامه‌ریزی)</td></tr>
+<tr><td dir="ltr"><span class="en">Firing of Rules</span></td><td dir="rtl" lang="fa">شلیک یا فعال شدن قواعد در پایگاه دانش</td></tr>
+<tr><td dir="ltr"><span class="en">Cooperation</span></td><td dir="rtl" lang="fa">همکاری (تعامل تیمی برای هدف مشترک)</td></tr>
+<tr><td dir="ltr"><span class="en">Coordination</span></td><td dir="rtl" lang="fa">هماهنگی (مدیریت وابستگی‌ها و منابع غیرقابل‌اشتراک)</td></tr>
+<tr><td dir="ltr"><span class="en">Negotiation &amp; Agreement</span></td><td dir="rtl" lang="fa">مذاکره و دستیابی به توافق پایدار</td></tr>
+<tr><td dir="ltr"><span class="en">Self-interested Agents</span></td><td dir="rtl" lang="fa">عامل‌های منفعت‌طلب (پیگیر منفعت فردی بدون نیت مخرب)</td></tr>
+<tr><td dir="ltr"><span class="en">Offer and Counter-offer</span></td><td dir="rtl" lang="fa">پیشنهاد و پادپیشنهاد در مذاکره</td></tr>
+<tr><td dir="ltr"><span class="en">Semi-competitive Environment</span></td><td dir="rtl" lang="fa">محیط نیمه‌رقابتی (هدف کلان مشترک با اهداف فردی متضاد)</td></tr>
+<tr><td dir="ltr"><span class="en">Non-stationarity</span></td><td dir="rtl" lang="fa">غیرپایدار بودن پویایی محیط در یادگیری چندعامله</td></tr>
+<tr><td dir="ltr"><span class="en">Herding Benchmark</span></td><td dir="rtl" lang="fa">مسأله بنچمارک هدایت گله</td></tr>
+<tr><td dir="ltr"><span class="en">Local View vs. Global View</span></td><td dir="rtl" lang="fa">دیدگاه محلی حسگرها در برابر دیدگاه سراسری</td></tr>
+<tr><td dir="ltr"><span class="en">Conflict Management</span></td><td dir="rtl" lang="fa">مدیریت تضاد در ترکیب تجربیات</td></tr>
+<tr><td dir="ltr"><span class="en">State and Action Space</span></td><td dir="rtl" lang="fa">فضای حالت‌ها (S) و کنش‌های ممکن (A)</td></tr>
+<tr><td dir="ltr"><span class="en">Run &amp; Transition Function</span></td><td dir="rtl" lang="fa">اجرای متناوب (r) و تابع تغییر حالت (τ)</td></tr>
+<tr><td dir="ltr"><span class="en">Agent Function (f: R<sub>E</sub> → A)</span></td><td dir="rtl" lang="fa">تابع ریاضی عامل در نگاشت تاریخچه به کنش</td></tr>
+<tr><td dir="ltr"><span class="en">BDI Architecture</span></td><td dir="rtl" lang="fa">معماری شناختی باور-خواسته-قصد (Belief-Desire-Intention)</td></tr>
+</tbody></table></div>
+      </div>
+
+      <div class="session-foot-note">
+        این صفحه یادداشت مطالعاتی دانشجویان بر اساس جلسهٔ کلاس است و جایگزین اعلام‌های رسمی استاد نیست.
+        منبع: جزوهٔ اختصاصی جلسه ۳.
+      </div>
+
+      <nav class="session-nav" aria-label="ناوبری جلسات">
+        <a class="prev" href="session-02.html"><span class="sn-label">جلسهٔ قبل</span><span class="sn-title">جلسه ۰۲ — چرخه عملیاتی، تاکسونومی محیط و رفتارهای عاملی</span></a>
+        <a class="next" href="session-04.html"><span class="sn-label">جلسهٔ بعد</span><span class="sn-title">جلسه ۰۴ — فرمول‌بندی رسمی، معماری مشاهده-حالت درونی، سودمندی انتظاری و عقلانیت محدود</span></a>
+      </nav>
+    </article>
+
+    <aside class="toc" data-toc aria-label="فهرست مطالب">
+      <div class="toc-title">در این صفحه</div>
+      <ol><li><a href="#۱-مرور-تثبیت-مفاهیم-و-رفع-ابهامات-جلسه-گذشته">۱. مرور، تثبیت مفاهیم و رفع ابهامات جلسه گذشته</a></li>
+<li class="toc-sub"><a href="#۱-۱-دیدگاه-عامل-در-برابر-دیدگاه-محیط">۱.۱. دیدگاه عامل در برابر دیدگاه محیط</a></li>
+<li class="toc-sub"><a href="#۱-۲-تفکیک-محیط-های-تصادفی-و-غیرقطعی">۱.۲. تفکیک محیط‌های تصادفی و غیرقطعی</a></li>
+<li><a href="#۲-تحلیل-رفتارهای-واکنشی-و-پیش-فعال">۲. تحلیل رفتارهای واکنشی و پیش‌فعال</a></li>
+<li class="toc-sub"><a href="#۲-۱-رفتارهای-واکنشی">۲.۱. رفتارهای واکنشی</a></li>
+<li class="toc-sub"><a href="#۲-۲-رفتارهای-پیش-فعال">۲.۲. رفتارهای پیش‌فعال</a></li>
+<li class="toc-sub"><a href="#۲-۳-سیستم-های-ترکیبی-در-دنیای-واقعی">۲.۳. سیستم‌های ترکیبی در دنیای واقعی</a></li>
+<li><a href="#۳-ابعاد-سه-گانه-تعاملات-اجتماعی">۳. ابعاد سه‌گانه تعاملات اجتماعی</a></li>
+<li class="toc-sub"><a href="#۳-۱-همکاری">۳.۱. همکاری</a></li>
+<li class="toc-sub"><a href="#۳-۲-هماهنگی">۳.۲. هماهنگی</a></li>
+<li class="toc-sub"><a href="#۳-۳-مذاکره">۳.۳. مذاکره</a></li>
+<li class="toc-sub"><a href="#۳-۴-طیف-محیط-های-تعاملی-از-منظر-اهداف">۳.۴. طیف محیط‌های تعاملی از منظر اهداف</a></li>
+<li><a href="#۴-چالش-های-ساختاری-و-عملیاتی-در-سیستم-های-چندعامله">۴. چالش‌های ساختاری و عملیاتی در سیستم‌های چندعامله</a></li>
+<li class="toc-sub"><a href="#۴-۱-تداخل-عملیاتی-و-گراف-ارتباطات">۴.۱. تداخل عملیاتی و گراف ارتباطات</a></li>
+<li class="toc-sub"><a href="#۴-۲-یادگیری-همزمان-و-غیرپایدار-شدن-محیط">۴.۲. یادگیری همزمان و غیرپایدار شدن محیط</a></li>
+<li class="toc-sub"><a href="#۴-۳-مسئله-استاندارد-هدایت-گله">۴.۳. مسئله استاندارد هدایت گله</a></li>
+<li class="toc-sub"><a href="#۴-۴-دید-محلی-و-توزیع-یافتگی-اطلاعات">۴.۴. دید محلی و توزیع‌یافتگی اطلاعات</a></li>
+<li class="toc-sub"><a href="#۴-۵-اشتراک-گذاری-تجربه-و-مدیریت-تضاد">۴.۵. اشتراک‌گذاری تجربه و مدیریت تضاد</a></li>
+<li><a href="#۵-فرمول-بندی-ریاضی-و-مدل-سازی-صریح-عامل-ها">۵. فرمول‌بندی ریاضی و مدل‌سازی صریح عامل‌ها</a></li>
+<li class="toc-sub"><a href="#۵-۱-مجموعه-ها-و-تعاریف-پایه">۵.۱. مجموعه‌ها و تعاریف پایه</a></li>
+<li class="toc-sub"><a href="#۵-۲-مفهوم-اجرا-و-تابع-ترانزیشن">۵.۲. مفهوم اجرا و تابع ترانزیشن</a></li>
+<li class="toc-sub"><a href="#۵-۳-تعریف-فرمال-تابع-عامل">۵.۳. تعریف فرمال تابع عامل</a></li>
+<li class="toc-sub"><a href="#۵-۴-پیش-درآمدی-بر-معماری-bdi">۵.۴. پیش‌درآمدی بر معماری BDI</a></li>
+<li><a href="#۶-پرسش-و-پاسخ-های-مطرح-شده-در-کلاس">۶. پرسش و پاسخ‌های مطرح‌شده در کلاس</a></li>
+<li><a href="#۷-واژه-نامه-تخصصی">۷. واژه‌نامه تخصصی</a></li></ol>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-brand" style="margin-bottom:14px">
+      <span class="brand-logo" aria-hidden="true"><img src="../assets/img/mas-logo.svg" alt=""></span>
+      <span><strong>سیستم‌های چندعامله</strong><span>MAS · Multi-Agent Systems</span></span>
+    </div>
+    <div class="footer-bottom" style="margin-top:0;border-top:0;padding-top:0">
+      <span>© <span data-year>2026</span> — سیستم‌های چندعامله · یادداشت‌های درس</span>
+      <span class="mono">MAS · Multi-Agent Systems</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/mas-fun.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

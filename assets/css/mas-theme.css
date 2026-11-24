@@ -1,0 +1,494 @@
+/* ==========================================================================
+   MAS · سیستم‌های چندعامله — dark-green theme override
+   Load AFTER site.css. Re-skins the NLP blue/white system into a
+   dark-green "robots & games" board for the Multi-Agent Systems course.
+   Both data-theme="light" and data-theme="dark" map to the same palette,
+   so the existing theme toggle in site.js keeps working without breaking
+   the look.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. Palette tokens — override every theme context site.css defines
+   ========================================================================== */
+:root {
+  color-scheme: dark;
+
+  --bg: #0a1e15;
+  --bg-grid: rgba(110, 231, 183, 0.06);
+  --surface: #10291d;
+  --surface-2: #143325;
+  --surface-3: #1a4230;
+  --ink: #e6f3ea;
+  --ink-2: #c3d8cc;
+  --muted: #9fb8a9;
+  --line: rgba(110, 231, 183, 0.16);
+  --line-2: rgba(110, 231, 183, 0.26);
+  --brand: #34d399;
+  --brand-2: #6ee7b7;
+  --brand-3: #052e16;
+  --brand-soft: rgba(52, 211, 153, 0.12);
+  --brand-soft-2: rgba(52, 211, 153, 0.2);
+  --on-brand: #052e16;
+  --good: #6ee7b7;
+  --good-soft: rgba(110, 231, 183, 0.1);
+  --warn: #fbbf24;
+  --warn-soft: rgba(251, 191, 36, 0.1);
+  --bad: #f87171;
+  --bad-soft: rgba(248, 113, 113, 0.12);
+  --violet: #a3e635;
+  --violet-soft: rgba(163, 230, 53, 0.1);
+  --cyan: #60a5fa;
+  --cyan-soft: rgba(96, 165, 250, 0.12);
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.35), 0 1px 1px rgba(0, 0, 0, 0.25);
+  --shadow-2: 0 18px 38px -24px rgba(0, 0, 0, 0.6), 0 4px 10px -6px rgba(0, 0, 0, 0.35);
+  --shadow-3: 0 30px 70px -40px rgba(0, 0, 0, 0.75);
+  --ring: 0 0 0 3px rgba(52, 211, 153, 0.25);
+}
+
+/* Explicit dark toggle — identical palette, toggle is a no-op visually */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a1e15;
+  --bg-grid: rgba(110, 231, 183, 0.06);
+  --surface: #10291d;
+  --surface-2: #143325;
+  --surface-3: #1a4230;
+  --ink: #e6f3ea;
+  --ink-2: #c3d8cc;
+  --muted: #9fb8a9;
+  --line: rgba(110, 231, 183, 0.16);
+  --line-2: rgba(110, 231, 183, 0.26);
+  --brand: #34d399;
+  --brand-2: #6ee7b7;
+  --brand-3: #052e16;
+  --brand-soft: rgba(52, 211, 153, 0.12);
+  --brand-soft-2: rgba(52, 211, 153, 0.2);
+  --on-brand: #052e16;
+  --good: #6ee7b7;
+  --good-soft: rgba(110, 231, 183, 0.1);
+  --warn: #fbbf24;
+  --warn-soft: rgba(251, 191, 36, 0.1);
+  --bad: #f87171;
+  --bad-soft: rgba(248, 113, 113, 0.12);
+  --violet: #a3e635;
+  --violet-soft: rgba(163, 230, 53, 0.1);
+  --cyan: #60a5fa;
+  --cyan-soft: rgba(96, 165, 250, 0.12);
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.35), 0 1px 1px rgba(0, 0, 0, 0.25);
+  --shadow-2: 0 18px 38px -24px rgba(0, 0, 0, 0.6), 0 4px 10px -6px rgba(0, 0, 0, 0.35);
+  --shadow-3: 0 30px 70px -40px rgba(0, 0, 0, 0.75);
+  --ring: 0 0 0 3px rgba(52, 211, 153, 0.25);
+}
+
+/* OS dark mode with no explicit data-theme — also identical */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0a1e15;
+    --bg-grid: rgba(110, 231, 183, 0.06);
+    --surface: #10291d;
+    --surface-2: #143325;
+    --surface-3: #1a4230;
+    --ink: #e6f3ea;
+    --ink-2: #c3d8cc;
+    --muted: #9fb8a9;
+    --line: rgba(110, 231, 183, 0.16);
+    --line-2: rgba(110, 231, 183, 0.26);
+    --brand: #34d399;
+    --brand-2: #6ee7b7;
+    --brand-3: #052e16;
+    --brand-soft: rgba(52, 211, 153, 0.12);
+    --brand-soft-2: rgba(52, 211, 153, 0.2);
+    --on-brand: #052e16;
+    --good: #6ee7b7;
+    --good-soft: rgba(110, 231, 183, 0.1);
+    --warn: #fbbf24;
+    --warn-soft: rgba(251, 191, 36, 0.1);
+    --bad: #f87171;
+    --bad-soft: rgba(248, 113, 113, 0.12);
+    --violet: #a3e635;
+    --violet-soft: rgba(163, 230, 53, 0.1);
+    --cyan: #60a5fa;
+    --cyan-soft: rgba(96, 165, 250, 0.12);
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.35), 0 1px 1px rgba(0, 0, 0, 0.25);
+    --shadow-2: 0 18px 38px -24px rgba(0, 0, 0, 0.6), 0 4px 10px -6px rgba(0, 0, 0, 0.35);
+    --shadow-3: 0 30px 70px -40px rgba(0, 0, 0, 0.75);
+    --ring: 0 0 0 3px rgba(52, 211, 153, 0.25);
+  }
+}
+
+/* ==========================================================================
+   2. Page chrome — board-game grid, selection, scrollbars
+   ========================================================================== */
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(rgba(110, 231, 183, 0.055) 1px, transparent 1.5px),
+    radial-gradient(rgba(110, 231, 183, 0.028) 1px, transparent 1.5px);
+  background-size: 32px 32px, 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+::selection { background: rgba(52, 211, 153, 0.32); color: #e6f3ea; }
+
+* { scrollbar-color: #1a4230 #0a1e15; }
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: #0a1e15; }
+::-webkit-scrollbar-thumb {
+  background: #1a4230; border: 3px solid #0a1e15; border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover { background: #266047; }
+
+/* ==========================================================================
+   3. Brand & header
+   ========================================================================== */
+.brand-mark {
+  background:
+    radial-gradient(120% 120% at 20% 10%, #6ee7b7 0%, transparent 55%),
+    linear-gradient(140deg, #10b981, #052e16);
+  color: #052e16;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 12px -6px rgba(16, 185, 129, 0.65);
+}
+.brand-logo, .panel-logo {
+  background: transparent;
+  border: 1px solid rgba(110, 231, 183, 0.22);
+}
+.footer-brand .brand-logo { border-color: rgba(110, 231, 183, 0.25); }
+
+/* ==========================================================================
+   4. Buttons & links — emerald accents
+   ========================================================================== */
+a { color: var(--brand); }
+a:hover { color: var(--brand-2); }
+:focus-visible { outline-color: #34d399; }
+
+.btn--primary {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  color: #052e16;
+  box-shadow: 0 10px 22px -12px rgba(16, 185, 129, 0.55);
+}
+.btn--primary:hover {
+  color: #052e16;
+  box-shadow: 0 14px 28px -12px rgba(16, 185, 129, 0.7);
+}
+.btn--ghost:hover { border-color: #34d399; color: #34d399; background: rgba(52, 211, 153, 0.1); }
+.btn--quiet { color: #34d399; }
+.btn--quiet:hover { color: #6ee7b7; }
+.filter-chip[aria-pressed="true"] { background: #34d399; border-color: #34d399; color: #052e16; }
+.skip-link { background: #34d399; color: #052e16; }
+
+/* ==========================================================================
+   5. Hero & slide panel
+   ========================================================================== */
+.hero-panel {
+  background:
+    radial-gradient(90% 80% at 80% 0%, rgba(52, 211, 153, 0.32) 0%, transparent 55%),
+    radial-gradient(70% 70% at 0% 100%, rgba(16, 185, 129, 0.2) 0%, transparent 60%),
+    linear-gradient(150deg, #123424 0%, #0d2418 55%, #07130d 100%);
+  color: #e6f3ea;
+  border: 1px solid rgba(110, 231, 183, 0.18);
+}
+:root[data-theme] .hero-panel { border-color: rgba(110, 231, 183, 0.18); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero-panel { border-color: rgba(110, 231, 183, 0.18); }
+}
+.hero-panel::before {
+  background-image:
+    linear-gradient(rgba(110, 231, 183, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 231, 183, 0.05) 1px, transparent 1px);
+}
+.panel-dots span:first-child { background: #34d399; }
+.sdot.is-active { background: #34d399; }
+.slide-main { color: #e6f3ea; }
+.slide-ctrl { border-top: 1px solid rgba(110, 231, 183, 0.12); }
+
+/* Slide icon glows → MAS palette (gold / team blue / mint / emerald) */
+.slide--sum .slide-icon::before { background: rgba(251, 191, 36, 0.35); }
+.slide--asr .slide-icon::before { background: rgba(96, 165, 250, 0.4); }
+.slide--bot .slide-icon::before { background: rgba(110, 231, 183, 0.4); }
+.slide--senti .slide-icon::before { background: rgba(52, 211, 153, 0.35); }
+
+/* ==========================================================================
+   6. Misc hardcoded blues → emerald
+   ========================================================================== */
+.instructor-avatar {
+  background:
+    radial-gradient(90% 90% at 20% 10%, rgba(255, 255, 255, 0.2), transparent 55%),
+    linear-gradient(150deg, #10b981, #052e16);
+}
+.stack-bar .s1 { background: linear-gradient(90deg, #10b981, #34d399); }
+.stack-bar .s2 { background: #34d399; }
+.stack-bar .s3 { background: #6ee7b7; }
+.stack-bar .s4 { background: #fbbf24; }
+.book--alt { border-top-color: #6ee7b7; }
+.book--alt2 { border-top-color: #a3e635; }
+.read-progress span { background: linear-gradient(90deg, #10b981, #34d399); }
+
+/* ==========================================================================
+   7. CTA band & footer
+   ========================================================================== */
+.cta-band {
+  background: linear-gradient(135deg, #0f2c1f, #17573c 55%, #10b981);
+}
+.cta-band .btn--ghost { background: #e6f3ea; color: #0b2a17; border-color: transparent; }
+.cta-band .btn--ghost:hover { background: #6ee7b7; color: #052e16; }
+.cta-band .btn--primary {
+  background: rgba(230, 243, 234, 0.12);
+  border-color: rgba(230, 243, 234, 0.35);
+  color: #e6f3ea; box-shadow: none;
+}
+.cta-band .btn--primary:hover { background: rgba(230, 243, 234, 0.2); color: #e6f3ea; }
+
+.site-footer {
+  background: #07130e;
+  color: rgba(230, 243, 234, 0.72);
+  border-top: 1px solid rgba(110, 231, 183, 0.1);
+}
+.footer-brand { color: #e6f3ea; }
+.footer-brand span { color: rgba(230, 243, 234, 0.45); }
+.footer-col h3 { color: rgba(230, 243, 234, 0.45); }
+.footer-col a { color: rgba(230, 243, 234, 0.75); }
+.footer-col a:hover { color: #6ee7b7; }
+.footer-bottom {
+  border-top: 1px solid rgba(110, 231, 183, 0.1);
+  color: rgba(230, 243, 234, 0.42);
+}
+
+/* ==========================================================================
+   8. Code & copy button
+   ========================================================================== */
+.prose pre {
+  background: #07130d;
+  color: #d6f0e2;
+  border: 1px solid #123a28;
+}
+.copy-btn {
+  background: rgba(230, 243, 234, 0.1);
+  color: rgba(230, 243, 234, 0.7);
+  border: 1px solid rgba(230, 243, 234, 0.15);
+}
+.copy-btn:hover { background: rgba(230, 243, 234, 0.2); color: #e6f3ea; }
+
+/* ==========================================================================
+   9. Callout semantics — remapped to the MAS palette in ALL theme states
+   ========================================================================== */
+.callout--question { --co: #34d399; --co-bg: rgba(52, 211, 153, 0.14); }
+.callout--answer { --co: #6ee7b7; --co-bg: rgba(110, 231, 183, 0.1); }
+.callout--tip, .callout--warning { --co: #fbbf24; --co-bg: rgba(251, 191, 36, 0.1); }
+.callout--important { --co: #f87171; --co-bg: rgba(248, 113, 113, 0.12); }
+.callout--definition { --co: #a3e635; --co-bg: rgba(163, 230, 53, 0.1); }
+.callout--example { --co: #60a5fa; --co-bg: rgba(96, 165, 250, 0.12); }
+.callout--note { --co: #9fb8a9; --co-bg: rgba(159, 184, 169, 0.08); }
+.callout--persian { --co: #34d399; --co-bg: rgba(52, 211, 153, 0.07); }
+
+:root[data-theme] .callout--question { --co: #34d399; --co-bg: rgba(52, 211, 153, 0.14); }
+:root[data-theme] .callout--answer { --co: #6ee7b7; --co-bg: rgba(110, 231, 183, 0.1); }
+:root[data-theme] .callout--tip, :root[data-theme] .callout--warning { --co: #fbbf24; --co-bg: rgba(251, 191, 36, 0.1); }
+:root[data-theme] .callout--important { --co: #f87171; --co-bg: rgba(248, 113, 113, 0.12); }
+:root[data-theme] .callout--definition { --co: #a3e635; --co-bg: rgba(163, 230, 53, 0.1); }
+:root[data-theme] .callout--example { --co: #60a5fa; --co-bg: rgba(96, 165, 250, 0.12); }
+:root[data-theme] .callout--note { --co: #9fb8a9; --co-bg: rgba(159, 184, 169, 0.08); }
+:root[data-theme] .callout--persian { --co: #34d399; --co-bg: rgba(52, 211, 153, 0.07); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .callout--question { --co: #34d399; --co-bg: rgba(52, 211, 153, 0.14); }
+  :root:not([data-theme="light"]) .callout--answer { --co: #6ee7b7; --co-bg: rgba(110, 231, 183, 0.1); }
+  :root:not([data-theme="light"]) .callout--tip,
+  :root:not([data-theme="light"]) .callout--warning { --co: #fbbf24; --co-bg: rgba(251, 191, 36, 0.1); }
+  :root:not([data-theme="light"]) .callout--important { --co: #f87171; --co-bg: rgba(248, 113, 113, 0.12); }
+  :root:not([data-theme="light"]) .callout--definition { --co: #a3e635; --co-bg: rgba(163, 230, 53, 0.1); }
+  :root:not([data-theme="light"]) .callout--example { --co: #60a5fa; --co-bg: rgba(96, 165, 250, 0.12); }
+  :root:not([data-theme="light"]) .callout--note { --co: #9fb8a9; --co-bg: rgba(159, 184, 169, 0.08); }
+  :root:not([data-theme="light"]) .callout--persian { --co: #34d399; --co-bg: rgba(52, 211, 153, 0.07); }
+}
+
+/* ==========================================================================
+   10. Accordions (review Q&A / FAQ)
+   ========================================================================== */
+details.faq-item, details.qa { transition: border-color 0.2s, box-shadow 0.2s; }
+details.faq-item:hover, details.qa:hover { border-color: rgba(110, 231, 183, 0.28); }
+details.faq-item[open], details.qa[open] {
+  border-color: rgba(52, 211, 153, 0.38);
+  box-shadow: var(--shadow-1);
+}
+details.faq-item summary:hover, details.qa summary:hover { color: #6ee7b7; }
+details.qa summary::before { background: rgba(52, 211, 153, 0.14); color: #34d399; }
+
+/* ==========================================================================
+   11. Formula blocks
+   ========================================================================== */
+.formula, .prose .formula {
+  direction: ltr;
+  text-align: left;
+  background: #0e2318;
+  border: 1px solid rgba(110, 231, 183, 0.18);
+  border-inline-start: 3px solid #34d399;
+  color: #d6f0e2;
+}
+.math-block {
+  background: #0e2318;
+  border: 1px solid rgba(110, 231, 183, 0.18);
+}
+
+/* ==========================================================================
+   12. Payoff matrices (.payoff) — LTR mono game tables
+   ========================================================================== */
+.prose table.payoff, table.payoff {
+  direction: ltr;
+  border-collapse: collapse;
+  margin: 18px auto;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  background: #0e2318;
+  border: 1px solid rgba(110, 231, 183, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.prose .payoff th, .payoff th,
+.prose .payoff td, .payoff td {
+  min-width: 56px;
+  padding: 8px 12px;
+  text-align: center;
+  border: 1px solid rgba(110, 231, 183, 0.12);
+  white-space: nowrap;
+}
+.prose .payoff th, .payoff th {
+  background: rgba(52, 211, 153, 0.12);
+  color: #6ee7b7;
+  font-weight: 600;
+  font-size: 0.78em;
+  letter-spacing: 0.04em;
+}
+.prose .payoff td, .payoff td { color: #cfe6da; }
+.prose .payoff td.p1, .payoff td.p1 { color: #60a5fa; }   /* agent 1 / team blue */
+.prose .payoff td.p2, .payoff td.p2 { color: #f87171; }   /* agent 2 / team red */
+.prose .payoff td.hl, .payoff td.hl,
+.prose .payoff td.best, .payoff td.best {
+  background: rgba(52, 211, 153, 0.16);
+  color: #e6f3ea; font-weight: 600;
+}
+.prose .payoff td.ne, .payoff td.ne { color: #fbbf24; }   /* Nash equilibrium */
+.prose .payoff td.empty, .payoff td.empty { background: transparent; border: 0; }
+
+/* ==========================================================================
+   13. Glossary tables
+   ========================================================================== */
+.prose table.glossary-table, table.glossary-table { font-size: 0.88rem; }
+.prose .glossary-table th, .glossary-table th {
+  background: rgba(52, 211, 153, 0.14);
+  color: #6ee7b7;
+}
+.prose .glossary-table td:first-child, .glossary-table td:first-child {
+  font-weight: 600;
+  color: #e6f3ea;
+  white-space: nowrap;
+}
+.glossary-table .en {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #9fb8a9;
+  direction: ltr;
+  text-align: left;
+}
+
+/* ==========================================================================
+   14. Hero robot — floating animation used by .hero-bot
+   ========================================================================== */
+.hero-bot {
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 14px 28px rgba(6, 46, 28, 0.45));
+}
+.hero-bot svg {
+  width: 100%;
+  height: auto;
+  max-width: 280px;
+  animation: mas-bot-float 5.2s ease-in-out infinite;
+}
+.hero-bot .bot-antenna {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: mas-bot-ping 2.6s ease-in-out infinite;
+}
+.hero-bot .bot-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mas-bot-blink 5.2s infinite;
+}
+.hero-bot .bot-glow {
+  animation: mas-bot-glow 5.2s ease-in-out infinite;
+}
+.hero-bot .bot-shadow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mas-bot-shadow 5.2s ease-in-out infinite;
+}
+
+@keyframes mas-bot-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1.2deg); }
+}
+@keyframes mas-bot-ping {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.15); }
+}
+@keyframes mas-bot-blink {
+  0%, 91%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.15); }
+}
+@keyframes mas-bot-glow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.7; }
+}
+@keyframes mas-bot-shadow {
+  0%, 100% { opacity: 0.5; transform: scaleX(1); }
+  50% { opacity: 0.3; transform: scaleX(0.88); }
+}
+
+/* ==========================================================================
+   15. Print — restore light, ink-friendly output
+   ========================================================================== */
+@media print {
+  :root, :root[data-theme="dark"], :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #ffffff;
+    --bg-grid: rgba(13, 122, 79, 0.05);
+    --surface: #ffffff;
+    --surface-2: #f4f6f5;
+    --surface-3: #eef1f0;
+    --ink: #10251a;
+    --ink-2: #2c4036;
+    --muted: #55665d;
+    --line: #d5ddd8;
+    --line-2: #c2cdc7;
+    --brand: #0d7a4f;
+    --brand-2: #0b5e3d;
+    --brand-3: #0d7a4f;
+    --brand-soft: #e8f5ee;
+    --brand-soft-2: #d9ece2;
+    --on-brand: #ffffff;
+    --shadow-1: none;
+    --shadow-2: none;
+    --shadow-3: none;
+  }
+  body {
+    background: #ffffff;
+    background-image: none;
+    color: #10251a;
+  }
+  .formula, .prose .formula {
+    background: #f4f6f5;
+    border-color: #d5ddd8;
+    border-inline-start-color: #0d7a4f;
+    color: #10251a;
+  }
+  .math-block { background: #f4f6f5; border-color: #d5ddd8; }
+  .prose pre { background: #f4f6f5; color: #10251a; border-color: #d5ddd8; }
+  .prose table.payoff, table.payoff { background: #ffffff; border-color: #c2cdc7; }
+  .prose .payoff th, .payoff th { background: #e8f5ee; color: #0d7a4f; }
+  .prose .payoff td, .payoff td { color: #2c4036; }
+  .hero-bot svg, .hero-bot .bot-antenna, .hero-bot .bot-eye,
+  .hero-bot .bot-glow, .hero-bot .bot-shadow { animation: none; }
+}

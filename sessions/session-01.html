@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۱ · اصول و مبانی سیستم‌های چندعامله — سیستم‌های چندعامله</title>
+<meta name="description" content="تعریف عامل خودمختار و سیستم چندعامله، کاربردهای دنیای واقعی (شبکه‌های حسگر، لجستیک، RoboCup، هدایت گله)، سودمندی انتظاری، معمای زندانیان و نظریه بازی‌ها، سیلابس و ارزیابی درس، پرسش‌های مرور و واژه‌نامهٔ تخصصی.">
+<meta name="theme-color" content="#0a1e15">
+<script>(function(){try{var t=localStorage.getItem("nlp-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/mas-logo-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/mas-theme.css">
+<style>
+/* ===== MAS session page additions (session-01) ===== */
+.session-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  margin: 20px 0 4px;
+  padding: 22px 20px;
+  background:
+    radial-gradient(90% 80% at 80% 0%, rgba(52, 211, 153, 0.14) 0%, transparent 55%),
+    radial-gradient(70% 70% at 0% 100%, rgba(16, 185, 129, 0.10) 0%, transparent 60%),
+    linear-gradient(150deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.session-visual .payoff-mini svg { width: 100%; height: auto; max-width: 300px; display: block; margin-inline: auto; }
+@media (max-width: 760px) {
+  .session-visual { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+}
+.topbar-nav { display: flex; gap: 4px; flex-wrap: wrap; padding: 2px 0 11px; }
+.topbar-nav a {
+  font-size: 0.8rem; color: var(--muted); text-decoration: none;
+  padding: 5px 11px; border-radius: 8px;
+}
+.topbar-nav a:hover { color: var(--brand); background: var(--brand-soft); }
+.topbar-nav a[aria-current="page"] { color: var(--brand); background: var(--brand-soft); font-weight: 700; }
+.qa-num {
+  display: inline-block; margin-inline-end: 8px; padding: 2px 7px;
+  border-radius: 6px; background: var(--brand-soft); color: var(--brand);
+  font-family: var(--mono); font-size: 0.72em; letter-spacing: .05em;
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+<div class="read-progress" data-read-progress aria-hidden="true"><span></span></div>
+
+<header class="session-topbar">
+  <div class="container inner">
+    <span class="brand-logo brand-logo--sm" aria-hidden="true"><img src="../assets/img/mas-logo.svg" alt=""></span>
+    <a class="back" href="../notes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg><span>یادداشت‌ها</span></a>
+    <div class="bar-title"><span class="mono">S۰۱</span>اصول و مبانی سیستم‌های چندعامله</div>
+    <div class="actions">
+      <button class="icon-btn" type="button" data-print aria-label="چاپ صفحه" title="چاپ صفحه"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg></button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="تغییر پوسته" title="تغییر پوسته"><svg data-icon-moon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg><svg data-icon-sun viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    </div>
+  </div>
+  <div class="container">
+    <nav class="topbar-nav" aria-label="ناوبری اصلی">
+      <a href="../index.html">خانه</a>
+      <a href="../notes.html">یادداشت جلسات</a>
+      <a href="../index.html#grading">ارزشیابی و پروژه</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <div class="session-layout">
+    <article class="session-main">
+      <header class="session-hero">
+        <nav class="breadcrumb" aria-label="مسیر">
+          <a href="../index.html">خانه</a><span class="sep">/</span>
+          <a href="../notes.html">یادداشت جلسات</a><span class="sep">/</span>
+          <span>جلسه ۱</span>
+        </nav>
+        <div class="session-kicker">
+          <span class="badge badge--live">جلسه ۱</span>
+          <span class="tag tag--brand">سیستم‌های چندعامله</span>
+        </div>
+        <h1>اصول و مبانی سیستم‌های چندعامله</h1>
+        <div class="session-summary"><strong>خلاصه: </strong>تعریف عامل خودمختار و سیستم چندعامله (MAS)، کاربردهای دنیای واقعی از شبکه‌های حسگر تا RoboCup و هدایت گله، فرمول سودمندی انتظاری، معمای زندانیان و نظریه بازی‌ها، سیلابس و ساختار ارزیابی درس، پرسش‌های مرور و واژه‌نامهٔ تخصصی.</div>
+        <div class="session-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>دکتر منیره عبدوس</span></span><span class="mono" dir="ltr">Dr. Monireh Abdoos</span></div>
+
+        <div class="session-visual" aria-hidden="true">
+          <div class="hero-bot">
+            <svg viewBox="0 0 240 230" fill="none" role="presentation">
+              <ellipse class="bot-glow" cx="110" cy="112" rx="96" ry="90" fill="rgba(52,211,153,.09)"/>
+              <g class="bot-antenna">
+                <line x1="110" y1="58" x2="110" y2="30" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="110" cy="22" r="6.5" fill="#a3e635"/>
+              </g>
+              <rect x="62" y="56" width="96" height="72" rx="20" fill="rgba(52,211,153,.13)" stroke="#6ee7b7" stroke-width="2.5"/>
+              <g class="bot-eye">
+                <circle cx="94" cy="90" r="7" fill="#6ee7b7"/>
+                <circle cx="126" cy="90" r="7" fill="#6ee7b7"/>
+              </g>
+              <circle cx="79" cy="104" r="3.5" fill="rgba(163,230,53,.75)"/>
+              <circle cx="141" cy="104" r="3.5" fill="rgba(163,230,53,.75)"/>
+              <path d="M96 109q14 11 28 0" stroke="#a3e635" stroke-width="3" stroke-linecap="round"/>
+              <rect x="66" y="140" width="88" height="60" rx="16" fill="rgba(52,211,153,.13)" stroke="#6ee7b7" stroke-width="2.5"/>
+              <rect x="88" y="152" width="44" height="12" rx="6" fill="rgba(110,231,183,.3)"/>
+              <circle cx="98" cy="176" r="2.6" fill="#34d399"/>
+              <circle cx="110" cy="176" r="2.6" fill="#34d399"/>
+              <circle cx="122" cy="176" r="2.6" fill="#34d399"/>
+              <path d="M66 156 42 176" stroke="#6ee7b7" stroke-width="8" stroke-linecap="round"/>
+              <path d="M154 156 178 170" stroke="#6ee7b7" stroke-width="8" stroke-linecap="round"/>
+              <g transform="rotate(8 200 186)">
+                <rect x="180" y="166" width="40" height="40" rx="9" fill="#fbbf24" stroke="#052e16" stroke-width="1.6"/>
+                <circle cx="192" cy="178" r="3.2" fill="#052e16"/>
+                <circle cx="208" cy="178" r="3.2" fill="#052e16"/>
+                <circle cx="192" cy="194" r="3.2" fill="#052e16"/>
+                <circle cx="208" cy="194" r="3.2" fill="#052e16"/>
+                <circle cx="200" cy="186" r="3.2" fill="#052e16"/>
+              </g>
+              <line x1="96" y1="200" x2="94" y2="222" stroke="#6ee7b7" stroke-width="8" stroke-linecap="round"/>
+              <line x1="124" y1="200" x2="126" y2="222" stroke="#6ee7b7" stroke-width="8" stroke-linecap="round"/>
+              <ellipse class="bot-shadow" cx="110" cy="226" rx="56" ry="6" fill="rgba(0,0,0,.45)"/>
+            </svg>
+          </div>
+          <div class="payoff-mini">
+            <svg viewBox="0 0 280 200" fill="none" role="presentation">
+              <text x="140" y="18" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11.5" fill="#6ee7b7">Prisoner&#39;s Dilemma</text>
+              <text x="134" y="50" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#f87171">B: Silence</text>
+              <text x="210" y="50" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#f87171">B: Confess</text>
+              <text x="88" y="89" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#60a5fa">A: Silence</text>
+              <text x="88" y="145" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#60a5fa">A: Confess</text>
+              <rect x="96" y="60" width="76" height="48" rx="8" fill="rgba(110,231,183,.10)" stroke="#6ee7b7" stroke-width="1.4"/>
+              <text x="134" y="82" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#cfe6da">(-1, -1)</text>
+              <text x="134" y="99" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#6ee7b7">Pareto</text>
+              <rect x="172" y="60" width="76" height="48" rx="8" fill="rgba(96,165,250,.07)" stroke="rgba(110,231,183,.25)" stroke-width="1.2"/>
+              <text x="210" y="89" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#cfe6da">(-20, 0)</text>
+              <rect x="96" y="116" width="76" height="48" rx="8" fill="rgba(96,165,250,.07)" stroke="rgba(110,231,183,.25)" stroke-width="1.2"/>
+              <text x="134" y="145" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#cfe6da">(0, -20)</text>
+              <rect x="172" y="116" width="76" height="48" rx="8" fill="rgba(251,191,36,.12)" stroke="#fbbf24" stroke-width="1.4"/>
+              <text x="210" y="138" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#fde68a">(-5, -5)</text>
+              <text x="210" y="155" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#fbbf24">Nash Eq.</text>
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <details class="toc-mobile"><summary>فهرست مطالب</summary><ol>
+<li><a href="#۱-مقدمه-و-جایگاه-علمی-introduction-context">۱. مقدمه و جایگاه علمی</a></li>
+<li class="toc-sub"><a href="#۱-۱-تعریف-عامل-خودمختار-autonomous-agent">۱.۱. تعریف عامل خودمختار</a></li>
+<li class="toc-sub"><a href="#۱-۲-تعریف-سیستم-چندعامله-multi-agent-system">۱.۲. تعریف سیستم چندعامله</a></li>
+<li><a href="#۲-کاربردها-و-سناریوهای-دنیای-واقعی-real-world-applications">۲. کاربردها و سناریوهای دنیای واقعی</a></li>
+<li class="toc-sub"><a href="#۲-۱-شبکه-های-حسگر-بی-سیم-wireless-sensor-networks">۲.۱. شبکه‌های حسگر بی‌سیم</a></li>
+<li class="toc-sub"><a href="#۲-۲-لجستیک-و-انبارداری-صنعتی-logistics-warehousing">۲.۲. لجستیک و انبارداری صنعتی</a></li>
+<li class="toc-sub"><a href="#۲-۳-ربات-های-فوتبالیست-و-امداد-و-نجات-robocup-rescue">۲.۳. ربات‌های فوتبالیست و امداد و نجات</a></li>
+<li class="toc-sub"><a href="#۲-۴-مسابقه-هدایت-گله-herding-contest">۲.۴. مسابقه هدایت گله</a></li>
+<li><a href="#۳-مبانی-ریاضی-و-سودمندی-انتظاری-mathematical-foundations">۳. مبانی ریاضی و سودمندی انتظاری</a></li>
+<li class="toc-sub"><a href="#۳-۱-فرمول-بندی-ریاضی-سودمندی-انتظاری-expected-utility-formula">۳.۱. فرمول‌بندی ریاضی سودمندی انتظاری</a></li>
+<li><a href="#۴-نظریه-بازی-ها-و-تصمیم-گیری-تعاملی-game-theory">۴. نظریه بازی‌ها و تصمیم‌گیری تعاملی</a></li>
+<li class="toc-sub"><a href="#۴-۱-معمای-زندانیان-prisoners-dilemma">۴.۱. معمای زندانیان</a></li>
+<li class="toc-sub"><a href="#۴-۲-کاربردهای-اقتصادی-و-سیاسی-economic-political-applications">۴.۲. کاربردهای اقتصادی و سیاسی</a></li>
+<li><a href="#۵-سیلابس-درسی-و-ساختار-ارزیابی-syllabus-evaluation">۵. سیلابس درسی و ساختار ارزیابی</a></li>
+<li class="toc-sub"><a href="#۵-۱-سرفصل-های-اصلی-درس-course-topics">۵.۱. سرفصل‌های اصلی درس</a></li>
+<li class="toc-sub"><a href="#۵-۲-ساختار-بارم-بندی-و-پروژه-درس-grading-project">۵.۲. ساختار بارم‌بندی و پروژه درس</a></li>
+<li><a href="#۶-پرسش-های-مرور-و-خودآزمایی-review-questions">۶. پرسش‌های مرور و خودآزمایی</a></li>
+<li><a href="#۷-واژه-نامه-تخصصی-glossary">۷. واژه‌نامهٔ تخصصی</a></li></ol></details>
+
+      <div class="prose">
+<div class="callout callout--note"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 8v5M12 16.5v.5"/></svg></span><span>دربارهٔ این جزوه</span><span class="co-label">Source Note</span></div><div class="callout-body"><p dir="rtl" lang="fa">این جزوه آموزشی بر اساس مباحث مطرح‌شده در فایل صوتی جلسه اول درس سیستم‌های چندعامله (Multi-Agent Systems - MAS) تدوین شده است. هدف این سند، ایجاد یک چارچوب مفهومی عمیق، دقیق و ساختاریافته به همراه مفاهیم فنی دو زبانه (فارسی و انگلیسی) است تا آمادگی کامل جهت شرکت در آزمون‌های کلاسی و فهم عمیق معماری‌ها را فراهم سازد.</p></div></div>
+
+<h2 id="۱-مقدمه-و-جایگاه-علمی-introduction-context" dir="auto">۱. مقدمه و جایگاه علمی سیستم‌های چندعامله<span class="h-en" dir="ltr">Introduction &amp; Context</span></h2>
+<p dir="rtl" lang="fa">سیستم‌های چندعامله یکی از حوزه‌های بنیادین و متقدم هوش مصنوعی (Artificial Intelligence) هستند که امروزه با ظهور هوش مصنوعی عاملی (Agentic AI) و مدل‌های زبانی بزرگ (Large Language Models - LLMs) اهمیت و جذابیت دوچندانی پیدا کرده‌اند.</p>
+<p dir="rtl" lang="fa">در هوش مصنوعی کلاسیک، تمرکز غالب بر روی عامل‌های منفرد (Single-Agent Systems) بود؛ اما در دنیای واقعی، با محیط‌های توزیع‌شده‌ای مواجه هستیم که چندین موجودیت هوشمند باید همزمان تصمیم‌گیری کرده و با یکدیگر تعامل داشته باشند.</p>
+
+<h3 id="۱-۱-تعریف-عامل-خودمختار-autonomous-agent" dir="rtl" lang="fa">۱.۱. تعریف عامل خودمختار<span class="h-en" dir="ltr">Autonomous Agent</span></h3>
+<div class="callout callout--definition"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13Z"/><path d="M8 3v18"/></svg></span><span>تعریف</span><span class="co-label">Definition</span></div><div class="callout-body"><p dir="rtl" lang="fa">یک عامل خودمختار (Autonomous Agent) موجودیتی کامپیوتر یا فیزیکی است که دارای ویژگی‌های زیر می‌باشد:</p></div></div>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><strong>خودمختاری (Autonomy):</strong> توانایی انتخاب کنش‌ها (Actions) به صورت مستقل و بدون دخالت مستقیم انسان یا کنترلی متمرکز.</li>
+<li dir="rtl" lang="fa"><strong>ادراک محیطی (Environmental Perception):</strong> دریافت اطلاعات از محیط از طریق حسگرها (Sensors).</li>
+<li dir="rtl" lang="fa"><strong>قدرت محاسباتی و تصمیم‌گیری (Computation &amp; Reasoning):</strong> پردازش داده‌های ورودی و انتخاب کنش در راستای نیل به هدف (Goal) یا بیشینه‌سازی سودمندی (Utility).</li>
+</ul>
+
+<h3 id="۱-۲-تعریف-سیستم-چندعامله-multi-agent-system" dir="rtl" lang="fa">۱.۲. تعریف سیستم چندعامله<span class="h-en" dir="ltr">Multi-Agent System — MAS</span></h3>
+<div class="callout callout--definition"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13Z"/><path d="M8 3v18"/></svg></span><span>تعریف</span><span class="co-label">Definition</span></div><div class="callout-body"><p dir="rtl" lang="fa">یک سیستم چندعامله (MAS) به مجموعه‌ای از چندین عامل خودمختار گفته می‌شود که در یک محیط مشترک حضور دارند. ویژگی‌های کلیدی این سیستم‌ها عبارتند از:</p></div></div>
+<ol dir="auto">
+<li dir="rtl" lang="fa"><strong>اطلاعات توزیع‌شده (Distributed Information):</strong> هیچ عاملی به کل داده‌های سیستم دسترسی کامل و آنی ندارد؛ داده‌ها در سطح عامل‌ها پخش شده‌اند.</li>
+<li dir="rtl" lang="fa"><strong>کنترل توزیع‌شده (Distributed Control):</strong> هیچ کنترل‌کننده مرکزی (Central Controller) یگانه‌ای وجود ندارد که تمام دستورات را صادر کند.</li>
+<li dir="rtl" lang="fa"><strong>طیف تعاملات اجتماعی:</strong> تعاملات میان عامل‌ها می‌تواند در طیفی میان همکاری کامل (Fully Cooperative)، رقابت مطلق (Fully Competitive)، یا ترکیبی از این دو قرار گیرد.</li>
+</ol>
+
+<h2 id="۲-کاربردها-و-سناریوهای-دنیای-واقعی-real-world-applications" dir="auto">۲. کاربردها و سناریوهای کاربردی دنیای واقعی<span class="h-en" dir="ltr">Real-World Applications</span></h2>
+<p dir="rtl" lang="fa">برای درک عمیق‌تر سیستم‌های چندعامله، سناریوهای صنعتی و واقعی مطرح‌شده در جلسه اول به شرح زیر تحلیل می‌شوند:</p>
+
+<h3 id="۲-۱-شبکه-های-حسگر-بی-سیم-wireless-sensor-networks" dir="rtl" lang="fa">۲.۱. شبکه‌های حسگر بی‌سیم<span class="h-en" dir="ltr">Wireless Sensor Networks — WSNs</span></h3>
+<p dir="rtl" lang="fa">در شبکه‌های حسگر (مانند ایستگاه‌های پایش کیفیت هوای کلان‌شهرها یا شبکه‌های پیش‌بینی زلزله)، هر حسگر به عنوان یک عامل عمل می‌کند:</p>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><strong>پایش کیفیت هوا:</strong> حسگرها داده‌های آلودگی را جمع‌آوری می‌کنند. در صورت وجود نقص در برخی حسگرها، سایر حسگرها باید تعامل داشته و پوشش منطقه را جبران کنند.</li>
+<li dir="rtl" lang="fa"><strong>تشخیص زلزله:</strong> حسگرهای زمین‌شناختی امواج طولی (P-waves) و امواج عرضی (S-waves) را ثبت می‌کنند. اگر شارژ باتری یک حسگر کاهش یابد، سیستم چندعامله باید بازآرایی (Reconfiguration) شده تا حسگرهای مجاور جهت پوشش منطقه جایگزین شوند.</li>
+</ul>
+
+<h3 id="۲-۲-لجستیک-و-انبارداری-صنعتی-logistics-warehousing" dir="rtl" lang="fa">۲.۲. لجستیک و انبارداری صنعتی<span class="h-en" dir="ltr">Industrial Logistics &amp; Warehousing</span></h3>
+<p dir="rtl" lang="fa">در سیستم‌های انبارداری مدرن (مانند آمازون یا مراکز توزیع کالا)، فرایند پیک، پک و ارسال (Pick, Pack, and Ship) توسط ربات‌های خودمختار مدیریت می‌شود:</p>
+<ul dir="auto">
+<li dir="rtl" lang="fa">محیط به شدت پویا (Dynamic) و توزیع‌شده (Distributed) است.</li>
+<li dir="rtl" lang="fa">با برداشتن یک کالا توسط یک عامل، وضعیت قفسه از "پر" به "خالی" تغییر می‌کند و سایر عامل‌ها باید در لحظه از این تغییر مطلع شده یا تخصیص وظایف (Task Allocation) را بازتنظیم کنند.</li>
+</ul>
+
+<h3 id="۲-۳-ربات-های-فوتبالیست-و-امداد-و-نجات-robocup-rescue" dir="rtl" lang="fa">۲.۳. ربات‌های فوتبالیست و امداد و نجات<span class="h-en" dir="ltr">RoboCup Soccer &amp; Rescue</span></h3>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><strong>رباتیک فوتبالیست (RoboCup Soccer):</strong> اعضای یک تیم درون خود یک سیستم همکارانه (Cooperative) تشکیل می‌دهند و در برابر تیم مقابل سیستم رقابتی (Competitive) دارند. سرمربی استراتژی‌های کلان و نقش‌ها (Roles) را تعیین می‌کند، اما ربات‌ها در زمین تصمیمات لحظه‌ای می‌گیرند.</li>
+<li dir="rtl" lang="fa"><strong>امداد و نجات (RoboCup Rescue):</strong> در سناریوهای بحران شهری و زلزله، ربات‌ها و عامل‌ها باید بدون کنترل متمرکز، عملیات آواربرداری، اطفای حریق و نجات مصدومان را بر اساس محدودیت زمان و منابع توزیع کنند.</li>
+</ul>
+
+<h3 id="۲-۴-مسابقه-هدایت-گله-herding-contest" dir="rtl" lang="fa">۲.۴. مسابقه هدایت گله<span class="h-en" dir="ltr">Herding Contest</span></h3>
+<p dir="rtl" lang="fa">در این مسابقه، عامل‌ها باید گله‌ای از موجودات (با رفتارهای خوشه‌ای و گریز مشخص) را به سمت آغل‌های خود هدایت کنند. این مسئله چالش‌های رفتار جمعی (Swarm Behavior) و مدل‌سازی رفتار عامل‌های غیرهمکار را به خوبی نشان می‌دهد.</p>
+
+<h2 id="۳-مبانی-ریاضی-و-سودمندی-انتظاری-mathematical-foundations" dir="auto">۳. مبانی ریاضی و سودمندی انتظاری<span class="h-en" dir="ltr">Mathematical Foundations of Utility</span></h2>
+<div class="callout callout--important"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.8 19.2A1.2 1.2 0 0 0 3.9 21h16.2a1.2 1.2 0 0 0 1.1-1.8L12 3Z"/><path d="M12 9v5"/><circle cx="12" cy="17.4" r=".8" fill="currentColor" stroke="none"/></svg></span><span>فرض عقلانیت</span><span class="co-label">Key Assumption</span></div><div class="callout-body"><p dir="rtl" lang="fa">در هوش مصنوعی و سیستم‌های چندعامله، فرض بر این است که عامل‌ها عقلانی (Rational) هستند. یک عامل عقلانی کنشی را انتخاب می‌کند که سودمندی انتظاری (Expected Utility) او را در طول حیاتش بیشینه کند.</p></div></div>
+
+<h3 id="۳-۱-فرمول-بندی-ریاضی-سودمندی-انتظاری-expected-utility-formula" dir="rtl" lang="fa">۳.۱. فرمول‌بندی ریاضی سودمندی انتظاری</h3>
+<p dir="rtl" lang="fa">اگر s<sub>t</sub> نشان‌دهنده وضعیت محیط در زمان t و a<sub>t</sub> نشان‌دهنده کنش انتخابی عامل باشد، تابع سودمندی لحظه‌ای با U(s<sub>t</sub>, a<sub>t</sub>) نشان داده می‌شود. هدف عامل بیشینه‌سازی مجموع سودمندی‌های انتظاری در طول افق زمانی T است:</p>
+<div class="formula" dir="ltr">max<sub>a<sub>t</sub></sub> E [ Σ<sub>t=0</sub><sup>T</sup> γ<sup>t</sup> U(s<sub>t</sub>, a<sub>t</sub>) ]</div>
+<p dir="rtl" lang="fa">که در آن:</p>
+<ul dir="auto">
+<li dir="rtl" lang="fa">E نشان‌دهنده امید ریاضی (Mathematical Expectation) است، زیرا پیامد کنش‌ها به دلیل عدم قطعیت (Uncertainty) محیطی احتمالی است.</li>
+<li dir="rtl" lang="fa">γ ∈ [0, 1) ضریب تنزیل (Discount Factor) برای اهمیت دادن به پاداش‌های فوری در برابر پاداش‌های آتی است.</li>
+</ul>
+
+<h2 id="۴-نظریه-بازی-ها-و-تصمیم-گیری-تعاملی-game-theory" dir="auto">۴. نظریه بازی‌ها و تصمیم‌گیری تعاملی<span class="h-en" dir="ltr">Game Theory &amp; Interactive Decision Making</span></h2>
+<p dir="rtl" lang="fa">در سیستم‌های چندعامله، نتیجه کنش یک عامل تنها به تصمیم خود او بستگی ندارد، بلکه به تصمیمات سایر عامل‌ها نیز وابسته است. به این پدیده تصمیم‌گیری تعاملی (Interactive Decision Making) گفته می‌شود که بستر اصلی نظریه بازی‌ها (Game Theory) است.</p>
+
+<h3 id="۴-۱-معمای-زندانیان-prisoners-dilemma" dir="rtl" lang="fa">۴.۱. معمای زندانیان<span class="h-en" dir="ltr">Prisoner&#39;s Dilemma</span></h3>
+<p dir="rtl" lang="fa">یکی از معروف‌ترین پارادوکس‌های تصمیم‌گیری تعاملی، معمای زندانیان است. دو مظنون دستگیر شده‌اند و در اتاق‌های جداگانه استنطاق می‌شوند. ماتریس پاداش (ماتریس کیفر/سال‌های زندان) به صورت زیر است:</p>
+<div class="table-scroll"><table class="payoff"><thead><tr><th dir="rtl" lang="fa">وضعیت تصمیم</th><th dir="rtl" lang="fa">سکوت زندانی B <span dir="ltr">(Silence)</span></th><th dir="rtl" lang="fa">اعتراف زندانی B <span dir="ltr">(Confess)</span></th></tr></thead><tbody><tr><th dir="rtl" lang="fa">سکوت زندانی A <span dir="ltr">(Silence)</span></th><td class="hl" dir="rtl" lang="fa">(A: -1 سال، B: -1 سال)</td><td dir="rtl" lang="fa">(A: -20 سال، B: آزاد/0)</td></tr><tr><th dir="rtl" lang="fa">اعتراف زندانی A <span dir="ltr">(Confess)</span></th><td dir="rtl" lang="fa">(A: آزاد/0، B: -20 سال)</td><td class="ne" dir="rtl" lang="fa">(A: -5 سال، B: -5 سال)</td></tr></tbody></table></div>
+<p dir="rtl" lang="fa"><strong>تحلیل پارادوکس:</strong></p>
+<div class="callout callout--important"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.8 19.2A1.2 1.2 0 0 0 3.9 21h16.2a1.2 1.2 0 0 0 1.1-1.8L12 3Z"/><path d="M12 9v5"/><circle cx="12" cy="17.4" r=".8" fill="currentColor" stroke="none"/></svg></span><span>تعادل نش</span><span class="co-label">Nash Equilibrium</span></div><div class="callout-body"><p dir="rtl" lang="fa">اگر زندانی B سکوت کند، بهترین پاسخ A اعتراف است (۰ سال به جای ۱ سال). اگر زندانی B اعتراف کند، باز هم بهترین پاسخ A اعتراف است (۵ سال به جای ۲۰ سال). بنابراین استراتژی غالب (Dominant Strategy) برای هر دو عامل، اعتراف (Confess) است و نقطه‌ای که هر دو اعتراف می‌کنند تعادل نش بازی است (۵ سال زندان برای هر کدام).</p></div></div>
+<div class="callout callout--tip"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.4.3.6.7.6 1.2V16h6v-1c0-.5.2-.9.6-1.2A6 6 0 0 0 12 3Z"/></svg></span><span>بهینگی پارتو</span><span class="co-label">Pareto Optimality</span></div><div class="callout-body"><p dir="rtl" lang="fa">نقطه (سکوت، سکوت) با ۱ سال زندان برای هر کدام، از نظر جمعی بهینه‌تر از (۵ سال، ۵ سال) است؛ اما به دلیل عدم امکان اعتماد و تعامل ایزوله‌شده، عقلانیت فردی (Individual Rationality) منجر به یک نتیجه جمعی غیربهینه می‌شود.</p></div></div>
+
+<h3 id="۴-۲-کاربردهای-اقتصادی-و-سیاسی-economic-political-applications" dir="rtl" lang="fa">۴.۲. کاربردهای اقتصادی و سیاسی تصمیم‌گیری تعاملی</h3>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><strong>مکانیسم عرضه و تقاضا:</strong> رفتار خریداران در عدم خرید یک کالای گران‌شده، نمونه‌ای از تصمیم جمعی تعاملی برای کاهش قیمت است.</li>
+<li dir="rtl" lang="fa"><strong>مذاکرات سیاسی و بین‌المللی:</strong> توافق‌نامه‌های چندجانبه (مانند برجام) نمونه‌هایی از مذاکرات تعاملی پایدار یا ناپایدار در نظریه بازی‌ها هستند.</li>
+</ul>
+
+<h2 id="۵-سیلابس-درسی-و-ساختار-ارزیابی-syllabus-evaluation" dir="auto">۵. سیلابس درسی و ساختار ارزیابی<span class="h-en" dir="ltr">Syllabus &amp; Evaluation</span></h2>
+
+<h3 id="۵-۱-سرفصل-های-اصلی-درس-course-topics" dir="rtl" lang="fa">۵.۱. سرفصل‌های اصلی درس</h3>
+<ol dir="auto">
+<li dir="rtl" lang="fa"><strong>معماری عامل‌ها (Agent Architectures):</strong> عامل‌های واکنشی ساده (Simple Reflex)، مبتنی بر مدل (Model-based)، مبتنی بر هدف (Goal-based)، مبتنی بر سودمندی (Utility-based) و معماری‌های ترکیبی (Hybrid).</li>
+<li dir="rtl" lang="fa"><strong>مسائل ارضای محدودیت توزیع‌شده (Distributed CSP - DCSP):</strong> مسئله رنگ‌آمیزی گراف توزیع‌شده (Distributed Graph Coloring)، الگوریتم‌های Asynchronous Backtracking (ABT) و ADOPT.</li>
+<li dir="rtl" lang="fa"><strong>نظریه بازی‌ها (Game Theory):</strong> بازی‌های فرم نرمال، تعادل نش، استراتژی‌های مختلط و طراحی مکانیسم (Mechanism Design).</li>
+<li dir="rtl" lang="fa"><strong>ارتباطات و مذاکره (Communication, Auctions &amp; Negotiation):</strong> مزایده‌ها، پروتکل‌های مذاکره و استدلال (Argumentation).</li>
+<li dir="rtl" lang="fa"><strong>یادگیری تقویتی چندعامله (Multi-Agent Reinforcement Learning - MARL):</strong> الگوریتم‌های یادگیری در محیط‌های چندعامله.</li>
+</ol>
+
+<h3 id="۵-۲-ساختار-بارم-بندی-و-پروژه-درس-grading-project" dir="rtl" lang="fa">۵.۲. ساختار بارم‌بندی و پروژه درس</h3>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><strong>امتحانات:</strong> آزمون میان‌ترم و آزمون پایان‌ترم.</li>
+<li dir="rtl" lang="fa"><strong>ارائه پژوهشی (Research Presentation):</strong> ارائه ۱۰ دقیقه‌ای مقالات معتبر کنفرانس‌های اصلی (مانند AAMAS).</li>
+<li dir="rtl" lang="fa"><strong>پروژه عملی (Two-Phase Project):</strong>
+<ul dir="auto">
+<li dir="rtl" lang="fa">فاز اول: تحلیل مسئله، مدل‌سازی محیط و پیاده‌سازی اولیه مقاله/سناریو.</li>
+<li dir="rtl" lang="fa">فاز دوم: پیاده‌سازی کامل، بهبود الگوریتم و ارزیابی نتایج.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="۶-پرسش-های-مرور-و-خودآزمایی-review-questions" dir="rtl" lang="fa">۶. پرسش‌های مرور و خودآزمایی<span class="h-en" dir="ltr">Review Questions</span></h2>
+<div class="qa-list">
+<details class="qa"><summary><span><span class="qa-num" dir="ltr">Q1</span>سیستم چندعامله (MAS) را تعریف کرده و سه ویژگی اصلی آن را نام ببرید.</span></summary><div class="qa-a" dir="rtl" lang="fa"><strong>پاسخ: </strong>MAS سیستمی متشکل از چندین عامل خودمختار است که در یک محیط مشترک تعامل دارند. سه ویژگی اصلی: ۱) اطلاعات توزیع‌شده، ۲) کنترل توزیع‌شده، ۳) وجود طیف تعاملات همکارانه تا رقابتی.</div></details>
+<details class="qa"><summary><span><span class="qa-num" dir="ltr">Q2</span>چرا در یک سیستم توزیع‌شده مانند ترافیک شهری، کنترل متمرکز (Centralized Control) ناکارآمد است؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><strong>پاسخ: </strong>به دلیل حجم بسیار بالای داده‌های حسگرها، نرخ بالای تغییرات لحظه‌ای، پیچیدگی محاسباتی شدید برای پردازش یکپارچه، و وجود نقطه تک‌شکست (Single Point of Failure).</div></details>
+<details class="qa"><summary><span><span class="qa-num" dir="ltr">Q3</span>فرمول سودمندی انتظاری (Expected Utility) را نوشته و علت حضور پارامتر امید ریاضی (E) را توضیح دهید.</span></summary><div class="qa-a" dir="rtl" lang="fa"><strong>پاسخ: </strong>فرمول: <span class="mono" dir="ltr">E [ Σ γ<sup>t</sup> U(s<sub>t</sub>, a<sub>t</sub>) ]</span>. علامت امید ریاضی به دلیل وجود عدم قطعیت (Uncertainty) در محیط و احتمالی بودن پیامد کنش‌هاست.</div></details>
+<details class="qa"><summary><span><span class="qa-num" dir="ltr">Q4</span>در مسئله رنگ‌آمیزی گراف توزیع‌شده (Distributed Graph Coloring)، هر گره و هر یال نماینده چیست؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><strong>پاسخ: </strong>هر گره (Node) نماینده یک عامل (Agent) و هر یال (Edge) نماینده یک محدودیت (Constraint) بین دو عامل است که نباید رنگ یکسان انتخاب کنند.</div></details>
+<details class="qa"><summary><span><span class="qa-num" dir="ltr">Q5</span>تعادل نش (Nash Equilibrium) در معمای زندانیان چیست و چرا با بهینگی پارتو متفاوت است؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><strong>پاسخ: </strong>تعادل نش نقطه (اعتراف، اعتراف) با ۵ سال زندان است زیرا هیچ عاملی انگیزه‌ای برای تغییر یک‌جانبه استراتژی ندارد. این نقطه با بهینگی پارتو (سکوت، سکوت با ۱ سال زندان) متفاوت است زیرا عقلانیت فردی بدون اعتماد جمعی به نقطه بهینه جمعی نمی‌رسد.</div></details>
+<details class="qa"><summary><span><span class="qa-num" dir="ltr">Q6</span>تفاوت سیستم همکارانه (Cooperative) و رقابتی (Competitive) را با مثال RoboCup بیان کنید.</span></summary><div class="qa-a" dir="rtl" lang="fa"><strong>پاسخ: </strong>در RoboCup Soccer، ربات‌های یک تیم هدف مشترک دارند (همکارانه)، اما تعامل میان دو تیم مخالف بر سر برنده شدن است (رقابتی).</div></details>
+<details class="qa"><summary><span><span class="qa-num" dir="ltr">Q7</span>مسئله Pick, Pack, and Ship در انبارداری صنعتی چه ویژگی محیطی مهمی را نشان می‌دهد؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><strong>پاسخ: </strong>پویایی (Dynamic Environment) و توزیع‌شدگی اطلاعات، به طوری که با برداشتن کالا وضعیت قفسه‌ها به صورت آنی تغییر می‌کند.</div></details>
+<details class="qa"><summary><span><span class="qa-num" dir="ltr">Q8</span>هدف اصلی الگوریتم‌های DCSP مانند ABT چیست؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><strong>پاسخ: </strong>حل مسائل ارضای محدودیت بدون نیاز به جمع‌آوری تمام متغیرها در یک سرور مرکزی و از طریق تبادل پیام‌های محلی بین عامل‌ها.</div></details>
+<details class="qa"><summary><span><span class="qa-num" dir="ltr">Q9</span>نقش سرمربی در رباتیک فوتبالیست چیست؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><strong>پاسخ: </strong>تعیین استراتژی‌های سطح بالا، تخصیص نقش‌ها (Roles) و الگوی تعاملات، در حالی که تصمیمات تاکتیکی لحظه‌ای بر عهده خود ربات‌هاست.</div></details>
+<details class="qa"><summary><span><span class="qa-num" dir="ltr">Q10</span>فازهای دوگانه پروژه درسی شامل چه مواردی است؟</span></summary><div class="qa-a" dir="rtl" lang="fa"><strong>پاسخ: </strong>فاز اول شامل تحلیل مسئله و پیاده‌سازی اولیه؛ فاز دوم شامل توسعه کامل، اعمال بهبود بر روی مقاله و ارزیابی نهایی.</div></details>
+</div>
+
+<h2 id="۷-واژه-نامه-تخصصی-glossary" dir="rtl" lang="fa">۷. واژه‌نامه تخصصی<span class="h-en" dir="ltr">Glossary of Technical Terms</span></h2>
+<div class="table-scroll"><table class="glossary-table" dir="rtl" lang="fa"><thead><tr><th dir="rtl" lang="fa">واژه انگلیسی</th><th dir="rtl" lang="fa">معادل فارسی</th><th dir="rtl" lang="fa">توضیح مختصر</th></tr></thead><tbody>
+<tr><td dir="ltr" lang="en">Autonomous Agent</td><td dir="rtl" lang="fa">عامل خودمختار</td><td dir="rtl" lang="fa">موجودیتی که مستقلانه و بر اساس ادراک خود تصمیم‌گیری می‌کند.</td></tr>
+<tr><td dir="ltr" lang="en">Multi-Agent System (MAS)</td><td dir="rtl" lang="fa">سیستم چندعامله</td><td dir="rtl" lang="fa">سیستمی شامل چندین عامل با کنترل و اطلاعات توزیع‌شده.</td></tr>
+<tr><td dir="ltr" lang="en">Expected Utility (EU)</td><td dir="rtl" lang="fa">سودمندی انتظاری</td><td dir="rtl" lang="fa">میانگین وزن‌دار سودمندی حاصل از کنش‌ها تحت عدم قطعیت.</td></tr>
+<tr><td dir="ltr" lang="en">Interactive Decision Making</td><td dir="rtl" lang="fa">تصمیم‌گیری تعاملی</td><td dir="rtl" lang="fa">تصمیم‌گیری در محیطی که برآمد آن به کنش‌های چندین عامل وابسته است.</td></tr>
+<tr><td dir="ltr" lang="en">Prisoner&#39;s Dilemma</td><td dir="rtl" lang="fa">معمای زندانیان</td><td dir="rtl" lang="fa">بازی کلاسیک نظریه بازی‌ها که تعارض عقلانیت فردی و جمعی را نشان می‌دهد.</td></tr>
+<tr><td dir="ltr" lang="en">Nash Equilibrium</td><td dir="rtl" lang="fa">تعادل نش</td><td dir="rtl" lang="fa">وضعیتی که هیچ عاملی با تغییر یک‌جانبه استراتژی سود بیشتری کسب نمی‌کند.</td></tr>
+<tr><td dir="ltr" lang="en">Pareto Optimality</td><td dir="rtl" lang="fa">بهینگی پارتو</td><td dir="rtl" lang="fa">وضعیتی که بهبود موقعیت یک عامل بدون تضعیف موقعیت عامل دیگر ممکن نیست.</td></tr>
+<tr><td dir="ltr" lang="en">Distributed CSP (DCSP)</td><td dir="rtl" lang="fa">مسئله ارضای محدودیت توزیع‌شده</td><td dir="rtl" lang="fa">حل مسائل محدودیت‌دار در شبکه‌ای از عامل‌های توزیع‌شده.</td></tr>
+<tr><td dir="ltr" lang="en">Agentic AI</td><td dir="rtl" lang="fa">هوش مصنوعی عاملی</td><td dir="rtl" lang="fa">نسل جدید سیستم‌های هوش مصنوعی مبتنی بر عامل‌های خودمختار.</td></tr>
+<tr><td dir="ltr" lang="en">Wireless Sensor Network (WSN)</td><td dir="rtl" lang="fa">شبکه حسگر بی‌سیم</td><td dir="rtl" lang="fa">شبکه‌ای از حسگرهای خودمختار جهت پایش محیطی.</td></tr>
+</tbody></table></div>
+      </div>
+
+      <div class="session-foot-note">
+        این صفحه یادداشت مطالعاتی دانشجویان بر اساس جزوهٔ اختصاصی جلسه است و جایگزین اعلام‌های رسمی استاد نیست.
+        منبع: جزوهٔ اختصاصی جلسه ۱ · درس سیستم‌های چندعامله.
+      </div>
+
+      <nav class="session-nav" aria-label="ناوبری جلسات">
+
+        <a class="next" href="session-02.html"><span class="sn-label">جلسهٔ بعد</span><span class="sn-title">جلسه ۲ — چرخه عملیاتی، تاکسونومی محیط و رفتارهای عاملی</span></a>
+      </nav>
+    </article>
+
+    <aside class="toc" data-toc aria-label="فهرست مطالب">
+      <div class="toc-title">در این صفحه</div>
+      <ol>
+<li><a href="#۱-مقدمه-و-جایگاه-علمی-introduction-context">۱. مقدمه و جایگاه علمی</a></li>
+<li class="toc-sub"><a href="#۱-۱-تعریف-عامل-خودمختار-autonomous-agent">۱.۱. تعریف عامل خودمختار</a></li>
+<li class="toc-sub"><a href="#۱-۲-تعریف-سیستم-چندعامله-multi-agent-system">۱.۲. تعریف سیستم چندعامله</a></li>
+<li><a href="#۲-کاربردها-و-سناریوهای-دنیای-واقعی-real-world-applications">۲. کاربردها و سناریوهای دنیای واقعی</a></li>
+<li class="toc-sub"><a href="#۲-۱-شبکه-های-حسگر-بی-سیم-wireless-sensor-networks">۲.۱. شبکه‌های حسگر بی‌سیم</a></li>
+<li class="toc-sub"><a href="#۲-۲-لجستیک-و-انبارداری-صنعتی-logistics-warehousing">۲.۲. لجستیک و انبارداری صنعتی</a></li>
+<li class="toc-sub"><a href="#۲-۳-ربات-های-فوتبالیست-و-امداد-و-نجات-robocup-rescue">۲.۳. ربات‌های فوتبالیست و امداد و نجات</a></li>
+<li class="toc-sub"><a href="#۲-۴-مسابقه-هدایت-گله-herding-contest">۲.۴. مسابقه هدایت گله</a></li>
+<li><a href="#۳-مبانی-ریاضی-و-سودمندی-انتظاری-mathematical-foundations">۳. مبانی ریاضی و سودمندی انتظاری</a></li>
+<li class="toc-sub"><a href="#۳-۱-فرمول-بندی-ریاضی-سودمندی-انتظاری-expected-utility-formula">۳.۱. فرمول‌بندی ریاضی سودمندی انتظاری</a></li>
+<li><a href="#۴-نظریه-بازی-ها-و-تصمیم-گیری-تعاملی-game-theory">۴. نظریه بازی‌ها و تصمیم‌گیری تعاملی</a></li>
+<li class="toc-sub"><a href="#۴-۱-معمای-زندانیان-prisoners-dilemma">۴.۱. معمای زندانیان</a></li>
+<li class="toc-sub"><a href="#۴-۲-کاربردهای-اقتصادی-و-سیاسی-economic-political-applications">۴.۲. کاربردهای اقتصادی و سیاسی</a></li>
+<li><a href="#۵-سیلابس-درسی-و-ساختار-ارزیابی-syllabus-evaluation">۵. سیلابس درسی و ساختار ارزیابی</a></li>
+<li class="toc-sub"><a href="#۵-۱-سرفصل-های-اصلی-درس-course-topics">۵.۱. سرفصل‌های اصلی درس</a></li>
+<li class="toc-sub"><a href="#۵-۲-ساختار-بارم-بندی-و-پروژه-درس-grading-project">۵.۲. ساختار بارم‌بندی و پروژه درس</a></li>
+<li><a href="#۶-پرسش-های-مرور-و-خودآزمایی-review-questions">۶. پرسش‌های مرور و خودآزمایی</a></li>
+<li><a href="#۷-واژه-نامه-تخصصی-glossary">۷. واژه‌نامهٔ تخصصی</a></li></ol>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-brand" style="margin-bottom:14px">
+      <span class="brand-logo" aria-hidden="true"><img src="../assets/img/mas-logo.svg" alt=""></span>
+      <span><strong>سیستم‌های چندعامله</strong><span dir="ltr">MAS · Multi-Agent Systems</span></span>
+    </div>
+    <div class="footer-bottom" style="margin-top:0;border-top:0;padding-top:0">
+      <span>© <span data-year>2026</span> — درس سیستم‌های چندعامله</span>
+      <span class="mono">MAS · Multi-Agent Systems</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/mas-fun.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>
