@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۵ · معماری‌های سابسانپشن، استیگمرژی و معماری‌های استنتاجی مبتنی بر دانش — سیستم‌های چندعامله</title>
+<meta name="description" content="معماری سابسانپشن رودنی بروکس با سلسله‌مراتب اولویت و رابطهٔ سرکوب (≺)، سناریوی جمع‌آوری نمونه در مریخ با قوانین ۵گانه و استیگمرژی، و معماری استنتاجی مبتنی بر دانش با استنتاج منطقی Modus Ponens و دامنه‌های جاروبرقی و دنیای بلاک‌ها.">
+<meta name="theme-color" content="#0a1e15">
+<script>(function(){try{var t=localStorage.getItem("nlp-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/mas-logo-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/mas-theme.css">
+</head>
+<body>
+<a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+<div class="read-progress" data-read-progress aria-hidden="true"><span></span></div>
+
+<header class="session-topbar">
+  <div class="container inner">
+    <span class="brand-logo brand-logo--sm" aria-hidden="true"><img src="../assets/img/mas-logo.svg" alt=""></span>
+    <a class="back" href="../notes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg><span>یادداشت‌ها</span></a>
+    <div class="bar-title"><span class="mono">S۰۵</span>معماری‌های سابسانپشن، استیگمرژی و معماری‌های استنتاجی مبتنی بر دانش</div>
+    <div class="actions">
+      <button class="icon-btn" type="button" data-print aria-label="چاپ صفحه" title="چاپ صفحه"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg></button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="تغییر پوسته" title="تغییر پوسته"><svg data-icon-moon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg><svg data-icon-sun viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    </div>
+  </div>
+  <div class="container"><nav class="topbar-nav" aria-label="ناوبری اصلی"><a href="../index.html">خانه</a><a href="../notes.html" aria-current="page">یادداشت جلسات</a><a href="../index.html#grading">ارزشیابی و پروژه</a></nav></div>
+</header>
+
+<main id="main" class="container">
+  <div class="session-layout">
+    <article class="session-main">
+      <header class="session-hero">
+        <nav class="breadcrumb" aria-label="مسیر">
+          <a href="../index.html">خانه</a><span class="sep">/</span>
+          <a href="../notes.html">یادداشت جلسات</a><span class="sep">/</span>
+          <span>جلسه ۵</span>
+        </nav>
+        <div class="session-kicker">
+          <span class="badge badge--live">جلسه ۰۵</span>
+          <span class="tag tag--brand">سیستم‌های چندعامله</span>
+        </div>
+        <h1>معماری‌های سابسانپشن، استیگمرژی و معماری‌های استنتاجی مبتنی بر دانش</h1>
+        <div class="h1-en" dir="ltr">Subsumption Architecture, Stigmergy &amp; Knowledge-Based Deliberative Architectures</div>
+
+        <figure class="diagram" role="img" aria-label="پشتهٔ لایه‌های سابسانپشن با فلش‌های سرکوب، کاوشگر مریخ با دنبالهٔ فرومون و گرادیان سیگنال، و پشتهٔ دنیای بلاک‌ها">
+          <svg viewBox="0 0 760 330" style="font-family:'JetBrains Mono',ui-monospace,monospace" aria-hidden="true">
+            <defs>
+              <marker id="sup05" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10z" fill="#f87171"/>
+              </marker>
+            </defs>
+
+            <!-- suppression: layer0 -> layer2 (drawn under the boxes) -->
+            <line x1="175" y1="172" x2="175" y2="92" stroke="#f87171" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#sup05)"/>
+
+            <!-- subsumption stack -->
+            <rect x="40" y="44" width="190" height="46" rx="11" fill="rgba(251,191,36,.08)" stroke="#fbbf24" stroke-width="2"/>
+            <text x="135" y="64" text-anchor="middle" font-size="12.5" fill="#fde68a">Layer 2 · Move to Goal</text>
+            <text x="135" y="80" text-anchor="middle" font-size="9.5" fill="#9fb8a9">lowest priority</text>
+            <rect x="40" y="108" width="190" height="46" rx="11" fill="rgba(110,231,183,.07)" stroke="#6ee7b7" stroke-width="2"/>
+            <text x="135" y="128" text-anchor="middle" font-size="12" fill="#cfe6da">Layer 1 · Path Clear → Move</text>
+            <text x="135" y="144" text-anchor="middle" font-size="9.5" fill="#9fb8a9">mid priority</text>
+            <rect x="40" y="172" width="190" height="46" rx="11" fill="rgba(52,211,153,.10)" stroke="#34d399" stroke-width="2.2"/>
+            <text x="135" y="192" text-anchor="middle" font-size="12.5" fill="#d6f0e2">Layer 0 · Avoid Obstacle</text>
+            <text x="135" y="208" text-anchor="middle" font-size="9.5" fill="#34d399">highest priority</text>
+            <!-- suppression: layer0 -> layer1 -->
+            <line x1="105" y1="172" x2="105" y2="156" stroke="#f87171" stroke-width="2" marker-end="url(#sup05)"/>
+            <text x="121" y="169" font-size="15" fill="#f87171">≺</text>
+            <text x="187" y="100" font-size="15" fill="#f87171">≺</text>
+            <!-- sensors / actuators -->
+            <rect x="70" y="230" width="130" height="22" rx="7" fill="#143325" stroke="#9fb8a9" stroke-width="1.4"/>
+            <text x="135" y="245" text-anchor="middle" font-size="10.5" fill="#9fb8a9">sensors</text>
+            <line x1="135" y1="218" x2="135" y2="228" stroke="#9fb8a9" stroke-width="1.6"/>
+            <text x="206" y="245" font-size="10" fill="#9fb8a9">→ actuators</text>
+            <text x="135" y="272" text-anchor="middle" font-size="10" fill="#9fb8a9">lower layers suppress upper (≺)</text>
+
+            <!-- broadcast station + signal gradient -->
+            <line x1="455" y1="62" x2="455" y2="42" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="455" cy="37" r="4.5" fill="#60a5fa"/>
+            <rect x="443" y="62" width="24" height="10" rx="4" fill="#143325" stroke="#60a5fa" stroke-width="1.4"/>
+            <circle cx="455" cy="112" r="16" fill="none" stroke="#60a5fa" stroke-width="1.6" stroke-dasharray="4 4" opacity=".55"/>
+            <circle cx="455" cy="112" r="28" fill="none" stroke="#60a5fa" stroke-width="1.4" stroke-dasharray="4 4" opacity=".38"/>
+            <circle cx="455" cy="112" r="40" fill="none" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="4 4" opacity=".22"/>
+            <text x="455" y="168" text-anchor="middle" font-size="11" fill="#60a5fa">∇S · signal gradient</text>
+
+            <!-- rover -->
+            <rect x="310" y="176" width="84" height="44" rx="13" fill="#10291d" stroke="#6ee7b7" stroke-width="2.5"/>
+            <g class="bot-eye">
+              <circle cx="338" cy="194" r="6" fill="#6ee7b7"/>
+              <circle cx="366" cy="194" r="6" fill="#6ee7b7"/>
+              <circle cx="340" cy="192" r="2.1" fill="#0f2b1e"/>
+              <circle cx="368" cy="192" r="2.1" fill="#0f2b1e"/>
+            </g>
+            <path d="M342 208q7 6.5 14 0" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+            <g class="bot-antenna">
+              <line x1="352" y1="176" x2="352" y2="150" stroke="#6ee7b7" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="352" cy="144" r="5" fill="#a3e635"/>
+            </g>
+            <rect x="322" y="220" width="20" height="13" rx="6" fill="#0f2b1e" stroke="#9fb8a9" stroke-width="1.6"/>
+            <rect x="376" y="220" width="20" height="13" rx="6" fill="#0f2b1e" stroke="#9fb8a9" stroke-width="1.6"/>
+
+            <!-- pheromone / particle trail behind the rover -->
+            <circle cx="296" cy="200" r="4" fill="#fbbf24" opacity=".9"/>
+            <circle cx="280" cy="192" r="3.4" fill="#fbbf24" opacity=".7"/>
+            <circle cx="265" cy="184" r="2.8" fill="#fbbf24" opacity=".5"/>
+            <circle cx="252" cy="178" r="2.2" fill="#fbbf24" opacity=".35"/>
+            <circle cx="241" cy="173" r="1.8" fill="#fbbf24" opacity=".22"/>
+            <text x="236" y="264" text-anchor="end" font-size="10" fill="#fbbf24" opacity=".85">pheromone trail</text>
+
+            <!-- sample cluster ahead -->
+            <path d="M478 244 q16 -16 32 0" fill="none" stroke="#a3e635" stroke-width="1.6" stroke-dasharray="4 3" opacity=".8"/>
+            <circle cx="486" cy="238" r="3" fill="#a3e635"/>
+            <circle cx="497" cy="232" r="2.4" fill="#a3e635"/>
+            <circle cx="504" cy="240" r="2.8" fill="#a3e635"/>
+            <text x="494" y="268" text-anchor="middle" font-size="10" fill="#a3e635" opacity=".9">sample cluster</text>
+
+            <!-- blocks world -->
+            <text x="665" y="88" text-anchor="middle" font-size="12" fill="#9fb8a9">On(A, B) ∧ On(B, C)</text>
+            <rect x="636" y="112" width="58" height="44" rx="7" fill="rgba(251,191,36,.12)" stroke="#fbbf24" stroke-width="2"/>
+            <text x="665" y="139" text-anchor="middle" font-size="16" fill="#fde68a">A</text>
+            <rect x="623" y="156" width="58" height="44" rx="7" fill="rgba(110,231,183,.10)" stroke="#6ee7b7" stroke-width="2"/>
+            <text x="652" y="183" text-anchor="middle" font-size="16" fill="#cfe6da">B</text>
+            <rect x="610" y="200" width="58" height="44" rx="7" fill="rgba(96,165,250,.10)" stroke="#60a5fa" stroke-width="2"/>
+            <text x="639" y="227" text-anchor="middle" font-size="16" fill="#bfdbfe">C</text>
+            <rect x="556" y="244" width="180" height="10" rx="4" fill="#1a4230" stroke="#9fb8a9" stroke-width="1.6"/>
+
+            <text x="135" y="304" text-anchor="middle" font-size="11" fill="#6ee7b7">معماری سابسانپشن</text>
+            <text x="390" y="304" text-anchor="middle" font-size="11" fill="#6ee7b7">کاوشگر مریخ · استیگمرژی</text>
+            <text x="665" y="304" text-anchor="middle" font-size="11" fill="#fbbf24">دنیای بلاک‌ها</text>
+          </svg>
+          <figcaption style="font-size:.78rem;color:var(--muted);margin-top:10px">پشتهٔ لایه‌های سابسانپشن با فلش‌های سرکوب (<span class="mono" dir="ltr">≺</span>)، کاوشگر مریخ با دنبالهٔ فرومون و گرادیان سیگنال <span class="mono" dir="ltr">∇S</span>، و پشتهٔ دنیای بلاک‌ها</figcaption>
+        </figure>
+
+        <div class="session-summary"><strong>خلاصه: </strong>معماری سابسانپشن بروکس با لایه‌های رفتاری و رابطهٔ سرکوب (<span class="mono" dir="ltr">≺</span>)، سناریوی جمع‌آوری نمونه در مریخ با قوانین ۵گانه و استیگمرژی الهام‌گرفته از مورچه‌ها، و معماری استنتاجی مبتنی بر دانش با استنتاج منطقی <span class="mono" dir="ltr">Modus Ponens</span> و دامنه‌های جاروبرقی و دنیای بلاک‌ها.</div>
+        <div class="session-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>دکتر منیره عبدوس</span></span>
+          <span class="mono" dir="ltr">Dr. Monireh Abdoos</span>
+        </div>
+      </header>
+
+      <details class="toc-mobile"><summary>فهرست مطالب</summary><ol><li><a href="#۱-معماری-سابسانپشن-subsumption-architecture">۱. معماری سابسانپشن</a></li>
+<li class="toc-sub"><a href="#۱-۱-اصول-بنیادی-و-فرمول-بندی-ریاضی-لایه-ها">۱.۱. اصول بنیادی و فرمول‌بندی ریاضی لایه‌ها</a></li>
+<li class="toc-sub"><a href="#۱-۲-الگوریتم-و-شبه-کد-چرخه-اجرا-execution-loop">۱.۲. الگوریتم و شبه‌کد چرخه اجرا</a></li>
+<li class="toc-sub"><a href="#۱-۳-تحلیل-سناریو-۱-کنترل-ربات-متحرک-و-اجتناب-از-موانع">۱.۳. تحلیل سناریو ۱: کنترل ربات متحرک و اجتناب از موانع</a></li>
+<li><a href="#۲-سناریوی-پیشرفته-جمع-آوری-نمونه-در-مریخ-و-ارتباطات-غیرمستقیم">۲. سناریوی پیشرفته: جمع‌آوری نمونه در مریخ و ارتباطات غیرمستقیم</a></li>
+<li class="toc-sub"><a href="#۲-۱-انتشار-سیگنال-signal-gradient-broadcasting-و-قوانین-۵-گانه">۲.۱. انتشار سیگنال و قوانین ۵ گانه</a></li>
+<li class="toc-sub"><a href="#۲-۲-مکانیسم-استیگمرژی-stigmergy-و-الهام-از-کلونی-مورچه-ها">۲.۲. مکانیسم استیگمرژی و الهام از کلونی مورچه‌ها</a></li>
+<li class="toc-sub"><a href="#۲-۳-ارزیابی-جامع-معماری-سابسانپشن-مزایا-و-معایب">۲.۳. ارزیابی جامع معماری سابسانپشن (مزایا و معایب)</a></li>
+<li><a href="#۳-معماری-استنتاجی-و-سیستم-های-مبتنی-بر-دانش-deliberative-architecture">۳. معماری استنتاجی و سیستم‌های مبتنی بر دانش</a></li>
+<li class="toc-sub"><a href="#۳-۱-پایگاه-دانش-kb-در-برابر-پایگاه-داده-database">۳.۱. پایگاه دانش (KB) در برابر پایگاه داده (Database)</a></li>
+<li class="toc-sub"><a href="#۳-۲-الگوریتم-استنتاج-منطقی-deductive-reasoning">۳.۲. الگوریتم استنتاج منطقی</a></li>
+<li class="toc-sub"><a href="#۳-۳-مدل-سازی-نمادین-دامنه-جاروبرقی-vacuum-cleaner-domain">۳.۳. مدل‌سازی نمادین دامنه جاروبرقی</a></li>
+<li class="toc-sub"><a href="#۳-۴-مدل-سازی-نمادین-دنیای-بلاک-ها-blocks-world-domain">۳.۴. مدل‌سازی نمادین دنیای بلاک‌ها</a></li>
+<li><a href="#۴-پرسش-و-پاسخ-های-مطرح-شده-در-کلاس-درس-classroom-qa">۴. پرسش و پاسخ‌های مطرح‌شده در کلاس درس</a></li>
+<li><a href="#۵-واژه-نامه-تخصصی-glossary">۵. واژه‌نامه تخصصی</a></li></ol></details>
+
+      <div class="prose">
+<p dir="rtl" lang="fa">معماری عامل‌های هوشمند (<span dir="ltr">Agent Architectures</span>) تعیین‌کننده نحوه تبدیل ورودی‌های سنسوری و ادراکی (<span dir="ltr">Percepts</span>) به کنش‌های عملیاتی (<span dir="ltr">Actions</span>) در محیط‌های پیچیده و پویا است. در این جلسه، دو پارادایم اصلی معماری شامل معماری‌های واکنشی پیشرفته (به‌ویژه معماری سابسانپشن) و معماری‌های استنتاجی مبتنی بر دانش (<span dir="ltr">Deliberative / Knowledge-Based Architectures</span>) به همراه مکانیسم‌های ارتباط غیرمستقیم تعاملی نظیر استیگمرژی (<span dir="ltr">Stigmergy</span>) به تفصیل مورد بررسی و فرمول‌بندی ریاضی قرار می‌گیرند.</p>
+
+<h2 id="۱-معماری-سابسانپشن-subsumption-architecture" dir="rtl" lang="fa">۱. معماری سابسانپشن<span class="h-en" dir="ltr">Subsumption Architecture</span></h2>
+<p dir="rtl" lang="fa">معماری سابسانپشن یکی از معروف‌ترین و کارآمدترین معماری‌های واکنشی (<span dir="ltr">Reactive Architecture</span>) و مبتنی بر قوانین است که نخستین بار توسط رودنی بروکس (<span dir="ltr">Rodney Brooks</span>) معرفی شد. در این معماری، رفتار عامل به جای یک ساختار متمرکز و پیچیده استنتاجی، از طریق مجموعه‌ای از لایه‌های رفتاری مستقل و موازی سازمان‌دهی می‌شود.</p>
+
+<h3 id="۱-۱-اصول-بنیادی-و-فرمول-بندی-ریاضی-لایه-ها" dir="rtl" lang="fa">۱.۱. اصول بنیادی و فرمول‌بندی ریاضی لایه‌ها<span class="h-en" dir="ltr">Priority Hierarchy &amp; Behavior Rules</span></h3>
+<p dir="rtl" lang="fa">در معماری سابسانپشن، لایه‌های مختلف رفتاری بر اساس یک سلسله‌مراتب اولویت (<span dir="ltr">Priority Hierarchy</span>) روی یکدیگر قرار می‌گیرند. رفتارهای پایه و سطح پایین (<span dir="ltr">Low-level Behaviors</span>) مانند اجتناب از برخورد، در لایه‌های زیرین قرار گرفته و بالاترین اولویت اجرایی را دارند، در حالی که رفتارهای سطح بالا (<span dir="ltr">High-level Behaviors</span>) مانند برنامه‌ریزی یا رسیدن به هدف، در لایه‌های بالاتر تعبیه می‌شوند.</p>
+<p dir="rtl" lang="fa">از نظر ریاضی، هر قانون رفتار (<span dir="ltr">Behavior Rule</span>) به صورت یک جفت مرتب از شرط پیش‌نیاز (<span dir="ltr">Precondition</span>) و کنش (<span dir="ltr">Action</span>) تعریف می‌شود:</p>
+<div class="formula" dir="ltr" lang="en">Rule = (c, a)&nbsp;&nbsp;where&nbsp;&nbsp;c ∈ C, a ∈ A</div>
+<p dir="rtl" lang="fa">در این فرمول‌بندی، <span class="mono" dir="ltr">C</span> مجموعه شرایط ادراکی حاصل از سنسورها (<span dir="ltr">Perception Conditions</span>) و <span class="mono" dir="ltr">A</span> مجموعه کنش‌های قابل اجرا توسط عملگرها است. هنگامی که چند قانون به صورت هم‌زمان فعال یا شلیک (<span dir="ltr">Fired</span>) می‌شوند، رابطه اولویت و سرکوب‌کنندگی (<span dir="ltr">Inhibition / Subsumption Relation</span>) تکلیف کنش نهایی را مشخص می‌کند. این رابطه اولویت با نماد <span class="mono" dir="ltr">≺</span> نشان داده می‌شود:</p>
+<div class="formula" dir="ltr" lang="en">B₁ ≺ B₂&nbsp;&nbsp;or&nbsp;&nbsp;(B₁, B₂) ∈ ≺</div>
+<p dir="rtl" lang="fa">عبارت فوق به این معناست که رفتار <span class="mono" dir="ltr">B₁</span> در سلسله‌مراتب اولویت، رفتار <span class="mono" dir="ltr">B₂</span> را سرکوب یا سابسام (<span dir="ltr">Subsume</span>) می‌کند و در صورت فعال‌سازی هم‌زمان، کنش مربوط به <span class="mono" dir="ltr">B₁</span> اجرا خواهد شد.</p>
+
+<h3 id="۱-۲-الگوریتم-و-شبه-کد-چرخه-اجرا-execution-loop" dir="rtl" lang="fa">۱.۲. الگوریتم و شبه‌کد چرخه اجرا<span class="h-en" dir="ltr">Execution Loop</span></h3>
+<p dir="rtl" lang="fa">عامل در هر گام زمانی (<span dir="ltr">Iteration</span>)، ادراکات محیطی را دریافت کرده و قوانین فعال را ارزیابی می‌نماید. شبه‌کد زیر مکانیسم تصمیم‌گیری در چرخه اجرای معماری سابسانپشن را نشان می‌دهد:</p>
+<ol dir="auto">
+<li dir="rtl" lang="fa"><strong>دریافت ادراک (<span dir="ltr">Perception</span>):</strong> وضعیت جاری محیط <span class="mono" dir="ltr">p</span> توسط سنسورها خوانده می‌شود.</li>
+<li dir="rtl" lang="fa"><strong>تشکیل مجموعه قوانین فعال (<span dir="ltr">Fired Rules</span>):</strong>
+<div class="formula" dir="ltr" lang="en">Fired = { (c, a) ∈ Rules | p ⊨ c }</div></li>
+<li dir="rtl" lang="fa"><strong>انتخاب کنش بر اساس اولویت:</strong> قانون <span class="mono" dir="ltr">(c*, a*)</span> از مجموعه <span class="mono" dir="ltr">Fired</span> انتخاب می‌شود به طوری که هیچ قانون فعال دیگری اولویت بالاتری نسبت به آن نداشته باشد:
+<div class="formula" dir="ltr" lang="en">¬∃ (c', a') ∈ Fired : B(c', a') ≺ B(c*, a*)</div></li>
+<li dir="rtl" lang="fa"><strong>خروجی:</strong> کنش <span class="mono" dir="ltr">a*</span> برای اجرا به عملگرها ارسال می‌گردد. در صورتی که هیچ قانونی فعال نشود، مقدار <span class="mono" dir="ltr">null</span> برگردانده می‌شود.</li>
+</ol>
+
+<h3 id="۱-۳-تحلیل-سناریو-۱-کنترل-ربات-متحرک-و-اجتناب-از-موانع" dir="rtl" lang="fa">۱.۳. تحلیل سناریو ۱: کنترل ربات متحرک و اجتناب از موانع<span class="h-en" dir="ltr">Scenario 1 · Obstacle Avoidance</span></h3>
+<p dir="rtl" lang="fa">به منظور درک کاربردی سلسله‌مراتب در سابسانپشن، یک ربات متحرک مستقل را در نظر بگیرید که دارای سه لایه رفتاری است:</p>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><strong>لایه ۰ (پایین‌ترین لایه / بالاترین اولویت): اجتناب از مانع (<span dir="ltr">Avoid Obstacle</span>)</strong> — <span class="mono" dir="ltr">If Obstacle Detected → Turn Right</span></li>
+<li dir="rtl" lang="fa"><strong>لایه ۱ (لایه میانی / اولویت متوسط): حرکت در مسیر آزاد (<span dir="ltr">Path Clear</span>)</strong> — <span class="mono" dir="ltr">If Path Clear → Move Forward</span></li>
+<li dir="rtl" lang="fa"><strong>لایه ۲ (بالاترین لایه / پایین‌ترین اولویت): حرکت به سمت هدف (<span dir="ltr">Move to Goal</span>)</strong> — <span class="mono" dir="ltr">If Goal Visible → Move Towards Goal</span></li>
+</ul>
+<div class="callout callout--example"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 16 .7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16Z"/></svg></span><span>سناریوی فعال‌سازی هم‌زمان</span><span class="co-label">Example</span></div><div class="callout-body">
+<p dir="rtl" lang="fa">اگر ربات هم‌زمان هدف را در روبرو ببیند و یک مانع غیرمنتظره نیز در مسیر مشاهده کند، قوانین لایه ۰ و لایه ۲ هر دو فعال می‌شوند. طبق رابطه اولویت (<span class="mono" dir="ltr">Layer_0 ≺ Layer_2</span>)، رفتار اجتناب از مانع، رفتار حرکت به سمت هدف را سرکوب کرده و ربات به سمت راست می‌چرخد تا از برخورد جلوگیری کند.</p>
+</div></div>
+
+<h2 id="۲-سناریوی-پیشرفته-جمع-آوری-نمونه-در-مریخ-و-ارتباطات-غیرمستقیم" dir="rtl" lang="fa">۲. سناریوی پیشرفته: جمع‌آوری نمونه در مریخ و ارتباطات غیرمستقیم<span class="h-en" dir="ltr">Mars Sample Collection &amp; Indirect Communication</span></h2>
+<p dir="rtl" lang="fa">یکی از مسائل کلاسیک در سیستم‌های چندعامله، مسئله جمع‌آوری نمونه‌های معدنی کلاسترشده در سطح مریخ توسط گروهی از کاوشگرهای مستقل (<span dir="ltr">Rovers</span>) و انتقال آن‌ها به ایستگاه مرکزی (<span dir="ltr">Mothership / Base</span>) است.</p>
+
+<h3 id="۲-۱-انتشار-سیگنال-signal-gradient-broadcasting-و-قوانین-۵-گانه" dir="rtl" lang="fa">۲.۱. انتشار سیگنال (<span dir="ltr">Signal Gradient Broadcasting</span>) و قوانین ۵ گانه<span class="h-en" dir="ltr">Signal Gradient Broadcasting &amp; the 5 Rules</span></h3>
+<p dir="rtl" lang="fa">در این سناریو، هیچ نقشه قبلی از محیط در دست نیست. ایستگاه مرکزی یک سیگنال رادیویی را در تمام جهات پخش می‌کند (<span dir="ltr">Broadcast</span>). کاوشگرها با اندازه‌گیری گرادیان شدت سیگنال (<span class="mono" dir="ltr">∇S</span>)، دوری یا نزدیکی خود به ایستگاه را تشخیص می‌دهند:</p>
+<ul dir="auto">
+<li dir="rtl" lang="fa">افزایش شدت سیگنال (<span class="mono" dir="ltr">∇S &gt; 0</span>): حرکت به سمت ایستگاه مرکزی.</li>
+<li dir="rtl" lang="fa">کاهش شدت سیگنال (<span class="mono" dir="ltr">∇S &lt; 0</span>): دور شدن از ایستگاه مرکزی.</li>
+</ul>
+<p dir="rtl" lang="fa">رفتار هر کاوشگر بر اساس سلسله‌مراتب ۵ قانون زیر تنظیم می‌شود (قانون ۱ بالاترین اولویت و قانون ۵ پایین‌ترین اولویت را دارد):</p>
+<div class="table-scroll"><table dir="rtl" lang="fa"><thead><tr><th dir="rtl" lang="fa">شماره قانون</th><th dir="rtl" lang="fa">شرط پیش‌نیاز (<span dir="ltr">Condition</span>)</th><th dir="rtl" lang="fa">کنش عملیاتی (<span dir="ltr">Action</span>)</th><th dir="rtl" lang="fa">سطح لایه و اولویت</th></tr></thead><tbody>
+<tr><td dir="rtl" lang="fa">قانون ۱</td><td dir="rtl" lang="fa">مشاهده مانع (<span dir="ltr">Obstacle Detected</span>)</td><td dir="rtl" lang="fa">تغییر جهت حرکت (<span dir="ltr">Change Direction</span>)</td><td dir="rtl" lang="fa">لایه ۰ (بالاترین اولویت)</td></tr>
+<tr><td dir="rtl" lang="fa">قانون ۲</td><td dir="rtl" lang="fa">حمل نمونه و رسیدن به ایستگاه مرکزی</td><td dir="rtl" lang="fa">تخلیه نمونه (<span dir="ltr">Drop Sample</span>)</td><td dir="rtl" lang="fa">لایه ۱</td></tr>
+<tr><td dir="rtl" lang="fa">قانون ۳</td><td dir="rtl" lang="fa">حمل نمونه و عدم رسیدن به ایستگاه</td><td dir="rtl" lang="fa">حرکت در جهت افزایش سیگنال (<span class="mono" dir="ltr">∇S ↑</span>)</td><td dir="rtl" lang="fa">لایه ۲</td></tr>
+<tr><td dir="rtl" lang="fa">قانون ۴</td><td dir="rtl" lang="fa">کشف نمونه معدنی (<span dir="ltr">Sample Detected</span>)</td><td dir="rtl" lang="fa">برداشتن نمونه (<span dir="ltr">Pick Up Sample</span>)</td><td dir="rtl" lang="fa">لایه ۳</td></tr>
+<tr><td dir="rtl" lang="fa">قانون ۵</td><td dir="rtl" lang="fa">همیشه برقرار (<span dir="ltr">True</span>)</td><td dir="rtl" lang="fa">حرکت تصادفی جهت کاوش (<span dir="ltr">Random Walk</span>)</td><td dir="rtl" lang="fa">لایه ۴ (پایین‌ترین اولویت)</td></tr>
+</tbody></table></div>
+<p dir="rtl" lang="fa">وجود قانون ۵ با شرط همواره درست (<span dir="ltr">True</span>) تضمین می‌کند که خروجی سیستم هیچ‌گاه <span class="mono" dir="ltr">null</span> نشده و کاوشگر در صورت نبود هیچ شرط خاصی، به کاوش تصادفی محیط ادامه دهد.</p>
+
+<h3 id="۲-۲-مکانیسم-استیگمرژی-stigmergy-و-الهام-از-کلونی-مورچه-ها" dir="rtl" lang="fa">۲.۲. مکانیسم استیگمرژی (<span dir="ltr">Stigmergy</span>) و الهام از کلونی مورچه‌ها<span class="h-en" dir="ltr">Stigmergy &amp; Ant Colony Inspiration</span></h3>
+<p dir="rtl" lang="fa">هنگامی که نمونه‌ها به صورت کلاسترشده (خوشه‌ای) در محیط پراکنده هستند، همکاری مستقیم و ارتباط نقطه به نقطه (<span dir="ltr">One-to-One</span>) میان کاوشگرها می‌تواند پرهزینه باشد. در این سناریو از استیگمرژی (<span dir="ltr">Stigmergy</span>) استفاده می‌شود که به معنای ارتباط غیرمستقیم عامل‌ها از طریق تغییر در محیط است.</p>
+<p dir="rtl" lang="fa">این مکانیسم دقیقا از الگوریتم کلونی مورچه‌ها (<span dir="ltr">Ant Colony Optimization - ACO</span>) الهام گرفته شده است:</p>
+<div class="callout callout--definition"><div class="callout-head"><span class="co-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4V3Z"/></svg></span><span>استیگمرژی</span><span class="co-label">Definition</span></div><div class="callout-body">
+<p dir="rtl" lang="fa">تعریف استیگمرژی: اثرگذاری یک عامل بر روی محیط (مانند ترشح فرومون یا برجا گذاشتن نشانه) که به عنوان راهنما و محرک برای رفتارهای بعدی خود آن عامل یا سایر عامل‌ها عمل می‌کند.</p>
+</div></div>
+<p dir="rtl" lang="fa">نمونه‌های ملموس انسانی و طبیعی استیگمرژی عبارتند از:</p>
+<ol dir="auto">
+<li dir="rtl" lang="fa">پاکوب‌های چمن در پارک‌ها: عبور افراد از یک مسیر کوتاه میان چمن‌ها باعث کم‌پشت شدن چمن و ایجاد ردپا می‌شود. عابران بعدی ناخودآگاه همان مسیر پاکوب را برای حرکت انتخاب می‌کنند.</li>
+<li dir="rtl" lang="fa">مسیرهای کوهنوردی: ردپای برجا مانده از کوهنوردان قبلی در دوراهی‌های ناشناخته، کوهنوردان جدید را به سمت مسیر پرتردد هدایت می‌کند.</li>
+<li dir="rtl" lang="fa">مکانیسم فرومون مورچه‌ها: مورچه‌ها هنگام بازگشت از منبع غذا فرومون ترشح می‌کنند. فرومون‌ها به مرور زمان تبخیر می‌شوند (<span dir="ltr">Evaporation</span>). در مسیرهای کوتاه‌تر، زمان رفت و برگشت کمتر بوده و میزان تبخیر کمتر است؛ در نتیجه غلظت فرومون افزایش یافته و مورچه‌های بیشتری به آن مسیر جذب می‌شوند.</li>
+</ol>
+<p dir="rtl" lang="fa">در مسئله کاوشگرهای مریخ، کاوشگر با کشف کلاستر نمونه، ذرات ردپا (<span dir="ltr">Particles</span>) در محیط رها می‌کند تا سایر کاوشگرها با سنجش این ذرات، به سمت کلاستر هدایت شوند.</p>
+
+<h3 id="۲-۳-ارزیابی-جامع-معماری-سابسانپشن-مزایا-و-معایب" dir="rtl" lang="fa">۲.۳. ارزیابی جامع معماری سابسانپشن (مزایا و معایب)<span class="h-en" dir="ltr">Pros &amp; Cons</span></h3>
+<p dir="rtl" lang="fa">پوشش کامل خصوصیات معماری سابسانپشن برای طراحی سیستم‌های چندعامله واکنشی در جدول زیر جمع‌بندی شده است:</p>
+<div class="table-scroll"><table dir="rtl" lang="fa"><thead><tr><th dir="rtl" lang="fa">جنبه ارزیابی</th><th dir="rtl" lang="fa">نقاط قوت (<span dir="ltr">Pros</span>)</th><th dir="rtl" lang="fa">معایب و محدودیت‌ها (<span dir="ltr">Cons</span>)</th></tr></thead><tbody>
+<tr><td dir="rtl" lang="fa">پیچیدگی محاسباتی</td><td dir="rtl" lang="fa">بسیار پایین و زمان پاسخ‌دهی لحظه‌ای (<span dir="ltr">Real-time</span>)</td><td dir="rtl" lang="fa">عدم امکان تعریف اهداف بلندمدت (<span dir="ltr">Long-term Goals</span>)</td></tr>
+<tr><td dir="rtl" lang="fa">مقاومت و استحکام</td><td dir="rtl" lang="fa">پایداری بالا در برابر اختلالات ناگهانی محیطی</td><td dir="rtl" lang="fa">نبود ابزارهای رسمی اثبات و صحت‌سنجی (<span dir="ltr">Formal Verification</span>)</td></tr>
+<tr><td dir="rtl" lang="fa">طراحی سیستم</td><td dir="rtl" lang="fa">سادگی پیاده‌سازی لایه‌های پایه روباتیک</td><td dir="rtl" lang="fa">دشواری شدید طراحی و تنظیم اولویت‌ها در تعداد بالای قوانین (<span dir="ltr">&gt;۱۰۰</span>)</td></tr>
+<tr><td dir="rtl" lang="fa">یادگیری</td><td dir="rtl" lang="fa">عدم نیاز به مدل‌سازی سنگین پیشین</td><td dir="rtl" lang="fa">فقدان مکانیسم‌های یادگیری (<span dir="ltr">Learning</span>) و استنتاج پیشرفته</td></tr>
+</tbody></table></div>
+
+<h2 id="۳-معماری-استنتاجی-و-سیستم-های-مبتنی-بر-دانش-deliberative-architecture" dir="rtl" lang="fa">۳. معماری استنتاجی و سیستم‌های مبتنی بر دانش<span class="h-en" dir="ltr">Deliberative Architecture &amp; Knowledge-Based Systems</span></h2>
+<p dir="rtl" lang="fa">در نقطه مقابل معماری‌های واکنشی، معماری استنتاجی (<span dir="ltr">Deliberative Architecture</span>) یا سیستم‌های مبتنی بر دانش قرار دارند. این معماری بر پایه هوش مصنوعی نمادین (<span dir="ltr">Symbolic AI</span>) استوار است و در آن، عامل دارای یک مدل صریح، دقیق و نمادین از محیط اطراف خود می‌باشد.</p>
+
+<h3 id="۳-۱-پایگاه-دانش-kb-در-برابر-پایگاه-داده-database" dir="rtl" lang="fa">۳.۱. پایگاه دانش (<span dir="ltr">KB</span>) در برابر پایگاه داده (<span dir="ltr">Database</span>)<span class="h-en" dir="ltr">Knowledge Base (KB) vs. Database</span></h3>
+<p dir="rtl" lang="fa">تفاوت بنیادی میان پایگاه داده و پایگاه دانش در نحوه پردازش و ارزش‌گذاری گزاره‌ها است:</p>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><strong>پایگاه داده (<span dir="ltr">Database</span>):</strong> مجموعه‌ای از داده‌های خام یا پردازش‌نشده است که لزوماً صحت یا ارزش صدق آن‌ها سنجیده نشده است.</li>
+<li dir="rtl" lang="fa"><strong>پایگاه دانش (<span dir="ltr">Knowledge Base - KB</span> یا <span class="mono" dir="ltr">Δ</span>):</strong> مجموعه‌ای از گزاره‌های منطقی صحیح و تاییدشده (<span dir="ltr">True Propositions</span>) درباره جهان است که مبنای استنتاج‌های بعدی قرار می‌گیرد.</li>
+</ul>
+
+<h3 id="۳-۲-الگوریتم-استنتاج-منطقی-deductive-reasoning" dir="rtl" lang="fa">۳.۲. الگوریتم استنتاج منطقی<span class="h-en" dir="ltr">Deductive Reasoning</span></h3>
+<p dir="rtl" lang="fa">عامل استنتاجی با استفاده از قوانین استنتاج منطقی (<span dir="ltr">Inference Rules</span>) سعی می‌کند از گزاره‌های موجود در پایگاه دانش <span class="mono" dir="ltr">Δ</span> به درستی یک کنش برسد. رابطه استنتاج با نماد <span class="mono" dir="ltr">⊢</span> نشان داده می‌شود:</p>
+<div class="formula" dir="ltr" lang="en">Δ ⊢ Do(a)</div>
+<p dir="rtl" lang="fa">قاعده اصلی استنتاج در این سیستم‌ها، قیاس استثنایی (<span dir="ltr">Modus Ponens</span>) است: اگر <span class="mono" dir="ltr">P</span> و <span class="mono" dir="ltr">P → Q</span> آنگاه <span class="mono" dir="ltr">Q</span>.</p>
+<div class="formula" dir="ltr" lang="en">P, P → Q ⊢ Q</div>
+<p dir="rtl" lang="fa">الگوریتم تصمیم‌گیری عامل استنتاجی به صورت زیر اجرا می‌شود:</p>
+<ol dir="auto">
+<li dir="rtl" lang="fa">بررسی پایگاه دانش <span class="mono" dir="ltr">Δ</span> و قوانین استنتاج.</li>
+<li dir="rtl" lang="fa">اگر <span class="mono" dir="ltr">Δ ∪ Rules ⊢ Do(a)</span> باشد، کنش <span class="mono" dir="ltr">a</span> به عنوان کنش مجاز و مطلوب انتخاب می‌شود.</li>
+<li dir="rtl" lang="fa">اگر <span class="mono" dir="ltr">Δ ∪ Rules ⊢ ¬Do(a)</span> باشد، کنش <span class="mono" dir="ltr">a</span> از مجموعه کنش‌های نامزد حذف می‌گردد.</li>
+</ol>
+
+<h3 id="۳-۳-مدل-سازی-نمادین-دامنه-جاروبرقی-vacuum-cleaner-domain" dir="rtl" lang="fa">۳.۳. مدل‌سازی نمادین دامنه جاروبرقی<span class="h-en" dir="ltr">Vacuum Cleaner Domain</span></h3>
+<p dir="rtl" lang="fa">برای درک بهتر استنتاج نمادین، محیط جاروبرقی هوشمند را فرمول‌بندی می‌کنیم:</p>
+<p dir="rtl" lang="fa"><strong>گزاره‌های توصیف وضعیت (<span dir="ltr">Predicates</span>):</strong></p>
+<div class="formula" dir="ltr" lang="en">At(x, y)&nbsp;·&nbsp;Dirty(x, y)&nbsp;·&nbsp;Facing(d)</div>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">At(x, y)</span>: عامل در خانه <span class="mono" dir="ltr">(x, y)</span> قرار دارد.</li>
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">Dirty(x, y)</span>: خانه <span class="mono" dir="ltr">(x, y)</span> کثیف است.</li>
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">Facing(d)</span>: جهت نگاه عامل به سمت <span class="mono" dir="ltr">d ∈ {North, South, East, West}</span> است.</li>
+</ul>
+<p dir="rtl" lang="fa"><strong>مجموعه کنش‌ها (<span class="mono" dir="ltr">A</span>):</strong></p>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">Turn</span>: چرخش ۹۰ درجه به سمت راست.</li>
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">Forward</span>: یک گام حرکت به سمت جلو در جهت نگاه فعلی.</li>
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">Suck</span>: مکش و تمیز کردن خانه جاری.</li>
+</ul>
+<p dir="rtl" lang="fa">فرض کنید پایگاه دانش شامل گزاره‌های زیر باشد:</p>
+<div class="formula" dir="ltr" lang="en">Δ = { At(1, 2), Dirty(1, 2) }</div>
+<p dir="rtl" lang="fa">و قانون استنتاج موجود در سیستم عبارت است از:</p>
+<div class="formula" dir="ltr" lang="en">At(x, y) ∧ Dirty(x, y) → Do(Suck)</div>
+<p dir="rtl" lang="fa">با تطبیق گزاره‌ها و انطباق متغیرهای <span class="mono" dir="ltr">x=1</span> و <span class="mono" dir="ltr">y=2</span> در قاعده <span dir="ltr">Modus Ponens</span>، استنتاج زیر حاصل شده و کنش <span class="mono" dir="ltr">Suck</span> صادر می‌شود:</p>
+<div class="formula" dir="ltr" lang="en">Δ ⊢ Do(Suck)</div>
+
+<h3 id="۳-۴-مدل-سازی-نمادین-دنیای-بلاک-ها-blocks-world-domain" dir="rtl" lang="fa">۳.۴. مدل‌سازی نمادین دنیای بلاک‌ها<span class="h-en" dir="ltr">Blocks World Domain</span></h3>
+<p dir="rtl" lang="fa">دنیای بلاک‌ها یکی از دامنه‌های استاندارد برای برنامه‌ریزی نمادین است. در این دامنه، هدف چیدن بلاک‌ها بر روی یکدیگر به یک فرم مشخص (مثلا قرار گرفتن بلاک <span class="mono" dir="ltr">A</span> روی <span class="mono" dir="ltr">B</span> و <span class="mono" dir="ltr">B</span> روی <span class="mono" dir="ltr">C</span>) با استفاده از یک بازوی مکانیکی است.</p>
+<p dir="rtl" lang="fa"><strong>محمول‌ها (<span dir="ltr">Predicates</span>):</strong></p>
+<div class="formula" dir="ltr" lang="en">On(A, B)&nbsp;·&nbsp;OnTable(A)&nbsp;·&nbsp;Clear(A)&nbsp;·&nbsp;Holding(A)&nbsp;·&nbsp;HandEmpty</div>
+<ul dir="auto">
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">On(A, B)</span>: بلاک <span class="mono" dir="ltr">A</span> روی بلاک <span class="mono" dir="ltr">B</span> قرار دارد.</li>
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">OnTable(A)</span>: بلاک <span class="mono" dir="ltr">A</span> روی میز قرار دارد.</li>
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">Clear(A)</span>: هیچ بلاکی روی بلاک <span class="mono" dir="ltr">A</span> نیست و سطح آن آزاد است.</li>
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">Holding(A)</span>: بازوی مکانیکی در حال نگه داشتن بلاک <span class="mono" dir="ltr">A</span> است.</li>
+<li dir="rtl" lang="fa"><span class="mono" dir="ltr">HandEmpty</span>: بازوی مکانیکی خالی است.</li>
+</ul>
+<p dir="rtl" lang="fa">قوانین تغییر حالت (<span dir="ltr">State Transitions</span>) تعیین می‌کنند که اجرای کنش برداشتن (<span dir="ltr">PickUp</span>) یا گذاشتن (<span dir="ltr">PutDown</span>) چه تغییراتی در پایگاه دانش ایجاد می‌کند. برای مثال، کنش برداشتن بلاک <span class="mono" dir="ltr">A</span> از روی <span class="mono" dir="ltr">B</span> نیازمند پیش‌شرط‌های <span class="mono" dir="ltr">On(A, B) ∧ Clear(A) ∧ HandEmpty</span> است و پس از اجرا، گزاره <span class="mono" dir="ltr">Clear(B)</span> به پایگاه دانش اضافه شده و گزاره <span class="mono" dir="ltr">On(A, B)</span> حذف می‌گردد.</p>
+<div class="formula" dir="ltr" lang="en">PickUp(A): On(A, B) ∧ Clear(A) ∧ HandEmpty&nbsp;&nbsp;→&nbsp;&nbsp;Add: Clear(B) · Delete: On(A, B)</div>
+
+<h2 id="۴-پرسش-و-پاسخ-های-مطرح-شده-در-کلاس-درس-classroom-qa" dir="rtl" lang="fa">۴. پرسش و پاسخ‌های مطرح‌شده در کلاس درس<span class="h-en" dir="ltr">Classroom Q&amp;A</span></h2>
+<p dir="rtl" lang="fa">این بخش منحصراً شامل پرسش‌های واقعی مطرح‌شده توسط دانشجویان در طول ضبط کلاسی جلسه پنجم و پاسخ‌های تشریحی ارائه شده توسط استاد می‌باشد:</p>
+<div class="qa-list">
+<details class="qa"><summary><span><strong>پرسش ۱:</strong> نحوه ارزیابی و فعال‌سازی (<span dir="ltr">Firing</span>) قوانین در سابسانپشن</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>سوال دانشجو:</strong> قوانین در معماری سابسانپشن چگونه بر اساس مشاهدات سنسوری ارزیابی و فعال (<span dir="ltr">Fire</span>) می‌شوند؟ اگر شرط یک قانون در یک گام برقرار نباشد چه اتفاقی می‌افتد؟</p>
+<p><strong>پاسخ استاد:</strong> هر قانون به صورت جفت شرط-کنش (<span class="mono" dir="ltr">c → a</span>) تعریف می‌شود. در هر گام زمانی (<span dir="ltr">Iteration</span>)، سنسورها مشاهدات محیطی را دریافت می‌کنند. اگر مشاهده با شرط پیش‌نیاز <span class="mono" dir="ltr">c</span> تطبیق داشته باشد (ارزش آن <span dir="ltr">True</span> شود)، آن قانون فعال یا اصطلاحاً <span dir="ltr">Fired</span> می‌شود. اگر شرط یک قانون صادق نباشد (مثلا شرط مشاهده مانع برقرار نباشد)، آن قانون <span dir="ltr">Fired</span> نمی‌شود و از رقابت در آن گام خارج می‌گردد. از میان تمامی قوانین <span dir="ltr">Fired</span> شده، تنها قانونی که بالاترین اولویت را در سلسله‌مراتب دارد انتخاب و اجرا می‌شود.</p></div></details>
+<details class="qa"><summary><span><strong>پرسش ۲:</strong> امکان پارامتریک یا فازی بودن کنش‌ها و قوانین</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>سوال دانشجو:</strong> آیا کنش‌های تعریف‌شده در قوانین سابسانپشن می‌توانند دارای پارامتر (مثلاً حرکت به میزان ۱، ۲ یا ۳ متر) باشند یا به صورت منطق فازی (<span dir="ltr">Fuzzy Logic</span>) با یکدیگر ترکیب شوند؟</p>
+<p><strong>پاسخ استاد:</strong> از نظر طراح سیستم، بهتر است کنش‌ها گسسته و بدون پارامترهای پیچیده باشند؛ مثلاً به جای تعریف سه کنش مجزای حرکت ۱، ۲ و ۳ متری، یک کنش ساده "حرکت ۱ متری" تعریف می‌کنیم و برای فواصل بیشتر، همان کنش را به دفعات (مثلاً ۳ بار) تکرار می‌کنیم تا مجموعه اکشن‌ها بزرگ و پیچیده نشود. در مورد منطق فازی نیز می‌توان قوانین را به جای حالت قطعی صفر و یک، به صورت فازی بیان کرد تا شرایط محیطی با درجات مختلف صادق شوند، اما ساختار کلی معماری سابسانپشن بر روی همان لایه‌بندی رفتاری استوار است.</p></div></details>
+<details class="qa"><summary><span><strong>پرسش ۳:</strong> نام علمی و مکانیسم ارتباط غیرمستقیم مورچه‌ها</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>سوال دانشجو:</strong> نام علمی مکانیسم ارتباط غیرمستقیم مورچه‌ها از طریق محیط که در مثال کاوشگرهای مریخ‌نورد به آن اشاره شد چیست و دقیقاً چگونه کار می‌کند؟</p>
+<p><strong>پاسخ استاد:</strong> به این مکانیسم ارتباط غیرمستقیم از طریق تغییرات در محیط، استیگمرژی (<span dir="ltr">Stigmergy</span>) گفته می‌شود. در این روش، عامل‌ها پیام مستقیمی به یکدیگر ارسال نمی‌کنند، بلکه نشانه یا اثری (مانند فرومون در مورچه‌ها یا رهاسازی ردپا در محیط) برجا می‌گذارند. عامل‌های دیگر با مشاهده این تغییرات در محیط، رفتار خود را تنظیم می‌کنند. این مکانیسم باعث می‌شود بدون نیاز به ارتباط مستقیم سنگین، همکاری و الگوریتم‌های بهینه‌سازی (مانند یافتن کوتاه‌ترین مسیر) به صورت خودسازمان‌ده شکل بگیرند.</p></div></details>
+<details class="qa"><summary><span><strong>پرسش ۴:</strong> ضرورت ورود پارامتر زمان (<span class="mono" dir="ltr">t</span>) به منطق گزاره‌ای و تغییرات حالت</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>سوال دانشجو:</strong> در مدل‌سازی منطقی مسئله جاروبرقی، آیا نباید پارامتر زمان (<span class="mono" dir="ltr">t</span>) به گزاره‌ها (مثلاً <span class="mono" dir="ltr">Dirty(x, y, t)</span>) اضافه شود تا پاک شدن خانه پس از اجرای کنش <span class="mono" dir="ltr">Suck</span> نشان داده شود؟</p>
+<p><strong>پاسخ استاد:</strong> در محیط‌های ساده و ایستا لزومی به پارامتر زمان در گزاره‌ها نیست؛ زیرا با اجرای کنش مکش، تغییرات محیط از طریق حذف گزاره‌های قدیمی از پایگاه دانش (<span dir="ltr">Delete List</span>) و اضافه کردن گزاره‌های جدید (<span dir="ltr">Add List</span>) مدیریت می‌شود (مثلا <span class="mono" dir="ltr">Dirty(x,y)</span> از پایگاه دانش حذف شده و <span class="mono" dir="ltr">Clean(x,y)</span> اضافه می‌شود). اما اگر بخواهیم رفتارهای وابسته به زمان و پویایی‌های پیچیده محیطی را به صورت صریح مدل کنیم، به منطق‌های پیشرفته‌تری مانند منطق زمانی (<span dir="ltr">Temporal Logic</span>) نیاز داریم که در جلسات آینده بررسی خواهد شد.</p></div></details>
+<details class="qa"><summary><span><strong>پرسش ۵:</strong> چالش مقیاس‌پذیری و پیچیدگی محاسباتی پایگاه دانش بزرگ</span></summary><div class="qa-a" dir="rtl" lang="fa"><p><strong>سوال دانشجو:</strong> اگر پایگاه دانش عامل بسیار بزرگ شود (مثلاً تمام دانش یک متخصص پزشکی در پایگاه دانش قرار گیرد)، فرایند استنتاج منطقی با چه چالشی مواجه می‌شود؟</p>
+<p><strong>پاسخ استاد:</strong> با افزایش شدید تعداد گزاره‌ها و قوانین در پایگاه دانش، اردر و مرتبه محاسباتی فرایند استنتاج به شدت بالا می‌رود و جستجو میان گزاره‌ها برای اثبات درستی یک کنش از نظر محاسباتی فوق‌العاده زمان‌بر و گاه غیرممکن می‌شود. به همین دلیل در سیستم‌های واقع‌گرایانه با مقیاس بزرگ، یا از منطق‌های تضعیف‌شده استفاده می‌شود یا از نمایش‌های غیرمنطقی (<span dir="ltr">Non-Logical Representations</span>) بهره می‌برند.</p></div></details>
+</div>
+
+<h2 id="۵-واژه-نامه-تخصصی-glossary" dir="rtl" lang="fa">۵. واژه‌نامه تخصصی<span class="h-en" dir="ltr">Glossary</span></h2>
+<div class="table-scroll"><table class="glossary-table" dir="rtl" lang="fa"><thead><tr><th dir="rtl" lang="fa">فارسی</th><th dir="ltr" lang="en">English</th><th dir="rtl" lang="fa">معنی کوتاه</th></tr></thead><tbody>
+<tr><td dir="rtl" lang="fa">معماری سابسانپشن</td><td dir="ltr" lang="en"><span class="mono">Subsumption Architecture</span></td><td dir="rtl" lang="fa">معماری واکنشی مبتنی بر لایه‌های رفتاری و سلسله‌مراتب اولویت که قوانین سطح پایین، رفتارهای سطح بالا را سرکوب می‌کنند.</td></tr>
+<tr><td dir="rtl" lang="fa">استیگمرژی</td><td dir="ltr" lang="en"><span class="mono">Stigmergy</span></td><td dir="rtl" lang="fa">مکانیسم ارتباط غیرمستقیم میان عامل‌ها از طریق ایجاد تغییرات و نشانه‌ها در محیط مشترک.</td></tr>
+<tr><td dir="rtl" lang="fa">پایگاه دانش</td><td dir="ltr" lang="en"><span class="mono">Knowledge Base (KB)</span></td><td dir="rtl" lang="fa">مجموعه‌ای ساختاریافته از گزاره‌های منطقی صادق و تاییدشده که مبنای استنتاج عامل قرار می‌گیرد.</td></tr>
+<tr><td dir="rtl" lang="fa">قیاس استثنایی</td><td dir="ltr" lang="en"><span class="mono">Modus Ponens</span></td><td dir="rtl" lang="fa">قاعده بنیادی استنتاج منطقی که بیان می‌دارد از درستی <span class="mono" dir="ltr">P</span> و <span class="mono" dir="ltr">P → Q</span>، درستی <span class="mono" dir="ltr">Q</span> نتیجه می‌شود.</td></tr>
+<tr><td dir="rtl" lang="fa">انتشار سیگنال</td><td dir="ltr" lang="en"><span class="mono">Signal Gradient Broadcasting</span></td><td dir="rtl" lang="fa">روش هدایت عامل‌ها در محیط‌های بدون نقشه از طریق تعقیب گرادیان شدت سیگنال‌های دریافتی.</td></tr>
+<tr><td dir="rtl" lang="fa">دنیای بلاک‌ها</td><td dir="ltr" lang="en"><span class="mono">Blocks World</span></td><td dir="rtl" lang="fa">یک دامنه استاندارد در هوش مصنوعی نمادین برای ارزیابی الگوریتم‌های برنامه‌ریزی و استنتاج منطقی.</td></tr>
+</tbody></table></div>
+      </div>
+
+      <div class="session-foot-note">
+        این صفحه یادداشت مطالعاتی دانشجویان بر اساس جلسهٔ کلاس درس سیستم‌های چندعامله (دکتر منیره عبدوس) است و جایگزین اعلام‌های رسمی استاد نیست.
+        <br>منبع: جزوهٔ اختصاصی جلسه ۵.
+      </div>
+
+      <nav class="session-nav" aria-label="ناوبری جلسات">
+        <a class="prev" href="session-04.html"><span class="sn-label">جلسهٔ قبل</span><span class="sn-title">جلسه ۰۴ — فرمول‌بندی رسمی، معماری مشاهده-حالت درونی و سودمندی انتظاری</span></a>
+      </nav>
+    </article>
+
+    <aside class="toc" data-toc aria-label="فهرست مطالب">
+      <div class="toc-title">در این صفحه</div>
+      <ol><li><a href="#۱-معماری-سابسانپشن-subsumption-architecture">۱. معماری سابسانپشن</a></li>
+<li class="toc-sub"><a href="#۱-۱-اصول-بنیادی-و-فرمول-بندی-ریاضی-لایه-ها">۱.۱. اصول بنیادی و فرمول‌بندی ریاضی لایه‌ها</a></li>
+<li class="toc-sub"><a href="#۱-۲-الگوریتم-و-شبه-کد-چرخه-اجرا-execution-loop">۱.۲. الگوریتم و شبه‌کد چرخه اجرا</a></li>
+<li class="toc-sub"><a href="#۱-۳-تحلیل-سناریو-۱-کنترل-ربات-متحرک-و-اجتناب-از-موانع">۱.۳. تحلیل سناریو ۱: کنترل ربات متحرک و اجتناب از موانع</a></li>
+<li><a href="#۲-سناریوی-پیشرفته-جمع-آوری-نمونه-در-مریخ-و-ارتباطات-غیرمستقیم">۲. سناریوی پیشرفته: جمع‌آوری نمونه در مریخ و ارتباطات غیرمستقیم</a></li>
+<li class="toc-sub"><a href="#۲-۱-انتشار-سیگنال-signal-gradient-broadcasting-و-قوانین-۵-گانه">۲.۱. انتشار سیگنال و قوانین ۵ گانه</a></li>
+<li class="toc-sub"><a href="#۲-۲-مکانیسم-استیگمرژی-stigmergy-و-الهام-از-کلونی-مورچه-ها">۲.۲. مکانیسم استیگمرژی و الهام از کلونی مورچه‌ها</a></li>
+<li class="toc-sub"><a href="#۲-۳-ارزیابی-جامع-معماری-سابسانپشن-مزایا-و-معایب">۲.۳. ارزیابی جامع معماری سابسانپشن (مزایا و معایب)</a></li>
+<li><a href="#۳-معماری-استنتاجی-و-سیستم-های-مبتنی-بر-دانش-deliberative-architecture">۳. معماری استنتاجی و سیستم‌های مبتنی بر دانش</a></li>
+<li class="toc-sub"><a href="#۳-۱-پایگاه-دانش-kb-در-برابر-پایگاه-داده-database">۳.۱. پایگاه دانش (KB) در برابر پایگاه داده (Database)</a></li>
+<li class="toc-sub"><a href="#۳-۲-الگوریتم-استنتاج-منطقی-deductive-reasoning">۳.۲. الگوریتم استنتاج منطقی</a></li>
+<li class="toc-sub"><a href="#۳-۳-مدل-سازی-نمادین-دامنه-جاروبرقی-vacuum-cleaner-domain">۳.۳. مدل‌سازی نمادین دامنه جاروبرقی</a></li>
+<li class="toc-sub"><a href="#۳-۴-مدل-سازی-نمادین-دنیای-بلاک-ها-blocks-world-domain">۳.۴. مدل‌سازی نمادین دنیای بلاک‌ها</a></li>
+<li><a href="#۴-پرسش-و-پاسخ-های-مطرح-شده-در-کلاس-درس-classroom-qa">۴. پرسش و پاسخ‌های مطرح‌شده در کلاس درس</a></li>
+<li><a href="#۵-واژه-نامه-تخصصی-glossary">۵. واژه‌نامه تخصصی</a></li></ol>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-brand" style="margin-bottom:14px">
+      <span class="brand-logo" aria-hidden="true"><img src="../assets/img/mas-logo.svg" alt=""></span>
+      <span><strong>سیستم‌های چندعامله</strong><span>MAS · Multi-Agent Systems</span></span>
+    </div>
+    <div class="footer-bottom" style="margin-top:0;border-top:0;padding-top:0">
+      <span>© <span data-year>2026</span> — سیستم‌های چندعامله · یادداشت‌های درسی دانشجویان</span>
+      <span class="mono">MAS · Multi-Agent Systems</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/mas-fun.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>
