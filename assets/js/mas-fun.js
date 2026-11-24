@@ -47,11 +47,18 @@
     '.payoff th,.payoff td{border:1px solid rgba(110,231,183,.25);padding:7px 8px;text-align:center;color:#cfe8da}',
     '.payoff th{background:rgba(52,211,153,.12);color:#6ee7b7}',
     '.payoff td.hl{background:rgba(251,191,36,.16);color:#fbbf24;font-weight:700}',
-    '#herdgame{position:relative;width:100%;height:300px;border-radius:16px;border:1px solid rgba(110,231,183,.3);overflow:hidden;background:radial-gradient(1200px 500px at 50% -20%,rgba(52,211,153,.14),transparent),repeating-linear-gradient(45deg,rgba(110,231,183,.045) 0 12px,transparent 12px 24px),#0a1e15;cursor:crosshair;touch-action:none}',
+    '#herdgame{position:relative;width:100%;height:320px;border-radius:16px;border:1px solid rgba(110,231,183,.3);overflow:hidden;background:radial-gradient(900px 400px at 50% -20%,rgba(52,211,153,.16),transparent),radial-gradient(300px 200px at 85% 95%,rgba(251,191,36,.08),transparent),repeating-linear-gradient(45deg,rgba(110,231,183,.05) 0 14px,transparent 14px 28px),#0a1e15;cursor:crosshair;touch-action:none}',
     '#herdgame .pen{position:absolute;border:2px dashed rgba(251,191,36,.65);border-radius:12px;background:rgba(251,191,36,.08)}',
-    '#herdgame .cow{position:absolute;width:13px;height:13px;margin:-6.5px;border-radius:50%;background:#e6f3ea;box-shadow:0 0 8px rgba(230,243,234,.6)}',
+    '#herdgame .pen::after{content:"آغل";position:absolute;inset-inline:0;bottom:3px;text-align:center;font-size:10px;color:rgba(251,191,36,.85)}',
+    '#herdgame .cow{position:absolute;width:17px;height:15px;margin:-8.5px 0 0 -8.5px;border-radius:48% 52% 46% 54%;background:radial-gradient(circle at 32% 30%,#fff 18%,#dbe7dd 60%,#b9cdbf 100%);box-shadow:0 2px 6px rgba(0,0,0,.35),inset -2px -2px 0 rgba(15,40,28,.18)}',
+    '#herdgame .cow::before{content:"";position:absolute;top:2px;left:6px;width:5px;height:5px;border-radius:50%;background:#223b2c}',
     '#herdgame .rob{position:absolute;width:16px;height:16px;margin:-8px;font-size:16px;line-height:1;pointer-events:none}',
-    '#herdgame .hud{position:absolute;top:10px;inset-inline-start:12px;font-size:12.5px;color:#9fb8a9}',
+    '#herdgame .hud{position:absolute;top:10px;inset-inline-start:12px;inset-inline-end:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px;color:#9fb8a9}',
+    '#herdgame .hud .hint{opacity:.8}',
+    '#herdgame .whistle{position:absolute;width:12px;height:12px;margin:-6px;border:2px solid rgba(163,230,53,.9);border-radius:50%;pointer-events:none;animation:whistlepop .7s ease-out forwards}',
+    '@keyframes whistlepop{0%{transform:scale(.4);opacity:1}100%{transform:scale(9);opacity:0}}',
+    '#herdgame .spark{position:absolute;pointer-events:none;font-size:15px;animation:sparkle 1.2s ease-in-out infinite}',
+    '@keyframes sparkle{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}',
     '#herdgame .hud b{color:#6ee7b7}',
     '#herdgame .hud button{margin-inline-start:10px;background:rgba(52,211,153,.14);border:1px solid rgba(110,231,183,.4);color:#e6f3ea;border-radius:8px;padding:3px 10px;font-family:inherit;font-size:12px;cursor:pointer}',
     '#herdgame .hud button:hover{background:rgba(52,211,153,.26)}',
@@ -152,6 +159,26 @@
   }
 
   /* ---------- herding playground ---------- */
+  var FA_D = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+  function fa(n) { return String(n).replace(/\d/g, function (d) { return FA_D[d]; }); }
+
+  var audioCtx = null, muted = false;
+  function beep(freq, dur, type, vol, delay) {
+    if (muted) return;
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (!audioCtx) return;
+      var t = audioCtx.currentTime + (delay || 0);
+      var o = audioCtx.createOscillator(), g = audioCtx.createGain();
+      o.type = type || 'sine';
+      o.frequency.setValueAtTime(freq, t);
+      g.gain.setValueAtTime(vol || 0.05, t);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start(t); o.stop(t + dur + 0.02);
+    } catch (e) { /* صدا اختیاری است */ }
+  }
+
   function buildHerdGame() {
     var host = document.getElementById('mas-herd-host');
     if (!host) return;
@@ -159,71 +186,106 @@
     wrap.className = 'masfun-card';
     wrap.innerHTML =
       '<h3>🐄 گله را به آغل برسان!</h3>' +
-      '<p class="sub">Herding Benchmark · جلسهٔ ۳ — نشانگر را پشت گله ببر؛ گاوها از تو می‌گریزند و به سمت آغل می‌روند. ربات‌ها فقط نزدیک آغل کمک می‌کنند</p>' +
-      '<div id="herdgame"><div class="hud">در آغل: <b id="herdscore">0</b> / ۱۴ <button id="herdreset" type="button">شروع دوباره</button></div></div>';
+      '<p class="sub">Herding Benchmark · جلسهٔ ۳ — نشانگر را پشت گله ببر تا از تو فرار کنند؛ کلیک = سوت برای جمع‌کردن گله 📯</p>' +
+      '<div id="herdgame">' +
+      '<div class="hud"><span>در آغل: <b id="herdscore">۰</b>/۱۴</span><span id="herdtime">⏱ ۰ ثانیه</span><span class="hint">کلیک = سوت 📯</span>' +
+      '<button id="herdreset" type="button">شروع دوباره</button><button id="herdsound" type="button">🔊</button></div>' +
+      '</div>';
     host.appendChild(wrap);
 
     var field = wrap.querySelector('#herdgame');
     var scoreEl = wrap.querySelector('#herdscore');
+    var timeEl = wrap.querySelector('#herdtime');
     var resetBtn = wrap.querySelector('#herdreset');
+    var soundBtn = wrap.querySelector('#herdsound');
 
     var TOTAL = 14;
-    var W = 0, H = 300;
-    var pen = { x: 0, y: 0, w: 84, h: 70 };
+    var W = 0, H = 320;
+    var pen = { x: 0, y: 0, w: 92, h: 76 };
     var penEl = document.createElement('div');
     penEl.className = 'pen';
     field.appendChild(penEl);
 
     var cows = [], bots = [];
     var mouse = { x: -9999, y: -9999, on: false };
-    var won = false;
+    var whistle = { x: 0, y: 0, until: 0 };
+    var started = false, startTime = 0, won = false;
 
     function insidePen(cw) {
-      return cw.x > pen.x + 6 && cw.x < pen.x + pen.w - 6 && cw.y > pen.y + 6 && cw.y < pen.y + pen.h - 6;
+      return cw.x > pen.x + 8 && cw.x < pen.x + pen.w - 8 && cw.y > pen.y + 10 && cw.y < pen.y + pen.h - 6;
+    }
+
+    function layout() {
+      W = field.clientWidth || 520;
+      pen.x = W - 116; pen.y = H - 98;
+      penEl.style.cssText = 'left:' + pen.x + 'px;top:' + pen.y + 'px;width:' + pen.w + 'px;height:' + pen.h + 'px';
     }
 
     function spawnCows() {
-      W = field.clientWidth || 520;
-      pen.x = W - 108; pen.y = H - 92;
-      penEl.style.cssText = 'left:' + pen.x + 'px;top:' + pen.y + 'px;width:' + pen.w + 'px;height:' + pen.h + 'px';
+      layout();
       cows.forEach(function (c) { if (c.el.parentNode) c.el.parentNode.removeChild(c.el); });
       cows = [];
       for (var i = 0; i < TOTAL; i++) {
         var el = document.createElement('div');
         el.className = 'cow';
         field.appendChild(el);
-        cows.push({
-          el: el,
-          x: 20 + Math.random() * (W * 0.55),
-          y: 18 + Math.random() * (H - 40),
-          vx: 0, vy: 0,
-          in: false,
-          angle: Math.random() * 6.28,
-        });
+        cows.push({ el: el, x: 20 + Math.random() * (W * 0.55), y: 22 + Math.random() * (H - 50), vx: 0, vy: 0, in: false, angle: Math.random() * 6.28 });
       }
       bots.forEach(function (b) { if (b.el.parentNode) b.el.parentNode.removeChild(b.el); });
       bots = [];
-      for (var bi = 0; bi < 3; bi++) {
+      for (var bi = 0; bi < 2; bi++) {
         var rel = document.createElement('div');
         rel.className = 'rob';
         rel.textContent = '🤖';
         field.appendChild(rel);
-        bots.push({ el: rel, x: W * 0.4 + bi * 40, y: H * 0.3 + bi * 26, vx: 0, vy: 0, t: bi * 2 });
+        bots.push({ el: rel, x: W * 0.45 + bi * 60, y: H * 0.32 + bi * 30, vx: 0, vy: 0 });
       }
-      won = false;
-      scoreEl.textContent = '0';
+      field.querySelectorAll('.spark').forEach(function (s) { s.parentNode.removeChild(s); });
+      started = false; won = false;
+      scoreEl.textContent = '۰';
+      timeEl.textContent = '⏱ ۰ ثانیه';
     }
     spawnCows();
-    resetBtn.addEventListener('click', spawnCows);
-    window.addEventListener('resize', function () { spawnCows(); });
+
+    resetBtn.addEventListener('click', function () { spawnCows(); });
+    soundBtn.addEventListener('click', function () {
+      muted = !muted;
+      soundBtn.textContent = muted ? '🔇' : '🔊';
+    });
 
     field.addEventListener('pointermove', function (e) {
       var rect = field.getBoundingClientRect();
       mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top; mouse.on = true;
+      if (!started) { started = true; startTime = performance.now(); }
     });
     field.addEventListener('pointerleave', function () { mouse.on = false; });
+    field.addEventListener('pointerdown', function (e) {
+      if (e.target.closest && e.target.closest('button')) return;
+      var rect = field.getBoundingClientRect();
+      var wx = e.clientX - rect.left, wy = e.clientY - rect.top;
+      if (wx < 0 || wx > W || wy < 0 || wy > H) return;
+      whistle.x = wx; whistle.y = wy; whistle.until = performance.now() + 900;
+      beep(880, 0.1, 'sine', 0.05);
+      beep(1175, 0.12, 'sine', 0.04, 0.09);
+      var ring = document.createElement('div');
+      ring.className = 'whistle';
+      ring.style.left = wx + 'px'; ring.style.top = wy + 'px';
+      field.appendChild(ring);
+      setTimeout(function () { if (ring.parentNode) ring.parentNode.removeChild(ring); }, 750);
+      if (!started) { started = true; startTime = performance.now(); }
+    });
+    window.addEventListener('resize', function () {
+      var oldW = W;
+      layout();
+      if (Math.abs(oldW - W) > 40) {
+        cows.forEach(function (cw) {
+          cw.x = Math.min(cw.x, W - 8);
+          cw.y = Math.min(cw.y, H - 8);
+        });
+      }
+    });
 
-    function tick() {
+    function tick(ts) {
       var nowIn = 0;
       cows.forEach(function (cw) {
         if (cw.in) {
@@ -231,47 +293,56 @@
           cw.angle += (Math.random() - 0.5) * 0.3;
           cw.x += Math.cos(cw.angle) * 0.4;
           cw.y += Math.sin(cw.angle) * 0.4;
-          cw.x = Math.max(pen.x + 8, Math.min(pen.x + pen.w - 8, cw.x));
-          cw.y = Math.max(pen.y + 8, Math.min(pen.y + pen.h - 8, cw.y));
+          cw.x = Math.max(pen.x + 10, Math.min(pen.x + pen.w - 10, cw.x));
+          cw.y = Math.max(pen.y + 12, Math.min(pen.y + pen.h - 8, cw.y));
           cw.el.style.left = cw.x + 'px';
           cw.el.style.top = cw.y + 'px';
           nowIn++;
           return;
         }
         var fx = 0, fy = 0;
+        /* گریز از نشانگر (سگ گله) */
         if (mouse.on) {
           var dx = cw.x - mouse.x, dy = cw.y - mouse.y;
           var d2 = dx * dx + dy * dy;
-          if (d2 < 135 * 135 && d2 > 1) {
+          if (d2 < 120 * 120 && d2 > 1) {
             var d = Math.sqrt(d2);
-            var f = (1 - d / 135) * 3.2;
+            var f = (1 - d / 120) * 3.8;
             fx += (dx / d) * f; fy += (dy / d) * f;
           }
         }
-        /* بویید سبک: جدایی + هم‌راستایی ملایم تا گله طبیعی دیده شود */
-        var sx = 0, sy = 0, ax = 0, ay = 0, n = 0;
+        /* جذب به سوت */
+        if (ts < whistle.until) {
+          var wx = whistle.x - cw.x, wy = whistle.y - cw.y;
+          var wd = Math.sqrt(wx * wx + wy * wy) || 1;
+          if (wd > 14) { fx += (wx / wd) * 2.4; fy += (wy / wd) * 2.4; }
+        }
+        /* بویید: انسجام قوی + جدایی + هم‌راستایی تا گله یکپارچه بماند */
+        var cx = 0, cy = 0, n = 0, sx = 0, sy = 0, ax = 0, ay = 0, an = 0;
         cows.forEach(function (o) {
-          if (o === cw) return;
+          if (o === cw || o.in) return;
+          cx += o.x; cy += o.y; n++;
           var dx = cw.x - o.x, dy = cw.y - o.y, d2 = dx * dx + dy * dy;
-          if (d2 < 900 && d2 > 1) {
-            var d = Math.sqrt(d2);
-            sx += dx / d; sy += dy / d;
-          }
-          if (!o.in && d2 < 3600) { ax += o.vx; ay += o.vy; n++; }
+          if (d2 < 676 && d2 > 1) { var d = Math.sqrt(d2); sx += dx / d; sy += dy / d; }
+          if (d2 < 4000) { ax += o.vx; ay += o.vy; an++; }
         });
-        fx += sx * 0.9;
-        if (n) { fx += (ax / n - cw.vx) * 0.04; fy += (ay / n - cw.vy) * 0.04; }
-        cw.vx += fx * 0.28; cw.vy += fy * 0.28;
+        if (n) { fx += ((cx / n) - cw.x) * 0.045; fy += ((cy / n) - cw.y) * 0.045; }
+        fx += sx * 0.8;
+        if (an) { fx += (ax / an - cw.vx) * 0.05; fy += (ay / an - cw.vy) * 0.05; }
+        cw.vx += fx * 0.3; cw.vy += fy * 0.3;
         cw.vx *= 0.86; cw.vy *= 0.86;
+        var sp = Math.sqrt(cw.vx * cw.vx + cw.vy * cw.vy);
+        if (sp > 3.4) { cw.vx = cw.vx / sp * 3.4; cw.vy = cw.vy / sp * 3.4; }
         cw.x += cw.vx; cw.y += cw.vy;
-        if (cw.x < 8) { cw.x = 8; cw.vx = Math.abs(cw.vx) * 0.4; }
-        if (cw.x > W - 8) { cw.x = W - 8; cw.vx = -Math.abs(cw.vx) * 0.4; }
-        if (cw.y < 8) { cw.y = 8; cw.vy = Math.abs(cw.vy) * 0.4; }
-        if (cw.y > H - 8) { cw.y = H - 8; cw.vy = -Math.abs(cw.vy) * 0.4; }
+        if (cw.x < 8) { cw.x = 8; cw.vx = Math.abs(cw.vx) * 0.45; }
+        if (cw.x > W - 8) { cw.x = W - 8; cw.vx = -Math.abs(cw.vx) * 0.45; }
+        if (cw.y < 8) { cw.y = 8; cw.vy = Math.abs(cw.vy) * 0.45; }
+        if (cw.y > H - 8) { cw.y = H - 8; cw.vy = -Math.abs(cw.vy) * 0.45; }
         if (insidePen(cw)) {
           cw.in = true;
-          cw.x = Math.max(pen.x + 8, Math.min(pen.x + pen.w - 8, cw.x));
-          cw.y = Math.max(pen.y + 8, Math.min(pen.y + pen.h - 8, cw.y));
+          cw.x = Math.max(pen.x + 10, Math.min(pen.x + pen.w - 10, cw.x));
+          cw.y = Math.max(pen.y + 12, Math.min(pen.y + pen.h - 8, cw.y));
+          beep(520, 0.09, 'triangle', 0.06);
           nowIn++;
         }
         cw.el.style.left = cw.x + 'px';
@@ -281,20 +352,19 @@
 
       /* چوپان‌ها فقط نزدیک آغل کمک می‌کنند؛ کار اصلی با کاربر است */
       bots.forEach(function (b, bi) {
-        var tx = W * 0.5 + (bi - 1) * 70, ty = H * 0.35;
+        var tx = W * 0.5 + (bi ? 90 : -90), ty = H * 0.35;
         var best = null, bd = 1e9;
         cows.forEach(function (cw) {
           if (cw.in) return;
           var dcx = cw.x - (pen.x + pen.w / 2), dcy = cw.y - (pen.y + pen.h / 2);
           var dist = Math.sqrt(dcx * dcx + dcy * dcy);
-          if (dist < 130 && dist < bd) { bd = dist; best = cw; }
+          if (dist < 150 && dist < bd) { bd = dist; best = cw; }
         });
         if (best) {
           var ang = Math.atan2(best.y - pen.y - pen.h / 2, best.x - pen.x - pen.w / 2);
-          tx = best.x + Math.cos(ang) * 40; ty = best.y + Math.sin(ang) * 40;
+          tx = best.x + Math.cos(ang) * 42; ty = best.y + Math.sin(ang) * 42;
         }
-        b.t += 0.05;
-        b.vx += (tx - b.x) * 0.03; b.vy += (ty - b.y) * 0.03;
+        b.vx += (tx - b.x) * 0.035; b.vy += (ty - b.y) * 0.035;
         b.vx *= 0.88; b.vy *= 0.88;
         b.x = Math.max(8, Math.min(W - 8, b.x + b.vx));
         b.y = Math.max(8, Math.min(H - 8, b.y + b.vy));
@@ -302,9 +372,25 @@
         b.el.style.top = b.y + 'px';
       });
 
-      scoreEl.textContent = String(nowIn);
+      if (started && !won) {
+        timeEl.textContent = '⏱ ' + fa(Math.floor((ts - startTime) / 1000)) + ' ثانیه';
+      }
+      scoreEl.textContent = fa(nowIn);
       if (nowIn === TOTAL && !won) {
         won = true;
+        timeEl.textContent = '⏱ ' + fa(Math.floor((ts - startTime) / 1000)) + ' ثانیه 🏆';
+        beep(523, 0.12, 'triangle', 0.07);
+        beep(659, 0.12, 'triangle', 0.07, 0.13);
+        beep(784, 0.2, 'triangle', 0.08, 0.26);
+        for (var si = 0; si < 4; si++) {
+          var spEl = document.createElement('div');
+          spEl.className = 'spark';
+          spEl.textContent = '✨';
+          spEl.style.left = (pen.x + 14 + si * 22) + 'px';
+          spEl.style.top = (pen.y + 18 + (si % 2) * 26) + 'px';
+          spEl.style.animationDelay = (si * 0.2) + 's';
+          field.appendChild(spEl);
+        }
         say('همهٔ گاوها در آغل! تو یک سیستم چندعاملهٔ واقعی هستی 🏆', 5000);
       }
       requestAnimationFrame(tick);
