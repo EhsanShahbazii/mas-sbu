@@ -70,6 +70,13 @@
   ].join('\n');
   document.head.appendChild(STYLE);
 
+  /* default theme from OS so the light/dark toggle always flips visibly */
+  var rootEl = document.documentElement;
+  if (!rootEl.getAttribute('data-theme')) {
+    var prefDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    rootEl.setAttribute('data-theme', prefDark ? 'dark' : 'light');
+  }
+
   /* ---------- robot mascot (عاملک) ---------- */
   var robot = document.createElement('div');
   robot.id = 'masbot';

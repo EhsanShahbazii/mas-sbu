@@ -2,9 +2,8 @@
    MAS · سیستم‌های چندعامله — dark-green theme override
    Load AFTER site.css. Re-skins the NLP blue/white system into a
    dark-green "robots & games" board for the Multi-Agent Systems course.
-   Both data-theme="light" and data-theme="dark" map to the same palette,
-   so the existing theme toggle in site.js keeps working without breaking
-   the look.
+   Default is the dark-green palette; data-theme="light" switches to a
+   daylight light-green "paper" theme (theme toggle in site.js).
    ========================================================================== */
 
 /* ==========================================================================
@@ -116,6 +115,126 @@
     --ring: 0 0 0 3px rgba(52, 211, 153, 0.25);
   }
 }
+
+/* ==========================================================================
+   1b. Daylight palette — light-green "paper" theme for data-theme="light"
+   ========================================================================== */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #eef4ef;
+  --bg-grid: rgba(13, 122, 79, 0.08);
+  --surface: #ffffff;
+  --surface-2: #f7faf8;
+  --surface-3: #edf4ef;
+  --ink: #14251c;
+  --ink-2: #2f4639;
+  --muted: #5b7265;
+  --line: rgba(13, 122, 79, 0.16);
+  --line-2: rgba(13, 122, 79, 0.28);
+  --brand: #0d8a58;
+  --brand-2: #0a6b44;
+  --brand-3: #d9f2e6;
+  --brand-soft: rgba(13, 138, 88, 0.1);
+  --brand-soft-2: rgba(13, 138, 88, 0.18);
+  --on-brand: #ffffff;
+  --good: #0d8a58;
+  --good-soft: rgba(13, 138, 88, 0.12);
+  --warn: #b45309;
+  --warn-soft: rgba(180, 83, 9, 0.1);
+  --bad: #dc2626;
+  --bad-soft: rgba(220, 38, 38, 0.1);
+  --violet: #4d7c0f;
+  --violet-soft: rgba(77, 124, 15, 0.1);
+  --cyan: #2563eb;
+  --cyan-soft: rgba(37, 99, 235, 0.1);
+  --shadow-1: 0 1px 2px rgba(16, 40, 28, 0.06), 0 1px 1px rgba(16, 40, 28, 0.05);
+  --shadow-2: 0 18px 38px -24px rgba(16, 40, 28, 0.18), 0 4px 10px -6px rgba(16, 40, 28, 0.08);
+  --shadow-3: 0 30px 70px -40px rgba(16, 40, 28, 0.25);
+  --ring: 0 0 0 3px rgba(13, 138, 88, 0.22);
+}
+
+/* Daylight component overrides (dark hardcodes → paper) */
+:root[data-theme="light"] body {
+  background-image:
+    radial-gradient(rgba(13, 122, 79, 0.07) 1px, transparent 1.5px),
+    radial-gradient(rgba(13, 122, 79, 0.04) 1px, transparent 1.5px);
+}
+:root[data-theme="light"] ::selection { background: rgba(13, 138, 88, 0.25); color: #14251c; }
+:root[data-theme="light"] * { scrollbar-color: #b9d2c3 #eef4ef; }
+:root[data-theme="light"] ::-webkit-scrollbar-track { background: #eef4ef; }
+:root[data-theme="light"] ::-webkit-scrollbar-thumb { background: #b9d2c3; border-color: #eef4ef; }
+:root[data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: #97b8a6; }
+
+:root[data-theme="light"] .hero-panel {
+  background:
+    radial-gradient(90% 80% at 80% 0%, rgba(13, 138, 88, 0.14) 0%, transparent 55%),
+    radial-gradient(70% 70% at 0% 100%, rgba(13, 138, 88, 0.08) 0%, transparent 60%),
+    linear-gradient(150deg, #ffffff 0%, #f2f8f4 55%, #e4f0e9 100%);
+  color: #14251c;
+  border-color: rgba(13, 122, 79, 0.2);
+}
+:root[data-theme="light"] .hero-panel::before {
+  background-image:
+    linear-gradient(rgba(13, 122, 79, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 122, 79, 0.05) 1px, transparent 1px);
+}
+:root[data-theme="light"] .slide-main { color: #14251c; }
+:root[data-theme="light"] .slide-ctrl { border-top-color: rgba(13, 122, 79, 0.12); }
+
+:root[data-theme="light"] .prose pre {
+  background: #f4f8f5; color: #1e3629; border-color: #d6e4da;
+}
+:root[data-theme="light"] .copy-btn {
+  background: rgba(20, 37, 28, 0.06); color: rgba(20, 37, 28, 0.65);
+  border-color: rgba(20, 37, 28, 0.12);
+}
+:root[data-theme="light"] .copy-btn:hover { background: rgba(20, 37, 28, 0.12); color: #14251c; }
+
+:root[data-theme="light"] .formula, :root[data-theme="light"] .prose .formula {
+  background: #f4f8f5; border-color: rgba(13, 122, 79, 0.16);
+  border-inline-start-color: #0d8a58; color: #1e3629;
+}
+:root[data-theme="light"] .math-block { background: #f4f8f5; border-color: rgba(13, 122, 79, 0.16); }
+
+:root[data-theme="light"] .prose table.payoff, :root[data-theme="light"] table.payoff {
+  background: #ffffff; border-color: rgba(13, 122, 79, 0.22);
+}
+:root[data-theme="light"] .prose .payoff th, :root[data-theme="light"] .payoff th {
+  background: rgba(13, 138, 88, 0.1); color: #0a6b44;
+  border-color: rgba(13, 122, 79, 0.12);
+}
+:root[data-theme="light"] .prose .payoff td, :root[data-theme="light"] .payoff td {
+  color: #2f4639; border-color: rgba(13, 122, 79, 0.12);
+}
+:root[data-theme="light"] .prose .payoff td.hl, :root[data-theme="light"] .payoff td.hl,
+:root[data-theme="light"] .prose .payoff td.best, :root[data-theme="light"] .payoff td.best {
+  background: rgba(13, 138, 88, 0.12); color: #14251c;
+}
+:root[data-theme="light"] .prose .payoff td.ne, :root[data-theme="light"] .payoff td.ne { color: #b45309; }
+
+:root[data-theme="light"] .prose .glossary-table th, :root[data-theme="light"] .glossary-table th {
+  background: rgba(13, 138, 88, 0.1); color: #0a6b44;
+}
+:root[data-theme="light"] .prose .glossary-table td:first-child,
+:root[data-theme="light"] .glossary-table td:first-child { color: #14251c; }
+:root[data-theme="light"] .glossary-table .en { color: #5b7265; }
+
+:root[data-theme="light"] details.qa summary::before { background: rgba(13, 138, 88, 0.1); color: #0d8a58; }
+:root[data-theme="light"] details.faq-item[open], :root[data-theme="light"] details.qa[open] {
+  border-color: rgba(13, 138, 88, 0.35);
+}
+:root[data-theme="light"] details.faq-item summary:hover,
+:root[data-theme="light"] details.qa summary:hover { color: #0a6b44; }
+
+:root[data-theme="light"] .callout--question { --co: #0d8a58; --co-bg: rgba(13, 138, 88, 0.1); }
+:root[data-theme="light"] .callout--answer { --co: #0a6b44; --co-bg: rgba(10, 107, 68, 0.08); }
+:root[data-theme="light"] .callout--tip, :root[data-theme="light"] .callout--warning { --co: #b45309; --co-bg: rgba(180, 83, 9, 0.08); }
+:root[data-theme="light"] .callout--important { --co: #dc2626; --co-bg: rgba(220, 38, 38, 0.08); }
+:root[data-theme="light"] .callout--definition { --co: #4d7c0f; --co-bg: rgba(77, 124, 15, 0.08); }
+:root[data-theme="light"] .callout--example { --co: #2563eb; --co-bg: rgba(37, 99, 235, 0.08); }
+:root[data-theme="light"] .callout--note { --co: #5b7265; --co-bg: rgba(91, 114, 101, 0.06); }
+:root[data-theme="light"] .callout--persian { --co: #0d8a58; --co-bg: rgba(13, 138, 88, 0.05); }
 
 /* ==========================================================================
    2. Page chrome — board-game grid, selection, scrollbars
