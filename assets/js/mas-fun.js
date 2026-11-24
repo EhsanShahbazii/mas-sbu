@@ -53,6 +53,9 @@
     '#herdgame .rob{position:absolute;width:16px;height:16px;margin:-8px;font-size:16px;line-height:1;pointer-events:none}',
     '#herdgame .hud{position:absolute;top:10px;inset-inline-start:12px;font-size:12.5px;color:#9fb8a9}',
     '#herdgame .hud b{color:#6ee7b7}',
+    '#herdgame .hud button{margin-inline-start:10px;background:rgba(52,211,153,.14);border:1px solid rgba(110,231,183,.4);color:#e6f3ea;border-radius:8px;padding:3px 10px;font-family:inherit;font-size:12px;cursor:pointer}',
+    '#herdgame .hud button:hover{background:rgba(52,211,153,.26)}',
+    '#herdgame .cow,#herdgame .rob{pointer-events:none}',
     '.masdice{display:inline-block;font-size:34px;line-height:1;cursor:pointer;user-select:none;transition:transform .12s}',
     '.masdice.roll{animation:masdice .5s ease}',
     '@keyframes masdice{0%{transform:rotate(0) scale(1)}40%{transform:rotate(160deg) scale(1.25)}100%{transform:rotate(360deg) scale(1)}}',
@@ -156,96 +159,152 @@
     wrap.className = 'masfun-card';
     wrap.innerHTML =
       '<h3>🐄 گله را به آغل برسان!</h3>' +
-      '<p class="sub">Herding Benchmark · جلسهٔ ۳ — گاوها از نشانگر تو می‌گریزند؛ ربات‌ها هم کمک می‌کنند</p>' +
-      '<div id="herdgame"><div class="hud">در آغل: <b id="herdscore">۰</b> / ۱۴</div></div>';
+      '<p class="sub">Herding Benchmark · جلسهٔ ۳ — نشانگر را پشت گله ببر؛ گاوها از تو می‌گریزند و به سمت آغل می‌روند. ربات‌ها فقط نزدیک آغل کمک می‌کنند</p>' +
+      '<div id="herdgame"><div class="hud">در آغل: <b id="herdscore">0</b> / ۱۴ <button id="herdreset" type="button">شروع دوباره</button></div></div>';
     host.appendChild(wrap);
 
     var field = wrap.querySelector('#herdgame');
     var scoreEl = wrap.querySelector('#herdscore');
-    var W = field.clientWidth || 520, H = 300;
-    var pen = { x: W - 96, y: H - 84, w: 72, h: 64 };
+    var resetBtn = wrap.querySelector('#herdreset');
+
+    var TOTAL = 14;
+    var W = 0, H = 300;
+    var pen = { x: 0, y: 0, w: 84, h: 70 };
     var penEl = document.createElement('div');
     penEl.className = 'pen';
-    penEl.style.cssText = 'left:' + pen.x + 'px;top:' + pen.y + 'px;width:' + pen.w + 'px;height:' + pen.h + 'px';
     field.appendChild(penEl);
 
-    var cows = [];
-    for (var i = 0; i < 14; i++) {
-      var c = document.createElement('div');
-      c.className = 'cow';
-      field.appendChild(c);
-      cows.push({ el: c, x: 30 + Math.random() * (W - 180), y: 20 + Math.random() * (H - 60), vx: 0, vy: 0, in: false });
-    }
-    var bots = [];
-    ['🤖', '🤖', '🤖'].forEach(function (glyph, bi) {
-      var r = document.createElement('div');
-      r.className = 'rob';
-      r.textContent = glyph;
-      field.appendChild(r);
-      bots.push({ el: r, x: W / 2 + bi * 34, y: H / 2 + bi * 22, vx: 0, vy: 0, t: bi });
-    });
+    var cows = [], bots = [];
+    var mouse = { x: -9999, y: -9999, on: false };
+    var won = false;
 
-    var mouse = { x: -999, y: -999, on: false };
+    function insidePen(cw) {
+      return cw.x > pen.x + 6 && cw.x < pen.x + pen.w - 6 && cw.y > pen.y + 6 && cw.y < pen.y + pen.h - 6;
+    }
+
+    function spawnCows() {
+      W = field.clientWidth || 520;
+      pen.x = W - 108; pen.y = H - 92;
+      penEl.style.cssText = 'left:' + pen.x + 'px;top:' + pen.y + 'px;width:' + pen.w + 'px;height:' + pen.h + 'px';
+      cows.forEach(function (c) { if (c.el.parentNode) c.el.parentNode.removeChild(c.el); });
+      cows = [];
+      for (var i = 0; i < TOTAL; i++) {
+        var el = document.createElement('div');
+        el.className = 'cow';
+        field.appendChild(el);
+        cows.push({
+          el: el,
+          x: 20 + Math.random() * (W * 0.55),
+          y: 18 + Math.random() * (H - 40),
+          vx: 0, vy: 0,
+          in: false,
+          angle: Math.random() * 6.28,
+        });
+      }
+      bots.forEach(function (b) { if (b.el.parentNode) b.el.parentNode.removeChild(b.el); });
+      bots = [];
+      for (var bi = 0; bi < 3; bi++) {
+        var rel = document.createElement('div');
+        rel.className = 'rob';
+        rel.textContent = '🤖';
+        field.appendChild(rel);
+        bots.push({ el: rel, x: W * 0.4 + bi * 40, y: H * 0.3 + bi * 26, vx: 0, vy: 0, t: bi * 2 });
+      }
+      won = false;
+      scoreEl.textContent = '0';
+    }
+    spawnCows();
+    resetBtn.addEventListener('click', spawnCows);
+    window.addEventListener('resize', function () { spawnCows(); });
+
     field.addEventListener('pointermove', function (e) {
       var rect = field.getBoundingClientRect();
       mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top; mouse.on = true;
     });
     field.addEventListener('pointerleave', function () { mouse.on = false; });
 
-    var inPen = 0;
     function tick() {
+      var nowIn = 0;
       cows.forEach(function (cw) {
+        if (cw.in) {
+          /* در آغل: آرام می‌چرد و دیگر فرار نمی‌کند */
+          cw.angle += (Math.random() - 0.5) * 0.3;
+          cw.x += Math.cos(cw.angle) * 0.4;
+          cw.y += Math.sin(cw.angle) * 0.4;
+          cw.x = Math.max(pen.x + 8, Math.min(pen.x + pen.w - 8, cw.x));
+          cw.y = Math.max(pen.y + 8, Math.min(pen.y + pen.h - 8, cw.y));
+          cw.el.style.left = cw.x + 'px';
+          cw.el.style.top = cw.y + 'px';
+          nowIn++;
+          return;
+        }
         var fx = 0, fy = 0;
         if (mouse.on) {
           var dx = cw.x - mouse.x, dy = cw.y - mouse.y;
           var d2 = dx * dx + dy * dy;
-          if (d2 < 160 * 160 && d2 > 1) { var d = Math.sqrt(d2); fx += (dx / d) * 2.6; fy += (dy / d) * 2.6; }
+          if (d2 < 135 * 135 && d2 > 1) {
+            var d = Math.sqrt(d2);
+            var f = (1 - d / 135) * 3.2;
+            fx += (dx / d) * f; fy += (dy / d) * f;
+          }
         }
-        /* جدایی گله (swarm separation) */
+        /* بویید سبک: جدایی + هم‌راستایی ملایم تا گله طبیعی دیده شود */
+        var sx = 0, sy = 0, ax = 0, ay = 0, n = 0;
         cows.forEach(function (o) {
           if (o === cw) return;
           var dx = cw.x - o.x, dy = cw.y - o.y, d2 = dx * dx + dy * dy;
-          if (d2 < 34 * 34 && d2 > 1) { var d = Math.sqrt(d2); fx += (dx / d) * 0.5; fy += (dy / d) * 0.5; }
+          if (d2 < 900 && d2 > 1) {
+            var d = Math.sqrt(d2);
+            sx += dx / d; sy += dy / d;
+          }
+          if (!o.in && d2 < 3600) { ax += o.vx; ay += o.vy; n++; }
         });
-        cw.vx += fx * 0.3; cw.vy += fy * 0.3;
-        cw.vx *= 0.82; cw.vy *= 0.82;
+        fx += sx * 0.9;
+        if (n) { fx += (ax / n - cw.vx) * 0.04; fy += (ay / n - cw.vy) * 0.04; }
+        cw.vx += fx * 0.28; cw.vy += fy * 0.28;
+        cw.vx *= 0.86; cw.vy *= 0.86;
         cw.x += cw.vx; cw.y += cw.vy;
-        if (cw.x < 8) { cw.x = 8; cw.vx = Math.abs(cw.vx) * 0.5; }
-        if (cw.x > W - 8) { cw.x = W - 8; cw.vx = -Math.abs(cw.vx) * 0.5; }
-        if (cw.y < 8) { cw.y = 8; cw.vy = Math.abs(cw.vy) * 0.5; }
-        if (cw.y > H - 8) { cw.y = H - 8; cw.vy = -Math.abs(cw.vy) * 0.5; }
-        var nowIn = cw.x > pen.x + 4 && cw.x < pen.x + pen.w - 4 && cw.y > pen.y + 4 && cw.y < pen.y + pen.h - 4;
-        if (nowIn && !cw.in) { inPen++; }
-        if (!nowIn && cw.in) { inPen--; }
-        cw.in = nowIn;
+        if (cw.x < 8) { cw.x = 8; cw.vx = Math.abs(cw.vx) * 0.4; }
+        if (cw.x > W - 8) { cw.x = W - 8; cw.vx = -Math.abs(cw.vx) * 0.4; }
+        if (cw.y < 8) { cw.y = 8; cw.vy = Math.abs(cw.vy) * 0.4; }
+        if (cw.y > H - 8) { cw.y = H - 8; cw.vy = -Math.abs(cw.vy) * 0.4; }
+        if (insidePen(cw)) {
+          cw.in = true;
+          cw.x = Math.max(pen.x + 8, Math.min(pen.x + pen.w - 8, cw.x));
+          cw.y = Math.max(pen.y + 8, Math.min(pen.y + pen.h - 8, cw.y));
+          nowIn++;
+        }
         cw.el.style.left = cw.x + 'px';
         cw.el.style.top = cw.y + 'px';
-        cw.el.style.opacity = nowIn ? '0.85' : '1';
+        cw.el.style.opacity = cw.in ? '0.9' : '1';
       });
-      /* ربات‌های چوپان: گاوهای خارج از آغل را به سمت آغل هل می‌دهند */
+
+      /* چوپان‌ها فقط نزدیک آغل کمک می‌کنند؛ کار اصلی با کاربر است */
       bots.forEach(function (b, bi) {
-        var tx = W / 2, ty = H / 2;
+        var tx = W * 0.5 + (bi - 1) * 70, ty = H * 0.35;
         var best = null, bd = 1e9;
         cows.forEach(function (cw) {
           if (cw.in) return;
-          var d = Math.abs(cw.x - pen.x - pen.w / 2) + Math.abs(cw.y - pen.y - pen.h / 2);
-          if (d < bd) { bd = d; best = cw; }
+          var dcx = cw.x - (pen.x + pen.w / 2), dcy = cw.y - (pen.y + pen.h / 2);
+          var dist = Math.sqrt(dcx * dcx + dcy * dcy);
+          if (dist < 130 && dist < bd) { bd = dist; best = cw; }
         });
         if (best) {
           var ang = Math.atan2(best.y - pen.y - pen.h / 2, best.x - pen.x - pen.w / 2);
-          tx = best.x + Math.cos(ang) * 44; ty = best.y + Math.sin(ang) * 44;
+          tx = best.x + Math.cos(ang) * 40; ty = best.y + Math.sin(ang) * 40;
         }
         b.t += 0.05;
-        b.vx += (tx - b.x) * 0.02; b.vy += (ty - b.y) * 0.02;
-        b.vx *= 0.9; b.vy *= 0.9;
-        b.x += b.vx; b.y += b.vy;
+        b.vx += (tx - b.x) * 0.03; b.vy += (ty - b.y) * 0.03;
+        b.vx *= 0.88; b.vy *= 0.88;
+        b.x = Math.max(8, Math.min(W - 8, b.x + b.vx));
+        b.y = Math.max(8, Math.min(H - 8, b.y + b.vy));
         b.el.style.left = b.x + 'px';
         b.el.style.top = b.y + 'px';
-        b.el.style.transform = 'rotate(' + (bi % 2 ? 10 : -10) * Math.sin(b.t) + 'deg)';
       });
-      scoreEl.textContent = inPen;
-      if (inPen === cows.length) {
-        scoreEl.textContent = cows.length;
+
+      scoreEl.textContent = String(nowIn);
+      if (nowIn === TOTAL && !won) {
+        won = true;
         say('همهٔ گاوها در آغل! تو یک سیستم چندعاملهٔ واقعی هستی 🏆', 5000);
       }
       requestAnimationFrame(tick);
