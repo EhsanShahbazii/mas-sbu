@@ -12,11 +12,11 @@
 <p align="center">
   <a href="https://github.com/EhsanShahbazii/mas-sbu/stargazers"><img src="https://img.shields.io/github/stars/EhsanShahbazii/mas-sbu?style=for-the-badge&color=10b981&logo=star" alt="Stars"></a>
   <a href="https://github.com/EhsanShahbazii/mas-sbu/network/members"><img src="https://img.shields.io/github/forks/EhsanShahbazii/mas-sbu?style=for-the-badge&color=34d399&logo=git" alt="Forks"></a>
-  <img src="https://img.shields.io/badge/دانشگاه-شهید_بهشتی_(SBU)-003366?style=for-the-badge&logo=googlescholar&logoColor=white" alt="SBU">
-  <img src="https://img.shields.io/badge/استاد_درس-دکتر_منیره_عبدوس-10b981?style=for-the-badge" alt="Instructor">
-  <img src="https://img.shields.io/badge/پوسته-Obsidian_Dark_%26_Light-111827?style=for-the-badge" alt="Themes">
-  <img src="https://img.shields.io/badge/فونت-استعداد_متغیر_(Estedad)-3b82f6?style=for-the-badge" alt="Typography">
-  <a href="#مجوز"><img src="https://img.shields.io/badge/مجوز-MIT-blue?style=for-the-badge" alt="License"></a>
+  <img src="https://img.shields.io/badge/University-Shahid_Beheshti_(SBU)-003366?style=for-the-badge&logo=googlescholar&logoColor=white" alt="SBU">
+  <img src="https://img.shields.io/badge/Instructor-Dr._Monireh_Abdoos-10b981?style=for-the-badge" alt="Instructor">
+  <img src="https://img.shields.io/badge/Theme-Obsidian_Dark_%26_Light-111827?style=for-the-badge" alt="Themes">
+  <img src="https://img.shields.io/badge/Font-Estedad_Variable-3b82f6?style=for-the-badge" alt="Typography">
+  <a href="#-مجوز-license"><img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"></a>
 </p>
 
 ---
@@ -105,19 +105,17 @@ mas-sbu/
 
 <table align="center">
   <tr>
-    <td align="center" width="220px">
+    <td align="center" width="160px">
       <a href="https://github.com/EhsanShahbazii">
-        <img src="https://github.com/EhsanShahbazii.png" width="100px;" alt="احسان شهبازی"/><br />
+        <img src="https://github.com/EhsanShahbazii.png" width="96px;" alt="احسان شهبازی"/><br />
         <sub><b>احسان شهبازی</b></sub>
-      </a><br />
-      <sub>🎨 طراحی رابط کاربری (UI/UX)، پیاده‌سازی تم دارک Obsidian، تایپوگرافی، یکپارچه‌سازی ویجت‌ها و بهینه‌سازی فنی</sub>
+      </a>
     </td>
-    <td align="center" width="220px">
+    <td align="center" width="160px">
       <a href="https://github.com/soheilnazari2001">
-        <img src="https://github.com/soheilnazari2001.png" width="100px;" alt="سهیل نظری"/><br />
+        <img src="https://github.com/soheilnazari2001.png" width="96px;" alt="سهیل نظری"/><br />
         <sub><b>سهیل نظری</b></sub>
-      </a><br />
-      <sub>📝 نگارش و ایجاد اولیهٔ ساختار یادداشت‌ها و اسلایدهای جلسات</sub>
+      </a>
     </td>
   </tr>
 </table>
