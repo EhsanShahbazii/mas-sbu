@@ -81,7 +81,7 @@
     '#herdgame .cow,#herdgame .rob{pointer-events:none}',
     '.masdice{display:inline-block;font-size:34px;line-height:1;cursor:pointer;user-select:none;transition:transform .12s}',
     '.masdice.roll{animation:masdice .5s ease}',
-    '@keyframes masdice{0%{transform:rotate(0) scale(1)}40%{transform:rotate(160deg) scale(1.25)}100%{transform:rotate(360deg) scale(1)}}',
+    '@media (max-width: 640px){#masbot{bottom:10px;inset-inline-start:10px;transform:scale(.72);transform-origin:bottom right;opacity:.9}#masbot:hover,#masbot:active{opacity:1;transform:scale(.8)}#masbubble{bottom:74px;inset-inline-start:10px;max-width:calc(100vw - 32px);font-size:12.5px;padding:8px 12px}}',
     '@media (prefers-reduced-motion: reduce){#masbot,#masparade .parader,#masparade .msg,.masdice.roll{animation:none!important;transition:none!important}}',
   ].join('\n');
   document.head.appendChild(STYLE);
