@@ -10,6 +10,7 @@
 </p>
 
 <p align="center">
+  <a href="https://ehsanshahbazii.github.io/mas-sbu/"><img src="https://img.shields.io/badge/Live_Demo-Visit_Website-10b981?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo"></a>
   <a href="https://github.com/EhsanShahbazii/mas-sbu/stargazers"><img src="https://img.shields.io/github/stars/EhsanShahbazii/mas-sbu?style=for-the-badge&color=10b981&logo=star" alt="Stars"></a>
   <a href="https://github.com/EhsanShahbazii/mas-sbu/network/members"><img src="https://img.shields.io/github/forks/EhsanShahbazii/mas-sbu?style=for-the-badge&color=34d399&logo=git" alt="Forks"></a>
   <img src="https://img.shields.io/badge/University-Shahid_Beheshti_(SBU)-003366?style=for-the-badge&logo=googlescholar&logoColor=white" alt="SBU">
